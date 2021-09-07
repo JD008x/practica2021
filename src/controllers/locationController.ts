@@ -3,13 +3,13 @@ import  mongoose  from 'mongoose';
 import Location from '../models/location.model';
 
 const addLocation = (_req: Request, res: Response, _next: NextFunction) => {
-      let { nume, adresa, nrTelefon } = _req.body;
+      let { name: name, address: address, phoneNumber: phoneNumber } = _req.body;
 
       const location = new Location({
             _idLocation: new mongoose.Types.ObjectId(),
-            nume,
-            adresa,
-            nrTelefon
+            name: name,
+            address: address,
+            phoneNumber: phoneNumber
 
       });
 

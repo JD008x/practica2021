@@ -1,6 +1,6 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import router from "./routes/routes";
+// import router from "./routes/routes";
 
 export { makeApp };
 
@@ -16,7 +16,7 @@ async function makeApp(): Promise<express.Application> {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
-    app.use(router);
+    // app.use(router);
 
     const mongoose = require('mongoose');
 

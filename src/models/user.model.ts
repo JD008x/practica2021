@@ -1,15 +1,29 @@
-import * as mongoose from 'mongoose';
-import IUser from '../interfaces/IUser';
+function userModel(model = <any>{}) {
+	return {
+        id : model.id,
+        userName : model.userName,
+        email : model.email,
+        password : model.password,
+        realName : model.realName,
+        creationDate : model.creationDate,
+        role : model.role
+	};
+}
 
-const UserSchema: mongoose.Schema = new mongoose.Schema(
-    {
-        id: { type: Number, required: true},
-        userName: { type: String, required: true},
-        email: { type: String, required: true},
-        password: { type: String, required: true},
-        realName: { type: String, required: true},
-        creationDate: { type: Date },
-        role: { type: String, required: true},
-    }
-)
-export default mongoose.model<IUser>('User', UserSchema);
+class UserModel {
+    id: string;
+    userName: string;
+    email: string;
+    password: string;
+    realName: string;
+    creationDate = new Date();
+    role: UserRole;
+
+
+}
+
+export enum UserRole {
+    ADMIN = 'admin',
+    USER = 'user'
+  }
+  export { UserModel, userModel };

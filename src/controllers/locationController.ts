@@ -10,6 +10,7 @@ const addLocation = (_req: Request, res: Response, _next: NextFunction) => {
             nume,
             adresa,
             nrTelefon
+
       });
 
       return location.save()
@@ -25,7 +26,6 @@ const addLocation = (_req: Request, res: Response, _next: NextFunction) => {
             })
 };
 const getAllLocations = (_req: Request, res: Response, _next: NextFunction) => {
-    console.log("Salut");
       Location.find()
             .exec()
             .then((results) => {

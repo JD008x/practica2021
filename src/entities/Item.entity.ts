@@ -44,7 +44,7 @@ export class Item {
         this.description = model.description || "undefined";
         this.category = model.category || new Category();
         this.modifiedAt = model.modifiedAt || new Date();
-        this.location = model.location || "undefined";
+        this.location = model.location || new Location();
         this.inventoryNumber = model.inventoryNumber || "undefined";
         this.creationDate = model.creationDate || new Date();
     }

@@ -5,7 +5,7 @@ function itemModel(model = <any>{}) {
         id: model.id,
         name: model.name,
         description: model.description,
-        category: model.pascategorysword,
+        category: model.category,
         location: model.location,
         inventoryNumber: model.inventoryNumber,
         creationDate: model.creationDate
@@ -18,7 +18,7 @@ class ItemModel {
     description: String;
     category: Category;
     modifiedAt: Date;
-    location: Location
+    location: Location;
     inventoryNumber: String;
     creationDate: Date;
 

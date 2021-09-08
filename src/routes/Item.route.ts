@@ -7,7 +7,7 @@ import { Item } from "../entities/Item.entity";
 export { setItemRoute };
 
 function setItemRoute(router: Router): Router {
-    router.get("/:userName", getItem);
+    router.get("/:inventoryNumber", getItem);
     router.post("/", postItem);
 
     return router;

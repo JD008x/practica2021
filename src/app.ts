@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { setUserRoute } from "./routes/user.route";
+import { setCategoryRoute } from "./routes/category.route";
 import { setLocationRoute } from "./routes/location.route";
 import { env } from "./env";
 import  entities from "./entities/";
@@ -8,7 +9,6 @@ import { IExpressRequest } from "./interfaces/IExpressRequest";
 import { IExpressError } from "./interfaces/IExpressError";
 import {ReflectMetadataProvider, MikroORM} from "@mikro-orm/core";
 import { MongoDriver } from '@mikro-orm/mongodb';
-import { setCategoryRoute } from "./routes/category.route";
 
 
 export { makeApp };

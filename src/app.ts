@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { setUserRoute } from "./routes/user.route";
+import { setCategoryRoute } from "./routes/category.route";
 import { env } from "./env";
 import  entities from "./entities/";
 import { IExpressRequest } from "./interfaces/IExpressRequest";
@@ -36,6 +37,7 @@ app.use((req: IExpressRequest, _res: express.Response, next: express.NextFunctio
 
     // app.use(router);
     app.use(env.USER_ROUTE, setUserRoute(express.Router()));
+    app.use(env.CATEGORY_ROUTE, setCategoryRoute(express.Router()));
 // 404
 app.use((_req: express.Request, _res: express.Response, next: express.NextFunction) => {
     const err = new Error("Not Found") as IExpressError;

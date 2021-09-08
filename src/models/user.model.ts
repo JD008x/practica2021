@@ -11,7 +11,7 @@ function userModel(model = <any>{}) {
 }
 
 class UserModel {
-    id: string;
+    id: number;
     userName: string;
     email: string;
     password: string;

@@ -7,9 +7,9 @@ function getEnv() {
 		PORT: 80,
 		NODE_ENV: "development",
 		DISCOVERY_CLIENT_ROUTE: "/discovery/client",
-		A_JSON_ROUTE: "/api/json",
-		MONGO_URL: "mongodb://127.0.0.1:27017",
-		DB_NAME: "a-json-db"
+		USER_ROUTE: "/api/user",
+		MONGO_URL: "mongodb+srv://admin:admin123@cluster0.avhl5.mongodb.net/PracticaWaters?retryWrites=true&w=majority",
+		DB_NAME: "PracticaWaters"
 	};
 
 }

@@ -18,12 +18,11 @@ class UserModel {
     realName: string;
     creationDate = new Date();
     role: UserRole;
-
-
 }
 
 export enum UserRole {
     ADMIN = 'admin',
     USER = 'user'
-  }
+}
+
   export { UserModel, userModel };

@@ -8,6 +8,7 @@ import { IExpressRequest } from "./interfaces/IExpressRequest";
 import { IExpressError } from "./interfaces/IExpressError";
 import {ReflectMetadataProvider, MikroORM} from "@mikro-orm/core";
 import { MongoDriver } from '@mikro-orm/mongodb';
+import { setCategoryRoute } from "./routes/category.route";
 
 
 export { makeApp };
@@ -37,6 +38,7 @@ app.use((req: IExpressRequest, _res: express.Response, next: express.NextFunctio
 
     // app.use(router);
     app.use(env.USER_ROUTE, setUserRoute(express.Router()));
+    app.use(env.CATEGORY_ROUTE, setCategoryRoute(express.Router()));
     app.use(env.LOCATION_ROUTE, setLocationRoute(express.Router()));
 
 // 404

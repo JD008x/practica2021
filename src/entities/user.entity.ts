@@ -1,12 +1,12 @@
-import { Entity, SerializedPrimaryKey, PrimaryKey, Property, Enum } from "@mikro-orm/core";
-import { ObjectId } from "mongodb";
+import { Entity, PrimaryKey, Property, Enum } from "@mikro-orm/core";
+import { ObjectId } from "bson";
 
 @Entity()
 export class User{
       @PrimaryKey()
-      _id!: ObjectId;
-      @SerializedPrimaryKey()
-      id!: string;
+      id!: ObjectId;
+      // @SerializedPrimaryKey()
+      // id!: number;
       @Property()
       userName!: string;
       @Property()
@@ -20,19 +20,22 @@ export class User{
       @Enum(() => UserRole)
       role: UserRole;
 
-
-
-      constructor( id: string,userName: string, email: string, password: string, realName: string, creationDate = new Date(), role: UserRole){
-        this.id = id;
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-        this.realName = realName;
-        this.creationDate = creationDate;
-        this.role = role;
-    }
+     
+  constructor(model?: Partial<User>) {
+    if (!model || !(model instanceof Object))
+      model = <User><any>{};
+    
+      
+        this.userName = model.userName || "undefined";
+        this.email = model.email || "undefined";
+        this.password = model.password || "undefined";
+        this.realName = model.realName || "undefined";
+        this.creationDate = model.creationDate || new Date();
+        this.role = model.role || UserRole.UNKNOWN;
+}
 }
 export enum UserRole {
+      UNKNOWN = 'unknown',
       ADMIN = 'admin',
       USER = 'user'
     }

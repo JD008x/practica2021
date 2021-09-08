@@ -1,6 +1,13 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-// import router from "./routes/routes";
+import { setUserRoute } from "./routes/user.route";
+import { env } from "./env";
+import  entities from "./entities/";
+import { IExpressRequest } from "./interfaces/IExpressRequest";
+import { IExpressError } from "./interfaces/IExpressError";
+import {ReflectMetadataProvider, MikroORM} from "@mikro-orm/core";
+import { MongoDriver } from '@mikro-orm/mongodb';
+
 
 export { makeApp };
 
@@ -10,18 +17,36 @@ async function makeApp(): Promise<express.Application> {
     if (app) return app;
 
     app = express();
-
-
+    const orm = await MikroORM.init<MongoDriver>({
+        metadataProvider: ReflectMetadataProvider,
+        cache: { enabled: false },
+        entities: entities,
+        dbName: env.DB_NAME,
+        clientUrl: env.MONGO_URL,
+        type: "mongo"
+    });
+// make the entity manager available in request
+app.use((req: IExpressRequest, _res: express.Response, next: express.NextFunction) => {
+    req.em = orm.em.fork();
+    next();
+});
     // middleware
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
     // app.use(router);
+    app.use(env.USER_ROUTE, setUserRoute(express.Router()));
+// 404
+app.use((_req: express.Request, _res: express.Response, next: express.NextFunction) => {
+    const err = new Error("Not Found") as IExpressError;
+    err.status = 404;
+    next(err);
+});
 
-    const mongoose = require('mongoose');
-
-    await mongoose.connect('mongodb+srv://RaresOnescu:w5570SIo0zomycYr@waters.kco3w.mongodb.net/test');
-
+// 500
+app.use((err: IExpressError, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    res.status(err.status || 500).send(env.NODE_ENV === "development" ? err : {});
+});
 
     return app;
 }

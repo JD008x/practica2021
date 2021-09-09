@@ -1,18 +1,16 @@
 import { Entity, PrimaryKey, Property } from "@mikro-orm/core";
-import { ObjectId } from '@mikro-orm/mongodb';
+import { ObjectId } from "mongodb";
 
 @Entity()
-export class Location {
-  @PrimaryKey()
-  id!: ObjectId;
-  // @SerializedPrimaryKey()
-  // id!: number;
-  @Property()
-  name!: string;
-  @Property()
-  address!: string;
-  @Property()
-  telNumber!: string;
+export class Location{
+    @PrimaryKey()
+    id!: ObjectId;
+    @Property()
+    name!: string;
+    @Property()
+    address!: string;
+    @Property()
+    telNumber!: string;
 
   constructor(model?: Partial<Location>) {
     if (!model || !(model instanceof Object))

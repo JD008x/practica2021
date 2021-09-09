@@ -1,10 +1,12 @@
-import { Entity, PrimaryKey, Property } from "@mikro-orm/core";
+import { Entity, PrimaryKey, Property, SerializedPrimaryKey } from "@mikro-orm/core";
 import { ObjectId } from "mongodb";
 
 @Entity()
 export class Location{
     @PrimaryKey()
-    id!: ObjectId;
+    _id!: ObjectId;
+    @SerializedPrimaryKey()
+    id: string;
     @Property()
     name!: string;
     @Property()

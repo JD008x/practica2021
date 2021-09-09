@@ -8,7 +8,7 @@ function locationModel(model = <any>{}) {
 }
 
 class LocationModel {
-    id: number;
+    id: string;
     name: string;
     address: string;
     telNumber: string;

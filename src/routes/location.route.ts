@@ -9,6 +9,7 @@ export { setLocationRoute };
 function setLocationRoute(router: Router): Router {
       router.get("/:name", getLocation);
       router.post("/", postLocation);
+      router.get("/:id",getLocationById);
 
       return router;
   }
@@ -56,3 +57,28 @@ async function postLocation(req: IExpressRequest, res: Response, next: NextFunct
 
       return res.status(201).json(location);
   }
+
+  async function getLocationById(req: IExpressRequest, res: Response, next: NextFunction) {
+
+    if (!req.em || !(req.em instanceof EntityManager)) {
+        return next(Error('EntityManager not available'));
+    }
+
+    console.log(req.params);
+    let location: Error | Location | null;
+    try {
+        location = await locationController.getLocationById(req.em, req.params.id);
+        console.log(location);
+    } catch (ex) {
+        return next(ex);
+    }
+
+    if (location instanceof Error) {
+        return next(location);
+    }
+    if (location === null) {
+        return res.status(404).json(`Location with id '${req.params.id}' not found!`);
+    }
+
+    return res.json(location);
+}

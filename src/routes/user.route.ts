@@ -43,36 +43,20 @@ async function postUser(req: IExpressRequest, res: Response, next: NextFunction)
 
     let user: Error | User;
 
-
-
     try {
+        const bcrypt = require('bcrypt');
+        const saltRounds = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+        req.body.password = hashedPassword;
+
         user = await userController.saveUser(req.em, req.body);
     } catch (ex) {
         return next(ex);
     }
 
-    if (user instanceof Error)
-
+    if (user instanceof Error) {
         return next(user);
-
+    }
     return res.status(201).json(user);
+
 }
-
-      try {
-          const bcrypt = require('bcrypt');
-          const saltRounds = await bcrypt.genSalt(10);
-          const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-          req.body.password = hashedPassword;
-   
-          user = await userController.saveUser(req.em, req.body);
-      } catch (ex) {
-          return next(ex);
-      }
-   
- if (user instanceof Error) 
-          
-          return next(user);
-  
-      return res.status(201).json(user);
-  }
-

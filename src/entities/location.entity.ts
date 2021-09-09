@@ -1,27 +1,27 @@
 import { Entity, PrimaryKey, Property } from "@mikro-orm/core";
-import { ObjectId } from "bson";
+import { ObjectId } from '@mikro-orm/mongodb';
 
 @Entity()
-export class Location{
-    @PrimaryKey()
-    id!: ObjectId;
-    // @SerializedPrimaryKey()
-    // id!: number;
-    @Property()
-    name!: string;
-    @Property()
-    address!: string;
-    @Property()
-    telNumber!: string;
+export class Location {
+  @PrimaryKey()
+  id!: ObjectId;
+  // @SerializedPrimaryKey()
+  // id!: number;
+  @Property()
+  name!: string;
+  @Property()
+  address!: string;
+  @Property()
+  telNumber!: string;
 
   constructor(model?: Partial<Location>) {
     if (!model || !(model instanceof Object))
       model = <Location><any>{};
 
-        this.name = model.name || "undefined";
-        this.address = model.address || "undefined";
-        this.telNumber = model.telNumber || "undefined";
-}
+    this.name = model.name || "undefined";
+    this.address = model.address || "undefined";
+    this.telNumber = model.telNumber || "undefined";
+  }
 }
 
 

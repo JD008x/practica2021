@@ -7,52 +7,52 @@ import * as locationController from "../controllers/locationController";
 export { setLocationRoute };
 
 function setLocationRoute(router: Router): Router {
-      router.get("/:name", getLocation);
-      router.post("/", postLocation);
+    router.get("/:name", getLocation);
+    router.post("/", postLocation);
 
-      return router;
-  }
-  async function getLocation(req: IExpressRequest, res: Response, next: NextFunction) {
+    return router;
+}
+async function getLocation(req: IExpressRequest, res: Response, next: NextFunction) {
 
-      if (!req.em || !(req.em instanceof EntityManager))
-          return next(Error("EntityManager not available"));
+    if (!req.em || !(req.em instanceof EntityManager))
+        return next(Error("EntityManager not available"));
 
-        //   console.log(req.params);
-      let location: Error | Location | null;
-      try {
-          location = await locationController.getLocationByName(req.em,  req.params.name);
-          console.log(location);
-      } catch (ex) {
+    // console.log(req.params);
+    let location: Error | Location | null;
+    try {
+        location = await locationController.getLocationByName(req.em, req.params.name);
+        console.log(location);
+    } catch (ex) {
 
-          return next(ex);
+        return next(ex);
 
-      }
+    }
 
-      if (location instanceof Error)
-          return next(location);
+    if (location instanceof Error)
+        return next(location);
 
-      if (location === null)
-          return res.status(404).end();
+    if (location === null)
+        return res.status(404).end();
 
-      return res.json(location);
+    return res.json(location);
 }
 async function postLocation(req: IExpressRequest, res: Response, next: NextFunction) {
-   // console.log(req.body);
+    // console.log(req.body);
     if (!req.em || !(req.em instanceof EntityManager))
-          return next(Error("EntityManager not available"));
+        return next(Error("EntityManager not available"));
 
     let location: Error | Location;
 
 
-      try {
-          location = await locationController.saveLocation(req.em, req.body);
-      } catch (ex) {
-          return next(ex);
-      }
+    try {
+        location = await locationController.saveLocation(req.em, req.body);
+    } catch (ex) {
+        return next(ex);
+    }
 
- if (location instanceof Error)
+    if (location instanceof Error)
 
-          return next(location);
+        return next(location);
 
-      return res.status(201).json(location);
-  }
+    return res.status(201).json(location);
+}

@@ -1,12 +1,12 @@
-import { Entity, PrimaryKey, Property, Enum } from "@mikro-orm/core";
+import { Entity, PrimaryKey, Property, Enum, SerializedPrimaryKey } from "@mikro-orm/core";
 import { ObjectId } from '@mikro-orm/mongodb';
 
 @Entity()
 export class User {
   @PrimaryKey()
-  id!: ObjectId;
-  // @SerializedPrimaryKey()
-  // id!: number;
+  _id!: ObjectId;
+  @SerializedPrimaryKey()
+  id!: string;
   @Property()
   userName!: string;
   @Property()

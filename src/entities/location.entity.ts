@@ -16,10 +16,10 @@ export class Location{
     if (!model || !(model instanceof Object))
       model = <Location><any>{};
 
-        this.name = model.name || "undefined";
-        this.address = model.address || "undefined";
-        this.telNumber = model.telNumber || "undefined";
-}
+    this.name = model.name || "undefined";
+    this.address = model.address || "undefined";
+    this.telNumber = model.telNumber || "undefined";
+  }
 }
 
 

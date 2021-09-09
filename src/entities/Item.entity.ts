@@ -20,13 +20,13 @@ export class Item {
     description!: string;
 
     @ManyToOne(() => Category, { cascade: [Cascade.PERSIST, Cascade.REMOVE] })
-    category!: Category;
+    category?: Category;
 
     @Property()
     modifiedAt!: Date;
 
     @ManyToOne(() => Location, { cascade: [Cascade.PERSIST, Cascade.REMOVE] })
-    location!: Location;
+    location?: Location;
 
     @Property()
     inventoryNumber!: string;
@@ -42,9 +42,9 @@ export class Item {
 
         this.name = model.name || "undefined";
         this.description = model.description || "undefined";
-        this.category = model.category || new Category();
+        this.category = model.category;
         this.modifiedAt = model.modifiedAt || new Date();
-        this.location = model.location || new Location();
+        this.location = model.location;
         this.inventoryNumber = model.inventoryNumber || "undefined";
         this.creationDate = model.creationDate || new Date();
     }

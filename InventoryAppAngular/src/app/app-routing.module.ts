@@ -8,8 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'header', component: HeaderComponent },
-  { path: '**', redirectTo: '/header' },
+  { path: '**', redirectTo: '' },
 ];
 
 

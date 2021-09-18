@@ -3,7 +3,7 @@ import { EntityManager } from "@mikro-orm/core";
 import { ObjectId } from "@mikro-orm/mongodb";
 
 
-export { getItemByInventoryNumber, saveItem, getItems, deleteItem, updateItem };
+export { getItemByInventoryNumber, getItemById, saveItem, getItems, deleteItem, updateItem };
 
 async function getItems(em: EntityManager): Promise<Error | Item[] | null> {
     if (!(em instanceof EntityManager))

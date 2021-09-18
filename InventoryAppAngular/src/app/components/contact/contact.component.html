@@ -1,5 +1,5 @@
-<app-header></app-header>
-<h1 id="title">Contact us</h1><br>
+<h1 id="title">
+    Contact us</h1>
 <hr class="line">
 <form class="contact-form">
     <div class="div-group">
@@ -9,29 +9,30 @@
             <input matInput>
         </mat-form-field>
     </div>
-    <div  class="div-group">
+    <div class="div-group">
         <p class="label">Email:</p>
         <mat-form-field class="mat-form" appearance="fill">
             <mat-label></mat-label>
-            <input type="email" matInput [formControl]="emailFormControl"   placeholder="Ex. pat@example.com">
+            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">Please enter a valid email address</mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">  Email is <strong>required</strong></mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')"> Email is <strong>required</strong></mat-error>
         </mat-form-field>
     </div>
-    <div  class="div-group">
+    <div class="div-group">
         <p class="label">Message:</p>
         <mat-form-field class="mat-form" appearance="fill">
             <mat-label></mat-label>
             <textarea matInput></textarea>
         </mat-form-field>
-    </div>  
+    </div>
     <button id="button-submit" mat-raised-button color="primary">Send message</button>
 </form>
 
-<div class="form-details" >
+<div class="form-details">
     <h1 id="title-details">Contact details</h1><br>
     <p class="contact-details">Phone: 07837372</p><br>
     <p class="contact-details">Email: contact@company.com</p>
 </div>
 
-<iframe id="google-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.744288335205!2d25.579941515771566!3d45.65595672864824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35b9f58bc0589%3A0x4b3f48cc8bf2610d!2zU3RyYWRhIEx1bmfEgywgQnJhyJlvdg!5e0!3m2!1sro!2sro!4v1631990447070!5m2!1sro!2sro" width="800" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<iframe id="google-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.744288335205!2d25.579941515771566!3d45.65595672864824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35b9f58bc0589%3A0x4b3f48cc8bf2610d!2zU3RyYWRhIEx1bmfEgywgQnJhyJlvdg!5e0!3m2!1sro!2sro!4v1631990447070!5m2!1sro!2sro"
+    width="800" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>

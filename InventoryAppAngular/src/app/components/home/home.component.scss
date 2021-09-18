@@ -1,0 +1,58 @@
+.body {
+    margin-left: 30px;
+    background-image: url("../../../assets/Inventory-Management-02.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-top: 10%;
+    height: 100%;
+}
+
+.topHalf {
+    width: 40%;
+}
+
+.separator {
+    margin-right: 30px;
+    width: 100;
+    color: white;
+    text-align: center;
+    background: linear-gradient(90deg, #c9ee63, #c9ee63, #677018);
+    background-size: 300%;
+    background-position: right;
+    transition: background-position 300ms;
+    cursor: pointer;
+}
+
+.separator:hover {
+    background-position: left;
+}
+
+.info {
+    h1 {
+        font-size: xx-large;
+    }
+    text-align: center;
+}
+
+#gif {
+    height: 50vh;
+    padding-top: 30px;
+    margin-right: 3%;
+}
+
+.lastItems {
+    margin: 2% 2%;
+    display: inline-block;
+    padding: 20px 4%;
+    border-radius: 15px 50px 30px;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(90deg, #66ebcf, #16a989, #66ebcf);
+    background-size: 300%;
+    background-position: left;
+    transition: background-position 600ms;
+}
+
+.lastItems:hover {
+    background-position: right;
+}

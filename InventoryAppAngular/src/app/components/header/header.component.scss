@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+.app-logo {
+  padding: 20px;
+  float: left;
+  width: 25%;
+}
+.nav-menu {
+  padding: 20px;
+  margin-top: 40px;
+  float: left;
+  width: 45%;
+}
+.search-bar {
+  padding: 10px;
+  float: left;
+  width: 30%;
+}
+.example-full-width {
+  width: 350px;
+}
+
+.nav-menu a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  font-family: "Inconsolata", monospace;
+}
+.nav-menu a:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(56, 82, 165);
+}
+
+.nav-menu a.active {
+  background-color: #ffffff;
+  color: rgb(56, 82, 165);
+}
+
+#logo {
+  width: 300px;
+}
+
+.search-form {
+  padding-top: 50px;
+}
+
+@media screen and (max-width: 1200px) {
+  .app-logo {
+    width: 100%;
+  }
+  .app-logo #logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    width: 300px;
+    height: auto;
+  }
+
+  .nav-menu a,
+  .nav-menu,
+  .search-bar {
+    width: 100%;
+  }
+  .nav-menu {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .example-full-width {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+}

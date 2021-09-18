@@ -1,0 +1,62 @@
+#title
+{
+    position:relative;
+    color: #f2f2f2;
+    right:420px;
+    top:20px;
+    font-size:70px;
+    font-family: "Inconsolata", monospace;
+}
+.contact-form
+{
+    position:relative;
+    top: 15%;
+    padding:40px;
+}
+.div-group
+{
+    display:flex;
+}
+.mat-form
+{
+    width: 30%;
+    left:200px;
+}
+
+.label
+{
+    color: #f2f2f2;
+    width:50px;
+    font-size: 25px;
+    font-family: "Inconsolata", monospace;
+}
+
+hr.line {
+    border: 1px solid white;
+    width:93vw;
+  }
+
+.form-details
+{
+    position:relative;
+    width:500px;
+    left:1000px;
+    bottom:200px;
+    font-family: "Inconsolata", monospace;
+    color: #f2f2f2;
+}
+.contact-details
+{
+    font-size:25px;
+}
+#title-details
+{
+    font-size:40px;
+}
+
+#google-maps
+{
+    position:relative;
+    bottom:100px;
+    left:1000px;
+}

@@ -1,0 +1,36 @@
+<div class="body">
+    <div class="topHalf">
+        <div class="info">
+            <h1>Inventory management software for growing businesses.</h1>
+            <p>Increase your sales and keep track of every unit with our powerful stock management, order fulfillment, and inventory control software.</p>
+        </div>
+        <div>
+            <img src='../../../assets/Pika.gif' id='gif' />
+        </div>
+    </div>
+
+    <div class="separator">
+        <h1>down you can see the latest items added</h1>
+    </div>
+    <div *ngFor="let item of lastItems" class="lastItems">
+
+        <p>
+            <b>id:</b><i>{{ item.id }}</i>
+        </p>
+        <p>
+            <b>name:</b><i>{{ item.name }}</i>
+        </p>
+        <p>
+            <b>description:</b><i>{{ item.description }}</i>
+        </p>
+        <p>
+            <b>inventoryNumber:</b><i>{{ item.inventoryNumber }}</i>
+        </p>
+        <p>
+            <b>createdAt:</b><i>{{ item.creationDate | date }}</i>
+        </p>
+        <p>
+            <b>modifiedAt:</b><i>{{ item.modifiedAt | date }}</i>
+        </p>
+    </div>
+</div>

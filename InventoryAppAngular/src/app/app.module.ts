@@ -15,9 +15,10 @@ import { CategoryAdministratorComponent } from './components/category-administra
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
+import { HomeComponent } from './components/home/home.component';
 @NgModule({
   declarations: [
+    HomeComponent,
     AppComponent,
     HeaderComponent,
     ContactComponent,

@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Category } from "../models/category";
 
+
 let category: Category[] = [{
   "id": 1,
   "name": "Alabama"
@@ -20,6 +21,7 @@ let category: Category[] = [{
   "name": "California",
 
 }];
+
 
 @Injectable()
 export class CategoryService {
@@ -69,4 +71,5 @@ export class CategoryService {
   //   const url = `http://localhost:4200/${id}`;
   //   return this.httpClient.delete(url) as unknown as Observable<null>;
   // }
+
 }

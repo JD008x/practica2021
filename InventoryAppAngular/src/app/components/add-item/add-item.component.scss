@@ -1,0 +1,54 @@
+body p,
+h1,
+.form-field,
+.form-div {
+  font-family: "Inconsolata", monospace;
+}
+hr.line {
+  border: 1px solid white;
+  width: 93vw;
+}
+form {
+  margin-top: 50px;
+  margin-left: 5%;
+  display: inline-block;
+}
+.form-field {
+  width: 400px;
+}
+h1 {
+  float: left;
+  width: 99%;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-bottom: 15px;
+  color: white;
+  font-size: 43px;
+}
+.submitButton {
+  margin-left: 50%;
+}
+.onlineMarket {
+  width: 700px;
+  height: 600px;
+  float: right;
+}
+.form-div {
+  display: grid;
+  grid-template-columns: 150px 200px;
+  grid-template-areas: "theText theInput";
+  padding-bottom: 10px;
+}
+.form-text {
+  grid-area: theText;
+}
+.form-input {
+  grid-area: theInput;
+}
+#img {
+  width: 600px;
+  height: auto;
+  float: right;
+  margin-right: 20%;
+  margin-top: 2%;
+}

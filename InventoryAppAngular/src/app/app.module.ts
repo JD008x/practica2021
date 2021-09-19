@@ -12,12 +12,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ContactComponent } from './components/contact/contact.component';
 import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './components/home/home.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
+import { ItemServices } from './services/itemServices';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 @NgModule({
   declarations: [
     HomeComponent,
     AppComponent,
     HeaderComponent,
-    ContactComponent
+    ContactComponent,
+    AddItemComponent
 
   ],
   imports: [
@@ -29,9 +33,10 @@ import { HomeComponent } from './components/home/home.component';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ItemServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

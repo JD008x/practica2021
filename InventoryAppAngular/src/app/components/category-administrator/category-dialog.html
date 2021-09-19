@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-raised-button type="submit" [disabled]="!addCategoryFormGroup.valid">submit</button>
+    </div>

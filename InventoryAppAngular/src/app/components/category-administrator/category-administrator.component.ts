@@ -1,41 +1,44 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/categoryService';
+import { CategoryDialog } from './category-dialog';
 
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-category-administrator',
   templateUrl: './category-administrator.component.html',
-  styleUrls: ['./category-administrator.component.scss']
+  styleUrls: ['./category-administrator.component.scss'],
+  providers: [CategoryService]
 })
 export class CategoryAdministratorComponent implements OnInit {
 
-
-  categoryItems: MatTableDataSource<Category>
-
-  // Category[] =
-  //   [{
-  //     id: 10001,
-  //     name: 'PC01'
-  //   },
-  //   {
-  //     id: 10002,
-  //     name: 'P01'
-  //   }];
+  dataSources: MatTableDataSource<Category>;
 
   categoryColumns: string[] = [
     'id',
     'name',
-    'parent_category'
+    'parent_category',
+    'actions'
   ];
 
-  constructor() {
-    this.categoryItems = Object();
-
+  constructor(private categoryService: CategoryService, public dialog: MatDialog) {
+    this.dataSources = Object();
   }
 
   ngOnInit(): void {
-    this.categoryItems = new MatTableDataSource<Category>();
+    this.dataSources = new MatTableDataSource<Category>(this.categoryService.getCategorys());
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CategoryDialog, {
+      width: '250px',
+    });
   }
 
 }

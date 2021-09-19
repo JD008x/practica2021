@@ -16,15 +16,20 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { HomeComponent } from './components/home/home.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CategoryDialog } from './components/category-administrator/category-dialog';
 @NgModule({
   declarations: [
     HomeComponent,
     AppComponent,
     HeaderComponent,
     ContactComponent,
-    CategoryAdministratorComponent
+    CategoryAdministratorComponent,
+
   ],
   imports: [
+    MatDialogModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -36,9 +41,11 @@ import { HomeComponent } from './components/home/home.component';
     MatButtonModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CategoryDialog]
 })
 export class AppModule { }

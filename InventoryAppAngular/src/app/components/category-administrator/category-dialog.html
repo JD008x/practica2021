@@ -1,7 +1,17 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
 <div mat-dialog-content>
 
-    <div mat-dialog-actions>
-        <button mat-button (click)="onNoClick()">No Thanks</button>
+    <h1>Add Inventory item</h1>
+    <form [formGroup]="addCategoryFormGroup" (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Item name:</mat-label>
+                <input matInput placeholder="Item name" type="text" class="form-input" formControlName="name" />
+                <!-- <div *ngIf="!addItemFormGroup.controls['name'].valid">Item ame is required</div> -->
+                <!-- <mat-error *ngIf="hasError('name','required')">Item is required</mat-error> -->
+            </mat-form-field>
+        </p>
         <button mat-raised-button type="submit" [disabled]="!addCategoryFormGroup.valid">submit</button>
-    </div>
+    </form>
+
+    <button mat-raised-button (click)="closeMe()">Close</button>
+</div>

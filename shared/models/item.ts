@@ -1,4 +1,4 @@
-import { Category } from "shared";
+import { Category } from "./category";
 
 export interface Item {
   id: string;

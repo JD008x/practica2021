@@ -36,7 +36,7 @@ export class CategoryDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.category = this.categoryId == 0 ? new Category() : this.categoryService.getItemById(this.categoryId);
+    // this.category = this.categoryId == 0 ? new Category() : this.categoryService.getItemById(this.categoryId);
 
     this.addCategoryFormGroup = this.formBilder.group({
       name: [this.category.name, Validators.required],
@@ -49,8 +49,8 @@ export class CategoryDialog implements OnInit {
   onSubmit() {
     if (this.categoryId === 0) {
       this.category = new Category(this.addCategoryFormGroup.value);
-      this.category.id = this.categoryService.getLastId() + 1;
-      this.categoryService.addItem(this.category);
+      // this.category.id = this.categoryService.getLastId() + 1;
+      // this.categoryService.addItem(this.category);
     }
     else {
 
@@ -62,6 +62,8 @@ export class CategoryDialog implements OnInit {
     return this.addCategoryFormGroup.controls[controlName].hasError(errorName);
   }
 
-
+  public closeMe() {
+    this.dialogRef.close();
+  }
 
 }

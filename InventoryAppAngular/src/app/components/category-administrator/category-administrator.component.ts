@@ -1,6 +1,8 @@
+import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/categoryService';
 import { CategoryDialog } from './category-dialog';
@@ -13,32 +15,67 @@ export interface DialogData {
 @Component({
   selector: 'app-category-administrator',
   templateUrl: './category-administrator.component.html',
-  styleUrls: ['./category-administrator.component.scss'],
-  providers: [CategoryService]
+  styleUrls: ['./category-administrator.component.scss']
+
 })
 export class CategoryAdministratorComponent implements OnInit {
 
-  dataSources: MatTableDataSource<Category>;
-
+  dataSources: Category[];
+  categoryList!: InventoryComponentExample;
   categoryColumns: string[] = [
     'id',
-    'name',
     'parent_category',
-    'actions'
+    'name'
   ];
 
   constructor(private categoryService: CategoryService, public dialog: MatDialog) {
-    this.dataSources = Object();
+    this.dataSources = [];
   }
 
   ngOnInit(): void {
-    this.dataSources = new MatTableDataSource<Category>(this.categoryService.getCategorys());
+    this.dataSources = this.categoryService.getCategorys();
+    this.categoryList = new InventoryComponentExample(this.dataSources);
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CategoryDialog, {
-      width: '250px',
+  add() {
+    const dialogRef = this.dialog.open(CategoryDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
+  }
+
+  update(category: Category, name: string) {
+    if (name == null) { return; }
+    // copy and mutate
+    const copy = this.categoryList.data().slice()
+    category.name = name;
+    this.categoryList.update(copy);
+  }
+}
+
+export class InventoryComponentExample extends DataSource<any>{
+  private dataSubject = new BehaviorSubject<Category[]>([]);
+
+  data() {
+    return this.dataSubject.value;
+  }
+
+  update(data: Category[]) {
+    this.dataSubject.next(data);
+  }
+
+  constructor(data: any[]) {
+    super();
+    this.dataSubject.next(data);
+  }
+
+  connect(collectionViewer: CollectionViewer): Observable<readonly any[]> {
+    return this.dataSubject;
+  }
+
+  disconnect(collectionViewer: CollectionViewer): void {
+    console.log("X");
   }
 
 }

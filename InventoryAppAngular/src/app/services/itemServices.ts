@@ -7,12 +7,15 @@ import { Item } from "../models/item";
 @Injectable()
 export class ItemServices {
 
+  baseAdrress: string = `http://localhost:80`;
+
   constructor(private httpClient: HttpClient,
   ) { }
 
   getItems(): Observable<Item[]> {
-    const url = `http://localhost:4200`;
+    const url = `http://localhost:80`;
     return this.httpClient.get(url) as Observable<Item[]>;
+
   }
 
   getItemByInventoryNumber(inventoryNumber: string): Observable<Item> {

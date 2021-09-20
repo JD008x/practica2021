@@ -1,22 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+@import "css/colors.scss";
 
 html,
 body {
   height: 100%;
 }
 body {
-  background-color: rgb(56, 82, 165);
+  background-color: var(--body-color);
   margin: 0;
   font-family: "Inconsolata", monospace;
   padding: 0 15px;
+  // overflow:  scroll;
 }
+// ::-webkit-scrollbar {
+//   width: 0px;
+//   background: transparent; /* make scrollbar transparent */
+// }
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
+

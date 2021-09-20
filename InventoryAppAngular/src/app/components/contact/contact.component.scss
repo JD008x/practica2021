@@ -1,20 +1,21 @@
-#title {
-    //position: relative;
-    color: #f2f2f2;
-    right: 420px;
-    top: 20px;
-    font-size: 70px;
+@import "../../../css/colors.scss";
+.title {
+    position:relative;
+    color: var(--text-color);
+    left: 0em;
+    font-size:  4em;
+    margin-bottom: 0.5em;
     font-family: "Inconsolata", monospace;
+    float: left;
 }
 
 .contact-form {
-    position: relative;
     top: 15%;
     padding: 40px;
 }
 
 .div-group {
-    display: flex;
+    display:flex;
 }
 
 .mat-form {
@@ -23,7 +24,7 @@
 }
 
 .label {
-    color: #f2f2f2;
+    color: var(--text-color);
     width: 50px;
     font-size: 25px;
     font-family: "Inconsolata", monospace;
@@ -32,15 +33,15 @@
 hr.line {
     border: 1px solid white;
     width: 93vw;
+    margin-bottom:2%;
 }
 
 .form-details {
-    position: relative;
-    width: 500px;
-    left: 1000px;
-    bottom: 200px;
+    position:relative;
+    margin-left: 60%;
+    bottom:36%;
     font-family: "Inconsolata", monospace;
-    color: #f2f2f2;
+    color: var(--text-color);
 }
 
 .contact-details {
@@ -52,7 +53,10 @@ hr.line {
 }
 
 #google-maps {
-    position: relative;
-    bottom: 100px;
-    left: 1000px;
+    position:relative;
+    width:30%;
+    height:30%;
+    left:60%;
+    bottom:10%;
 }
+

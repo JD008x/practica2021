@@ -1,3 +1,4 @@
+@import "../../../css/colors.scss";
 .body {
     margin-left: 30px;
     background-image: url("../../../assets/Inventory-Management-02.png");
@@ -14,7 +15,7 @@
 .separator {
     margin-right: 30px;
     width: 100;
-    color: white;
+    color: var(--text-color);
     text-align: center;
     background: linear-gradient(90deg, #c9ee63, #c9ee63, #677018);
     background-size: 300%;
@@ -32,6 +33,7 @@
         font-size: xx-large;
     }
     text-align: center;
+    color:var(--text-color);
 }
 
 #gif {
@@ -41,13 +43,14 @@
 }
 
 .lastItems {
+    font-size: 1.5em;
     margin: 2% 2%;
     display: inline-block;
     padding: 20px 4%;
     border-radius: 15px 50px 30px;
-    color: white;
+    color: var(--text-color-dark);
     cursor: pointer;
-    background: linear-gradient(90deg, #66ebcf, #16a989, #66ebcf);
+    background: linear-gradient(90deg, var(--secondary-color), var(--secondary-color-variant-1),var(--secondary-color-variant-2));
     background-size: 300%;
     background-position: left;
     transition: background-position 600ms;

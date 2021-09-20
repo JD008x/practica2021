@@ -10,7 +10,7 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-  showNavbar = true;
+  showNavbar = false;
   myControl = new FormControl();
   options: string[] = ['Item1', 'Item2', 'Item3'];
   filteredOptions: Observable<string[]> | undefined;
@@ -31,6 +31,9 @@ export class HeaderComponent implements OnInit {
 
   toggleNavbar(){
     this.showNavbar = !this.showNavbar;
+  }
+  resetNavbar(){
+    this.showNavbar = false;
   }
 }
 

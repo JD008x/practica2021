@@ -92,11 +92,16 @@
     border-top: 3px solid var(--body-color);
   }
   .nav-menu a,
-  .nav-menu,
-  .search-bar {
+  .nav-menu{
     width: 100%;
-    padding-left: 0;
+    padding-bottom: 3vw;
+    padding-top: 3vw;
     margin-top: 0;
+  }
+  .search-bar{
+    width: 100%;
+    padding-top: 2vw;
+    padding-left: 0;
   }
   .nav-menu-hidden{
     display: none !important;

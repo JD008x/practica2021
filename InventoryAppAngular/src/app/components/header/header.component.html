@@ -3,12 +3,12 @@
       <img id="logo" src="../../../assets/img/logo.png">
   </div>
 
-  <div [ngClass]='{"nav-menu-hidden" : showNavbar, "nav-menu": true}'>
-      <a routerLink=''>Home</a>
-      <a href="#inventory">Inventory</a>
-      <a routerLink='/add-item'>New item</a>
-      <a href="#scan-item">Scan item</a>
-      <a routerLink='/contact'>Contact</a>
+  <div [ngClass]='{"nav-menu-hidden" : !showNavbar, "nav-menu": true}'>
+      <a (click)='resetNavbar()' routerLink=''>Home</a>
+      <a (click)='resetNavbar()' href="#inventory">Inventory</a>
+      <a (click)='resetNavbar()' routerLink='/add-item'>New item</a>
+      <a (click)='resetNavbar()' href="#scan-item">Scan item</a>
+      <a (click)='resetNavbar()' routerLink='/contact'>Contact</a>
   </div>
 
   <div class="search-bar">

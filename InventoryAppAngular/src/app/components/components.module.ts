@@ -22,10 +22,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CategoryDialog } from './category-administrator/category-dialog';
 import { BrowserModule } from '@angular/platform-browser';
+import { ItemServices } from '../services/itemServices';
+import { AddItemComponent } from './add-item/add-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [CategoryAdministratorComponent, ContactComponent, HomeComponent, InlineEditCategoryComponent, CategoryDialog],
-  imports: [CommonModule,
+  declarations: [CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, InlineEditCategoryComponent, CategoryDialog],
+  imports: [
+    CommonModule,
     MatDialogModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -41,7 +45,10 @@ import { BrowserModule } from '@angular/platform-browser';
     MatIconModule,
     SatPopoverModule,
     MDBBootstrapModule,
-    MatCardModule],
-  providers: [CategoryService],
+    MatCardModule,
+    MatButtonModule,
+    HttpClientModule],
+
+  providers: [CategoryService, ItemServices],
 })
 export class ComponentsModule { }

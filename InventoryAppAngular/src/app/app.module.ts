@@ -14,19 +14,12 @@ import { MatTableModule } from '@angular/material/table';
 import { SatPopoverModule } from '@ncstate/sat-popover';
 import { CommonModule } from '@angular/common';
 
-import { HomeComponent } from './components/home/home.component';
-import { AddItemComponent } from './components/add-item/add-item.component';
-import { ItemServices } from './services/itemServices';
-import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
 
     HeaderComponent,
-
-    AddItemComponent
-
 
   ],
   imports: [
@@ -44,10 +37,8 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
     MatTableModule,
     SatPopoverModule,
 
-    MatButtonModule,
-    HttpClientModule
   ],
-  providers: [ItemServices],
+  providers: [],
   bootstrap: [AppComponent]
 
 })

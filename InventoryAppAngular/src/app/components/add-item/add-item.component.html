@@ -1,49 +1,48 @@
-<body>
-      <h1>Add new item</h1>
-      <hr class="line">
+<body class="add-item-container">
+      <h1 class="title">Add new item</h1>
       <form [formGroup]="addItemFormGroup" (ngSubmit)="onSubmit()">
          <p>
              <mat-form-field class="form-field" appearance="outline">
                  <mat-label class="form-text">Item name: </mat-label>
                  <input matInput placeholder="Name of the item" class="form-input" type="text" formControlName="name"/>
                  <mat-error *ngIf="hasError('name', 'required')">Item name si required!</mat-error>
-     
+
              </mat-form-field>
-             
+
          </p>
          <p>
              <mat-form-field class="form-field" appearance="outline">
                  <mat-label>Description: </mat-label>
              <textarea matInput placeholder="Description of the item" formControlName="description"></textarea>
              <mat-error *ngIf="hasError('description', 'maxLength')">Too much characters!</mat-error>
-     
+
               </mat-form-field>
          </p>
-     
+
          <p>
              <mat-form-field class="form-field" appearance="outline">
                   <mat-label>User: </mat-label>
                   <input matInput placeholder="User" type="text"  formControlName="user"/>
                   <mat-error *ngIf="hasError('user', 'required')">User si required!</mat-error>
-     
+
              </mat-form-field>
          </p>
-     
+
          <p>
              <mat-form-field class="form-field" appearance="outline">
                <mat-label>Location: </mat-label>
                <input matInput placeholder="Location of the item" type="text"  formControlName="location"/>
                <mat-error *ngIf="hasError('location', 'required')">Location si required!</mat-error>
-     
+
              </mat-form-field>
          </p >
-     
+
           <p>
              <mat-form-field class="form-field" appearance="outline">
              <mat-label>Inventory number: </mat-label>
              <input [readonly]="editMode" matInput placeholder="Inventory number of the item" type="number"  formControlName="inventoryNumber"/>
              <mat-error *ngIf="hasError('inventoryNumber', 'required')">Inventory number si required!</mat-error>
-     
+
          </mat-form-field>
              </p>
          <p>
@@ -51,11 +50,11 @@
              <mat-label>Created At: </mat-label>
              <input [readonly]="editMode" matInput placeholder="Creation date of the item" type="date" formControlName="createdAt"/>
              <mat-error *ngIf="hasError('createdAt', 'required')">Created date si required</mat-error>
-     
+
              </mat-form-field>
              </p>
          <button mat-raised-button class="submitButton" type="submit" [disabled]="!addItemFormGroup.valid">Submit</button>
-     </form> 
+     </form>
      <img id="img" src="../../../assets/addItemImg.png">
 </body>
 

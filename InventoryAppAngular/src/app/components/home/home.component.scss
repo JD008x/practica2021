@@ -1,15 +1,21 @@
 @import "../../../css/colors.scss";
 .body {
     margin-left: 30px;
-    background-image: url("../../../assets/Inventory-Management-02.png");
-    background-repeat: no-repeat;
-    background-position: right;
     padding-top: 10%;
     height: 100%;
 }
 
 .topHalf {
     width: 40%;
+
+    min-width: 500px;
+}
+
+.home-page-image{
+  position: absolute;
+  z-index: -100;
+  right: -1vw;
+  top: 20vh;
 }
 
 .separator {
@@ -17,15 +23,14 @@
     width: 100;
     color: var(--text-color);
     text-align: center;
-    background: linear-gradient(90deg, #c9ee63, #c9ee63, #677018);
+    background-color: var(--main-color);
     background-size: 300%;
     background-position: right;
     transition: background-position 300ms;
     cursor: pointer;
-}
-
-.separator:hover {
-    background-position: left;
+    font-size: 2em !important;
+    padding-top: 5px;
+    padding-bottom: 1px;
 }
 
 .info {
@@ -37,7 +42,7 @@
 }
 
 #gif {
-    height: 50vh;
+    height: 25vw;
     padding-top: 30px;
     margin-right: 3%;
 }

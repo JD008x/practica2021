@@ -1,25 +1,27 @@
-<div class="app-logo">
-    <img id="logo" src="../../../assets/img/logo.png">
-</div>
+<div class="header-container">
+  <div class="app-logo">
+      <img id="logo" src="../../../assets/img/logo.png">
+  </div>
 
-<div class="nav-menu">
-    <a routerLink=''>Home</a>
-    <a href="#inventory">Inventory</a>
-    <a routerLink='/add-item'>New item</a>
-    <a href="#scan-item">Scan item</a>
-    <a routerLink='/contact'>Contact</a>
-</div>
+  <div class="nav-menu">
+      <a routerLink=''>Home</a>
+      <a href="#inventory">Inventory</a>
+      <a routerLink='/add-item'>New item</a>
+      <a href="#scan-item">Scan item</a>
+      <a routerLink='/contact'>Contact</a>
+  </div>
 
-<div class="search-bar">
-    <form class="search-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Search Item</mat-label>
-            <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                    {{option}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-    </form>
+  <div class="search-bar">
+      <form class="search-form">
+          <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Search Item</mat-label>
+              <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option}}
+                  </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+      </form>
+  </div>
 </div>

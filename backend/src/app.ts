@@ -20,6 +20,11 @@ async function makeApp(): Promise<express.Application> {
     if (app) return app;
 
     app = express();
+
+    var cors = require('cors');
+
+    app.use(cors());
+
     const orm = await MikroORM.init<MongoDriver>({
         metadataProvider: ReflectMetadataProvider,
         cache: { enabled: false },
@@ -42,7 +47,7 @@ async function makeApp(): Promise<express.Application> {
     app.use(env.CATEGORY_ROUTE, setCategoryRoute(express.Router()));
     app.use(env.LOCATION_ROUTE, setLocationRoute(express.Router()));
     app.use(env.ITEM_ROUTE, setItemRoute(express.Router()));
-  
+
     // 404
     app.use((_req: express.Request, _res: express.Response, next: express.NextFunction) => {
         const err = new Error("Not Found") as IExpressError;

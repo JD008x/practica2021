@@ -7,40 +7,40 @@ import { Item } from "../models/item";
 @Injectable()
 export class ItemServices {
 
-  baseAdrress: string = `http://localhost:80`;
+  baseAdrress: string = `http://localhost:80/api/item`;
 
   constructor(private httpClient: HttpClient,
   ) { }
 
   getItems(): Observable<Item[]> {
-    const url = `http://localhost:80`;
+    const url = this.baseAdrress;
     return this.httpClient.get(url) as Observable<Item[]>;
 
   }
 
   getItemByInventoryNumber(inventoryNumber: string): Observable<Item> {
-    const url = `http://localhost:4200/${inventoryNumber}`;
+    const url = this.baseAdrress + `/${inventoryNumber}`;
     return this.httpClient.get(url) as Observable<Item>;
   }
 
 
   getItemById(id: number): Observable<Item> {
-    const url = `http://localhost:4200//id/${id}`;
+    const url = this.baseAdrress + `/id/${id}`;
     return this.httpClient.get(url) as Observable<Item>;
   }
 
   addItem(object: Item): Observable<Item> {
-    const url = `http://localhost:4200`;
+    const url = this.baseAdrress;
     return this.httpClient.post(url, object) as Observable<Item>;
   }
 
   editItem(object: Item): Observable<Item> {
-    const url = `http://localhost:4200`;
+    const url = this.baseAdrress;
     return this.httpClient.put(url, object) as Observable<Item>;
   }
 
   deleteItem(id: number): Observable<null> {
-    const url = `http://localhost:4200/${id}`;
+    const url = this.baseAdrress + `/${id}`;
     return this.httpClient.delete(url) as unknown as Observable<null>;
   }
 }

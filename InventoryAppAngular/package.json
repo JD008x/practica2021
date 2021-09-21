@@ -22,6 +22,7 @@
         "@angular/router": "~12.2.0",
         "@ncstate/sat-popover": "^8.0.1",
         "angular-bootstrap-md": "^12.0.0",
+        "cors": "^2.8.5",
         "mdbootstrap": "^4.20.0",
         "rxjs": "~6.6.0",
         "tslib": "^2.3.0",
@@ -39,7 +40,7 @@
         "karma-coverage": "~2.0.3",
         "karma-jasmine": "~4.0.0",
         "karma-jasmine-html-reporter": "~1.7.0",
-        "typescript": "~4.3.5",
-        "shared": "file:../shared"
+        "shared": "file:../shared",
+        "typescript": "~4.3.5"
     }
 }

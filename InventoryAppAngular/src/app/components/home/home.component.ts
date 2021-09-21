@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
     inventoryNumber: '20190001',
     creationDate: new Date('2019-01-01'),
     modifiedAt: new Date('2020-02-02'),
-    deletedAt: false
+    deletedAt: false,
+    category:'Test4'
   },
   {
     id: '10002',
@@ -28,7 +29,8 @@ export class HomeComponent implements OnInit {
     inventoryNumber: '20190001',
     creationDate: new Date('2019-01-01'),
     modifiedAt: new Date('2020-02-02'),
-    deletedAt: false
+    deletedAt: false,
+    category:'Test3'
   },
   {
     id: '10003',
@@ -39,7 +41,8 @@ export class HomeComponent implements OnInit {
     inventoryNumber: '20190001',
     creationDate: new Date('2019-01-01'),
     modifiedAt: new Date('2020-02-02'),
-    deletedAt: false
+    deletedAt: false,
+    category:'Test1'
   },
   {
     id: '10004',
@@ -50,7 +53,8 @@ export class HomeComponent implements OnInit {
     inventoryNumber: '20190001',
     creationDate: new Date('2019-01-01'),
     modifiedAt: new Date('2020-02-02'),
-    deletedAt: false
+    deletedAt: false,
+    category:'Test2'
   }];
 
   constructor() {

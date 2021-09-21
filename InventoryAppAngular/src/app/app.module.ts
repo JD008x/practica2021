@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { SatPopoverModule } from '@ncstate/sat-popover';
 import { CommonModule } from '@angular/common';
+import { MatSelect } from '@angular/material/select';
 
 
 @NgModule({
@@ -31,7 +32,6 @@ import { CommonModule } from '@angular/common';
     MatAutocompleteModule,
     MatIconModule,
     MatFormFieldModule,
-
     ReactiveFormsModule,
     MatButtonModule,
     MatTableModule,

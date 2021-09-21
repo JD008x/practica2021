@@ -20,8 +20,8 @@
             <mat-label>Search Item</mat-label>
             <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                    {{option}}
+                <mat-option *ngFor="let option of items" [value]="option.name">
+                    {{option.name}}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>

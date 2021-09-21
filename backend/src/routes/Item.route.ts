@@ -13,7 +13,31 @@ function setItemRoute(router: Router): Router {
     router.delete("/:id", deleteItem)
     router.put("/", updateItem)
     router.get("/id/:id", getItemById);
+    router.get("/name", getFilterByName);
     return router;
+}
+async function getFilterByName(req: IExpressRequest, res: Response, next: NextFunction) {
+
+    if (!req.em || !(req.em instanceof EntityManager)) {
+        return next(Error('EntityManager not available'));
+    }
+
+    let items: Error | string[] | null;
+    try {
+        items = await itemController.getItemsName(req.em);
+    } catch (ex) {
+        return next(ex);
+    }
+
+    if (items instanceof Error) {
+        return next(items);
+    }
+    if (items === null) {
+        return res.status(404).json(`Item with name '${req.params.name}' not found!`);
+    }
+
+    return res.json(items);
+
 }
 
 async function getItemById(req: IExpressRequest, res: Response, next: NextFunction) {

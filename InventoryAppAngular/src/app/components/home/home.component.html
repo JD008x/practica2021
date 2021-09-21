@@ -6,31 +6,32 @@
         </div>
         <div>
             <img src='../../../assets/Pika.gif' id='gif' />
+            <img src='../../../assets/Inventory-Management-02.png' class='home-page-image'>
         </div>
     </div>
 
     <div class="separator">
-        <h1>down you can see the latest items added</h1>
+        <h1>Latest items used</h1>
     </div>
     <div *ngFor="let item of lastItems" class="lastItems">
 
-        <p>
+        <!-- <p>
             <b>id:</b><i>{{ item.id }}</i>
+        </p> -->
+        <p>
+            name:<i>  {{ item.name }}</i>
         </p>
         <p>
-            <b>name:</b><i>{{ item.name }}</i>
+            description:<i>  {{ item.description }}</i>
         </p>
         <p>
-            <b>description:</b><i>{{ item.description }}</i>
+            inventory Number:<i>  {{ item.inventoryNumber }}</i>
         </p>
-        <p>
-            <b>inventoryNumber:</b><i>{{ item.inventoryNumber }}</i>
-        </p>
-        <p>
+        <!-- <p>
             <b>createdAt:</b><i>{{ item.creationDate | date }}</i>
         </p>
         <p>
             <b>modifiedAt:</b><i>{{ item.modifiedAt | date }}</i>
-        </p>
+        </p> -->
     </div>
 </div>

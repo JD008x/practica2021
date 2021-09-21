@@ -1,46 +1,46 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 import { Item } from "../models/item";
 
 
 @Injectable()
 export class ItemServices {
 
-  baseAdrress: string = `http://localhost:80/api/item`;
 
-  constructor(private httpClient: HttpClient,
-  ) { }
+  readonly baseUrl = "http://localhost:80/api/item";
+  readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    })
+  };
+
+
+  constructor(private httpClient: HttpClient) { }
 
   getItems(): Observable<Item[]> {
-    const url = this.baseAdrress;
-    return this.httpClient.get(url) as Observable<Item[]>;
 
+    return this.httpClient.get<Item[]>(this.baseUrl, this.httpOptions)
   }
 
   getItemByInventoryNumber(inventoryNumber: string): Observable<Item> {
-    const url = this.baseAdrress + `/${inventoryNumber}`;
-    return this.httpClient.get(url) as Observable<Item>;
+    return this.httpClient.get<Item>(this.baseUrl + '/' + inventoryNumber, this.httpOptions)
+
   }
-
-
   getItemById(id: number): Observable<Item> {
-    const url = this.baseAdrress + `/id/${id}`;
-    return this.httpClient.get(url) as Observable<Item>;
+    return this.httpClient.get<Item>(this.baseUrl + '/id' + id, this.httpOptions)
   }
 
   addItem(object: Item): Observable<Item> {
-    const url = this.baseAdrress;
-    return this.httpClient.post(url, object) as Observable<Item>;
+    return this.httpClient.post<Item>(this.baseUrl, object, this.httpOptions)
   }
 
   editItem(object: Item): Observable<Item> {
-    const url = this.baseAdrress;
-    return this.httpClient.put(url, object) as Observable<Item>;
+    return this.httpClient.put<Item>(this.baseUrl, object, this.httpOptions)
   }
 
-  deleteItem(id: number): Observable<null> {
-    const url = this.baseAdrress + `/${id}`;
-    return this.httpClient.delete(url) as unknown as Observable<null>;
+  deleteItem(id: number) {
+    return this.httpClient.get<Item>(this.baseUrl + '/' + id, this.httpOptions)
   }
 }

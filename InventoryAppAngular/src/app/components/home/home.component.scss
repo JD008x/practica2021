@@ -1,30 +1,36 @@
+@import "../../../css/colors.scss";
 .body {
     margin-left: 30px;
-    background-image: url("../../../assets/Inventory-Management-02.png");
-    background-repeat: no-repeat;
-    background-position: right;
     padding-top: 10%;
     height: 100%;
 }
 
 .topHalf {
     width: 40%;
+
+    min-width: 500px;
+}
+
+.home-page-image{
+  position: absolute;
+  z-index: -100;
+  right: 0vw;
+  top: 20vh;
 }
 
 .separator {
     margin-right: 30px;
     width: 100;
-    color: white;
+    color: var(--text-color);
     text-align: center;
-    background: linear-gradient(90deg, #c9ee63, #c9ee63, #677018);
+    background-color: var(--main-color);
     background-size: 300%;
     background-position: right;
     transition: background-position 300ms;
     cursor: pointer;
-}
-
-.separator:hover {
-    background-position: left;
+    font-size: 2em !important;
+    padding-top: 5px;
+    padding-bottom: 1px;
 }
 
 .info {
@@ -32,22 +38,24 @@
         font-size: xx-large;
     }
     text-align: center;
+    color:var(--text-color);
 }
 
 #gif {
-    height: 50vh;
+    height: 25vw;
     padding-top: 30px;
     margin-right: 3%;
 }
 
 .lastItems {
+    font-size: 1.5em;
     margin: 2% 2%;
     display: inline-block;
     padding: 20px 4%;
     border-radius: 15px 50px 30px;
-    color: white;
+    color: var(--text-color-dark);
     cursor: pointer;
-    background: linear-gradient(90deg, #66ebcf, #16a989, #66ebcf);
+    background: linear-gradient(90deg, var(--secondary-color), var(--secondary-color-variant-1),var(--secondary-color-variant-2));
     background-size: 300%;
     background-position: left;
     transition: background-position 600ms;

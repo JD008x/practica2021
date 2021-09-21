@@ -1,57 +1,80 @@
-* {
-  box-sizing: border-box;
+@import "../../../css/colors.scss";
+.header-container{
+  display: inline-flex;
+  background-color: var(--main-color);
+  width: 100%;
 }
 .app-logo {
   padding: 20px;
-  float: left;
-  width: 25%;
+  width: 15%;
+  min-width: 300px
 }
 .nav-menu {
-  padding: 20px;
-  margin-top: 40px;
-  float: left;
-  width: 45%;
-}
-.search-bar {
-  padding: 10px;
-  float: left;
-  width: 30%;
+  padding-top: 40px;
+  width: 50vw;
+  text-align: center;
+  display: flex;
 }
 .example-full-width {
-  width: 350px;
+  width: 60%;
 }
 
 .nav-menu a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
+  color: var(--text-color);
   text-align: center;
-  padding: 14px 16px;
+  padding-top: 25px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 2.5em;
   font-family: "Inconsolata", monospace;
+  width: 30%;
+  display: inline;
 }
 .nav-menu a:hover {
-  background-color: rgb(255, 255, 255);
-  color: rgb(56, 82, 165);
+  background-color: var(--text-color);
+  color:var(--text-color-dark);
 }
 
 .nav-menu a.active {
-  background-color: #ffffff;
-  color: rgb(56, 82, 165);
+  background-color: var(--text-color);
+  color:var(--text-color-dark);
 }
 
 #logo {
   width: 300px;
 }
 
-.search-form {
+.nav-menu-hidden{
+  display: inherit;
+  // height: auto;
+  // transition: height 1s ease-out;
+}
+.nav-button{
+  display: none;
+  width: 60px;
+  height: 60px;
+  background-color: var(--body-color);
+  color: var(--text-color);
+  border-radius: 5%;
+
+}
+.search-bar {
   padding-top: 50px;
+  width: 30%;
+  padding-left: 5vw;
+  display: flex;
+}
+.search-form {
+  width: 100%;
 }
 
 @media screen and (max-width: 1200px) {
+  .header-container{
+    display: block;
+  }
   .app-logo {
     width: 100%;
+    padding-left: 0;
+    padding-right: 0;
   }
   .app-logo #logo {
     display: block;
@@ -61,11 +84,35 @@
     width: 300px;
     height: auto;
   }
-
+  .nav-menu a{
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    border-bottom: 3px solid var(--body-color);
+    border-top: 3px solid var(--body-color);
+  }
   .nav-menu a,
-  .nav-menu,
-  .search-bar {
+  .nav-menu{
     width: 100%;
+    padding-bottom: 3vw;
+    padding-top: 3vw;
+    margin-top: 0;
+  }
+  .search-bar{
+    width: 100%;
+    padding-top: 2vw;
+    padding-left: 0;
+  }
+  .nav-menu-hidden{
+    display: none !important;
+    // height: 0;
+    // transition: height 1s ease-out;
+    // padding: 0%;
+  }
+
+  .nav-button{
+    display: inline-block;
+    margin-left: 1vw;
   }
   .nav-menu {
     display: block;
@@ -76,6 +123,6 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 75%;
   }
 }

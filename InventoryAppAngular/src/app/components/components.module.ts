@@ -30,6 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LocationAdministratorComponent } from './location-administrator/location-administrator.component';
 import { LocationDialog } from './location-administrator/location-dialog';
 import { LocationServices } from '../services/locationServices';
+import { UserServices } from '../services/userServises';
 
 
 @NgModule({
@@ -50,13 +51,16 @@ import { LocationServices } from '../services/locationServices';
     MatTableModule,
     MatIconModule,
     SatPopoverModule,
+    MatSelectModule,
     MDBBootstrapModule,
     MatCardModule,
     MatButtonModule,
+
     HttpClientModule,
     MatSelectModule,
     MatSnackBarModule],
 
-  providers: [CategoryService, ItemServices, CommonService, LocationServices],
+  providers: [CategoryService, ItemServices, CommonService, LocationServices, UserServices],
+
 })
 export class ComponentsModule { }

@@ -25,6 +25,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ItemServices } from '../services/itemServices';
 import { AddItemComponent } from './add-item/add-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import {  MatSelectModule } from '@angular/material/select';
+import { LocationServices } from '../services/locationServices';
+import { UserServices } from '../services/userServises';
 
 @NgModule({
   declarations: [CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, InlineEditCategoryComponent, CategoryDialog],
@@ -44,11 +47,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatIconModule,
     SatPopoverModule,
+    MatSelectModule,
     MDBBootstrapModule,
     MatCardModule,
     MatButtonModule,
-    HttpClientModule],
+    HttpClientModule ],
 
-  providers: [CategoryService, ItemServices],
+  providers: [CategoryService, ItemServices, LocationServices, UserServices],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

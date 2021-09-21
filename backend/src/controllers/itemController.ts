@@ -3,7 +3,7 @@ import { EntityManager } from "@mikro-orm/core";
 import { ObjectId } from "@mikro-orm/mongodb";
 
 
-export { getItemByInventoryNumber, getItemById, saveItem, getItems, deleteItem, updateItem };
+export { getItemByInventoryNumber, getItemById, saveItem, getItems, deleteItem, updateItem, getItemsName };
 
 async function getItems(em: EntityManager): Promise<Error | Item[] | null> {
     if (!(em instanceof EntityManager))
@@ -11,6 +11,21 @@ async function getItems(em: EntityManager): Promise<Error | Item[] | null> {
 
     try {
         const item = await em.find(Item, {})
+        return item;
+    } catch (ex) {
+        if (ex instanceof Error)
+            return ex;
+
+        return null;
+    }
+}
+
+async function getItemsName(em: EntityManager): Promise<Error | string[] | null> {
+    if (!(em instanceof EntityManager))
+        return Error("invalid request");
+
+    try {
+        const item = await em.find(Item.name,'...', {fields: ['name']})
         return item;
     } catch (ex) {
         if (ex instanceof Error)
@@ -35,6 +50,7 @@ async function getItemByInventoryNumber(em: EntityManager, inventoryNumber: stri
         return null;
     }
 }
+
 
 async function saveItem(em: EntityManager, item: Partial<Item>): Promise<Error | Item> {
     if (!(em instanceof EntityManager))

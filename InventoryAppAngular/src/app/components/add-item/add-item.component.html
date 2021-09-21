@@ -20,36 +20,52 @@
          </p>
 
          <p>
-             <mat-form-field class="form-field" appearance="outline">
-                  <mat-label>User: </mat-label>
-                  <input matInput placeholder="User" type="text"  formControlName="user"/>
-                  <mat-error *ngIf="hasError('user', 'required')">User si required!</mat-error>
+            <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Inventory number: </mat-label>
+            <input [readonly]="editMode"  [min]="0" matInput placeholder="Inventory number of the item" type="number"  formControlName="inventoryNumber"/>
+            <mat-error *ngIf="hasError('inventoryNumber', 'required')">Inventory number required!</mat-error>
 
-             </mat-form-field>
-         </p>
+        </mat-form-field>
+            </p>
 
          <p>
-             <mat-form-field class="form-field" appearance="outline">
-               <mat-label>Location: </mat-label>
-               <input matInput placeholder="Location of the item" type="text"  formControlName="location"/>
-               <mat-error *ngIf="hasError('location', 'required')">Location si required!</mat-error>
-
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Choose a location</mat-label>
+                <mat-select (selectionChange)="selectedLocationHandler($event)">
+                <mat-option *ngFor="let location of locations" [value]="location.name">
+                    {{location.name}}
+                </mat-option>
+                </mat-select>
              </mat-form-field>
-         </p >
+        </p> 
 
-          <p>
-             <mat-form-field class="form-field" appearance="outline">
-             <mat-label>Inventory number: </mat-label>
-             <input [readonly]="editMode" matInput placeholder="Inventory number of the item" type="number"  formControlName="inventoryNumber"/>
-             <mat-error *ngIf="hasError('inventoryNumber', 'required')">Inventory number si required!</mat-error>
+        <p>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Choose an user</mat-label>
+                <mat-select  (selectionChange)="selectedUserHandler($event)">
+                <mat-option *ngFor="let user of users" [value]="user.userName">
+                    {{user.userName}}
+                </mat-option>
+                </mat-select>
+             </mat-form-field>
+        </p> 
 
-         </mat-form-field>
-             </p>
+         <p>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Choose a category</mat-label>
+                <mat-select (selectionChange)="selectedCategoryHandler($event)">
+                <mat-option *ngFor="let category of categories" [value]="category.name" >
+                    {{category.name}}
+                </mat-option>
+                </mat-select>
+             </mat-form-field>
+        </p> 
+
          <p>
              <mat-form-field class="form-field" appearance="outline">
              <mat-label>Created At: </mat-label>
              <input [readonly]="editMode" matInput placeholder="Creation date of the item" type="date" formControlName="createdAt"/>
-             <mat-error *ngIf="hasError('createdAt', 'required')">Created date si required</mat-error>
+             <mat-error *ngIf="hasError('createdAt', 'required')">Created date required</mat-error>
 
              </mat-form-field>
              </p>

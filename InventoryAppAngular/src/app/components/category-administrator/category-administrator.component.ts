@@ -33,7 +33,7 @@ export class CategoryAdministratorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSources = this.categoryService.getCategorys();
+    // this.dataSources = this.categoryService.getCategory();
     this.categoryList = new InventoryComponentExample(this.dataSources);
   }
 

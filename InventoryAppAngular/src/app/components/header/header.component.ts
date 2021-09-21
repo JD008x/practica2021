@@ -10,6 +10,7 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
+  showNavbar = false;
   myControl = new FormControl();
   options: string[] = ['Item1', 'Item2', 'Item3'];
   filteredOptions: Observable<string[]> | undefined;
@@ -21,14 +22,21 @@ export class HeaderComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
-}
+  }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
   return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
+
+  toggleNavbar(){
+    this.showNavbar = !this.showNavbar;
+  }
+  resetNavbar(){
+    this.showNavbar = false;
+  }
 }
 
-  
+
 
 

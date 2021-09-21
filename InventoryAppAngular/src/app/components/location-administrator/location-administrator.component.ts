@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { CommonService } from 'src/app/services/commonService';
 import { LocationServices } from 'src/app/services/locationServices';
-import { Location } from '../../../../../shared';
+import { Location } from 'src/app/models/location';
 import { LocationDialog } from './location-dialog';
 
 @Component({

@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
 import { LocationServices } from "src/app/services/locationServices";
-import { Location } from "../../../../../shared";
+import { Location } from "src/app/models/location";
 
 @Component({
   selector: 'categoryDialog',

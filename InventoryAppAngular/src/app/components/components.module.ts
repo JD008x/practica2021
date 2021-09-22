@@ -16,7 +16,6 @@ import { MatTableModule } from '@angular/material/table';
 import { HomeComponent } from './home/home.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { InlineEditCategoryComponent } from './category-administrator/inline-edit-category/inline-edit-category.component';
 import { SatPopoverModule } from '@ncstate/sat-popover';
 import { MatCardModule } from '@angular/material/card';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -25,12 +24,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ItemServices } from '../services/itemServices';
 import { AddItemComponent } from './add-item/add-item.component';
 import { HttpClientModule } from '@angular/common/http';
-import {  MatSelectModule } from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonService } from '../services/commonService';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LocationAdministratorComponent } from './location-administrator/location-administrator.component';
+import { LocationDialog } from './location-administrator/location-dialog';
 import { LocationServices } from '../services/locationServices';
 import { UserServices } from '../services/userServises';
 
+
 @NgModule({
-  declarations: [CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, InlineEditCategoryComponent, CategoryDialog],
+  declarations: [CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, CategoryDialog, LocationDialog, LocationAdministratorComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -51,8 +55,12 @@ import { UserServices } from '../services/userServises';
     MDBBootstrapModule,
     MatCardModule,
     MatButtonModule,
-    HttpClientModule ],
 
-  providers: [CategoryService, ItemServices, LocationServices, UserServices],
+    HttpClientModule,
+    MatSelectModule,
+    MatSnackBarModule],
+
+  providers: [CategoryService, ItemServices, CommonService, LocationServices, UserServices],
+
 })
-export class ComponentsModule {}
+export class ComponentsModule { }

@@ -10,10 +10,11 @@ export class UserServices {
   constructor(private httpClient: HttpClient,
   ) { }
 
-  readonly baseUrl= "http://localhost:80/api/user";
+
+  readonly baseUrl = "http://localhost:80/api/user";
   readonly httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
+      'Content-Type': 'application/json',
     })
   };
 
@@ -33,7 +34,8 @@ export class UserServices {
     return this.httpClient.put<User>(this.baseUrl, object, this.httpOptions)
   }
 
-  deleteUser(id: number){
-    return this.httpClient.get<Location>(this.baseUrl + '/' + id , this.httpOptions)
+  deleteUser(id: number) {
+    return this.httpClient.get<Location>(this.baseUrl + '/' + id, this.httpOptions)
+
   }
 }

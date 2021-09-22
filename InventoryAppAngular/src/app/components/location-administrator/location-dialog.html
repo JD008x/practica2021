@@ -1,0 +1,35 @@
+<div mat-dialog-content>
+
+    <h1>Add new location</h1>
+    <form [formGroup]="addLocationFormGroup" (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>name*:</mat-label>
+                <input matInput placeholder="name" type="text" class="form-input" formControlName="name" />
+                <!-- <div *ngIf="!addItemFormGroup.controls['name'].valid">Item ame is required</div> -->
+                <!-- <mat-error *ngIf="hasError('name','required')">Item is required</mat-error> -->
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>address*:</mat-label>
+                <input matInput placeholder="address" type="text" class="form-input" formControlName="address" />
+                <!-- <div *ngIf="!addItemFormGroup.controls['name'].valid">Item ame is required</div> -->
+                <!-- <mat-error *ngIf="hasError('name','required')">Item is required</mat-error> -->
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>telNumber*:</mat-label>
+                <input matInput placeholder="telNumber" type="text" class="form-input" formControlName="telNumber" />
+                <!-- <div *ngIf="!addItemFormGroup.controls['name'].valid">Item ame is required</div> -->
+                <!-- <mat-error *ngIf="hasError('name','required')">Item is required</mat-error> -->
+            </mat-form-field>
+        </p>
+        <p> <button mat-raised-button type="submit" [disabled]="!addLocationFormGroup.valid">submit</button>
+            <button mat-raised-button (click)="closeMe()">Close</button>
+        </p>
+    </form>
+
+
+</div>

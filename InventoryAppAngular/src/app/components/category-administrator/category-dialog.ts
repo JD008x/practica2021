@@ -5,41 +5,46 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Category } from "src/app/models/category";
 import { CategoryService } from "src/app/services/categoryService";
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
 @Component({
   selector: 'categoryDialog',
   templateUrl: 'category-dialog.html',
 })
+
 export class CategoryDialog implements OnInit {
 
   addCategoryFormGroup!: FormGroup;
   category: Category;
-  categoryId: number = 0;
+  categoryList!: Category[];
 
   constructor(private formBilder: FormBuilder,
     private categoryService: CategoryService,
-    private router: Router,
-    private route: ActivatedRoute,
     private dialogRef: MatDialogRef<CategoryDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: Category) {
     this.addCategoryFormGroup = Object();
     this.category = Object();
-    route.params.subscribe((param) => {
-      if (param['id']) {
-        this.categoryId = param['id'];
-      }
+  }
+
+  changeClient(value: any) {
+    console.log(value);
+  }
+
+  getCategoryList(): void {
+    this.categoryService.getCategory().subscribe((list: Category[]) => {
+      this.categoryList = list;
+    }, (err) => {
+      if (err.status === 401) return;
     });
   }
 
-  ngOnInit(): void {
-    // this.category = this.categoryId == 0 ? new Category() : this.categoryService.getItemById(this.categoryId);
 
+  ngOnInit(): void {
+
+    this.category = new Category();
+
+    this.getCategoryList();
     this.addCategoryFormGroup = this.formBilder.group({
       name: [this.category.name, Validators.required],
+      parent_category: [this.category.parent_category]
     });
   }
 
@@ -47,17 +52,12 @@ export class CategoryDialog implements OnInit {
     this.dialogRef.close();
   }
   onSubmit() {
-    if (this.categoryId === 0) {
-      this.category = new Category(this.addCategoryFormGroup.value);
-      // this.category.id = this.categoryService.getLastId() + 1;
-      // this.categoryService.addItem(this.category);
-    }
-    else {
-
-      this.category.name = this.addCategoryFormGroup.value.name;
-    }
+    this.category = new Category(this.addCategoryFormGroup.value);
+    this.categoryService.addCategory(this.category).subscribe();
     this.dialogRef.close();
   }
+
+
   hasError(controlName: string, errorName: string) {
     return this.addCategoryFormGroup.controls[controlName].hasError(errorName);
   }

@@ -5,12 +5,14 @@ import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
+import { LocationAdministratorComponent } from './components/location-administrator/location-administrator.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'category', component: CategoryAdministratorComponent },
   { path: 'add-item', component: AddItemComponent },
+  { path: 'location', component: LocationAdministratorComponent },
   { path: '**', redirectTo: '' },
 
 ];

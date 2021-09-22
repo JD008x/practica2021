@@ -2,15 +2,12 @@ import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/categoryService';
+import { CommonService } from 'src/app/services/commonService';
 import { CategoryDialog } from './category-dialog';
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-category-administrator',
@@ -20,62 +17,65 @@ export interface DialogData {
 })
 export class CategoryAdministratorComponent implements OnInit {
 
-  dataSources: Category[];
-  categoryList!: InventoryComponentExample;
+  editCategory!: Category;
+  category: Category[] = this.categoryService.categoryList;
+  dataSources: MatTableDataSource<Category> = new MatTableDataSource<Category>(this.category);
+  parent!: Category;
   categoryColumns: string[] = [
-    'id',
     'parent_category',
-    'name'
+    'name',
+    'actions'
   ];
 
-  constructor(private categoryService: CategoryService, public dialog: MatDialog) {
-    this.dataSources = [];
+  constructor(private categoryService: CategoryService, private dialog: MatDialog, private router: Router,
+    private activatedRoute: ActivatedRoute, private commonService: CommonService) {
   }
 
   ngOnInit(): void {
-    // this.dataSources = this.categoryService.getCategory();
-    this.categoryList = new InventoryComponentExample(this.dataSources);
+    this.getCategoryList();
+  }
+
+  changeClient(value: any) {
+    this.parent = value;
+  }
+
+  getCategoryList(): void {
+    this.categoryService.getCategory().subscribe((list: Category[]) => {
+      this.category = list;
+      this.updateTable();
+    }, (err) => {
+      if (err.status === 401) return;
+    });
+  }
+
+  edit(id: number, index: number, category: Category) {
+    category.parent_category = this.parent;
+    this.categoryService.editCategory(category).subscribe();
+    this.updateTable();
   }
 
   add() {
     const dialogRef = this.dialog.open(CategoryDialog);
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
-  update(category: Category, name: string) {
-    if (name == null) { return; }
-    // copy and mutate
-    const copy = this.categoryList.data().slice()
-    category.name = name;
-    this.categoryList.update(copy);
-  }
-}
+  updateTable(): void {
+    this.dataSources = new MatTableDataSource<Category>(this.category);
 
-export class InventoryComponentExample extends DataSource<any>{
-  private dataSubject = new BehaviorSubject<Category[]>([]);
-
-  data() {
-    return this.dataSubject.value;
   }
 
-  update(data: Category[]) {
-    this.dataSubject.next(data);
+  delete(id: number, index: number): void {
+    this.categoryService.deleteCategory(id).subscribe(
+      () => {
+        this.commonService.showSnackBarMessage("category deleted");
+        this.dataSources.data.slice(index, 1);
+        this.updateTable();
+      }, (err) => {
+        this.commonService.showSnackBarMessage("delete fail");
+      }
+    );
+    this.getCategoryList();
   }
-
-  constructor(data: any[]) {
-    super();
-    this.dataSubject.next(data);
-  }
-
-  connect(collectionViewer: CollectionViewer): Observable<readonly any[]> {
-    return this.dataSubject;
-  }
-
-  disconnect(collectionViewer: CollectionViewer): void {
-    console.log("X");
-  }
-
 }

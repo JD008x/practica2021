@@ -10,7 +10,8 @@ import { CategoryService } from "./categoryService";
 @Injectable()
 export class ItemServices {
 
-  
+  public itemList: Item[] = [];
+
   readonly baseUrl = "http://localhost:80/api/item";
   readonly httpOptions = {
     headers: new HttpHeaders({

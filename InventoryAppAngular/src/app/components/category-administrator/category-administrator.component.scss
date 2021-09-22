@@ -2,9 +2,27 @@ table {
     width: 96%;
     text-align-last: center;
     margin-left: 2%;
+    button {
+        margin: 3px;
+    }
+}
+
+th {
+    background-color: #373740;
+    font-size: large;
+}
+
+td {
+    background-color: #474780;
 }
 
 #Add {
     position: relative;
+    margin: 5px;
     margin-left: 94%;
+}
+
+.image1 {
+    width: 60%;
+    margin-left: 20%;
 }

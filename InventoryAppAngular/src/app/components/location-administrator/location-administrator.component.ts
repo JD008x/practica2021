@@ -48,14 +48,22 @@ export class LocationAdministratorComponent implements OnInit {
   }
 
   edit(location: Location) {
-    this.locationService.editLocation(location).subscribe();
-    this.updateTable();
+    if (location.address && location.name && location.telNumber) {
+      this.locationService.editLocation(location).subscribe();
+      this.updateTable();
+      this.commonService.showSnackBarMessage("edit complete");
+    }
+    else {
+      this.commonService.showSnackBarMessage("edit fail");
+    }
   }
 
   add() {
     const dialogRef = this.dialog.open(LocationDialog);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.getCategoryList();
+      this.updateTable();
     });
   }
 
@@ -64,11 +72,12 @@ export class LocationAdministratorComponent implements OnInit {
       () => {
         this.commonService.showSnackBarMessage("category deleted");
         this.dataSources.data.slice(index, 1);
+        this.getCategoryList();
         this.updateTable();
       }, (err) => {
         this.commonService.showSnackBarMessage("delete fail");
       }
     );
-    this.getCategoryList();
+
   }
 }

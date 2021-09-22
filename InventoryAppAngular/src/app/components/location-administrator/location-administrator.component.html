@@ -1,12 +1,12 @@
 <div>
-    <button mat-raised-button (click)='add()' id="Add">Add</button>
+    <button mat-fab color="accent" (click)='add()' id="Add"><mat-icon>add</mat-icon></button>
     <table mat-table #table [dataSource]="dataSources" class="mat-elevation-z8">
 
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
-                    <input matInput placeholder="Name" [value]="element.name" [(ngModel)]="element.name">
+                    <input matInput placeholder="Name" [value]="element.name" [(ngModel)]="element.name" required>
                 </mat-form-field>
             </td>
         </ng-container>
@@ -15,7 +15,7 @@
             <th mat-header-cell *matHeaderCellDef> Address </th>
             <td mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
-                    <input matInput placeholder="address" [value]="element.address" [(ngModel)]="element.address">
+                    <input matInput placeholder="address" [value]="element.address" [(ngModel)]="element.address" required>
                 </mat-form-field>
             </td>
         </ng-container>
@@ -24,7 +24,7 @@
             <th mat-header-cell *matHeaderCellDef> TelNumber </th>
             <td mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
-                    <input matInput placeholder="telNumber" [value]="element.telNumber" [(ngModel)]="element.telNumber">
+                    <input matInput placeholder="telNumber" [value]="element.telNumber" [(ngModel)]="element.telNumber" required>
                 </mat-form-field>
             </td>
         </ng-container>
@@ -33,11 +33,12 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef>actions</th>
             <td mat-cell *matCellDef="let element; let i=index">
-                <button mat-raised-button (click)="delete(element.id, i)">delete</button>
-                <button mat-raised-button (click)="edit( element)">update</button>
+                <button mat-mini-fab color="warn" (click)="delete(element.id, i)"><mat-icon>delete</mat-icon></button>
+                <button mat-mini-fab color="primary" (click)="edit( element)"><mat-icon>edit</mat-icon></button>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="locationColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: locationColumns"></tr>
 
     </table>
+    <img src='../../../assets/kissclipart-inventory-management-system-png-clipart-inventory-b6f21cc99421e9c7.png' class='image1'>
 </div>

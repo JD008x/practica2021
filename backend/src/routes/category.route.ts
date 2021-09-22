@@ -13,6 +13,7 @@ function setCategoryRoute(router: Router): Router {
     router.delete("/:id", deleteCategory)
     router.put("/", updateCategory)
     router.get("/id/:id", getCategoryById)
+    router.get("/name/:name", getCategoryByName)
     return router;
 }
 
@@ -37,6 +38,32 @@ async function getCategoryById(req: IExpressRequest, res: Response, next: NextFu
     }
     if (category === null) {
         return res.status(404).json(`Location with id '${req.params.id}' not found!`);
+    }
+
+    return res.json(category);
+
+}
+async function getCategoryByName(req: IExpressRequest, res: Response, next: NextFunction) {
+
+    if (!req.em || !(req.em instanceof EntityManager)) {
+        return next(Error('EntityManager not available'));
+    }
+
+    console.log("HERE")
+    console.log(req.params);
+    let category: Error | Category | null;
+    try {
+        category = await categoryController.getCategoryByname(req.em, req.params.name);
+        console.log(category);
+    } catch (ex) {
+        return next(ex);
+    }
+
+    if (category instanceof Error) {
+        return next(category);
+    }
+    if (category === null) {
+        return res.status(404).json(`Catageory with name '${req.params.name}' not found!`);
     }
 
     return res.json(category);

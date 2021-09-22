@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/models/item';
+import { ItemServices } from 'src/app/services/itemServices';
 
 @Component({
   selector: 'app-home',
@@ -8,59 +9,22 @@ import { Item } from 'src/app/models/item';
 })
 export class HomeComponent implements OnInit {
 
-  public lastItems: Item[] = [{
-    id: '10001',
-    name: 'PC01',
-    description: 'Dell precision PC',
-    user: 'Ion',
-    location: 'Brasov',
-    inventoryNumber: '20190001',
-    creationDate: new Date('2019-01-01'),
-    modifiedAt: new Date('2020-02-02'),
-    deletedAt: false,
-    category:'Test4'
-  },
-  {
-    id: '10002',
-    name: 'PC01',
-    description: 'Dell precision PC',
-    user: 'Ion',
-    location: 'Brasov',
-    inventoryNumber: '20190001',
-    creationDate: new Date('2019-01-01'),
-    modifiedAt: new Date('2020-02-02'),
-    deletedAt: false,
-    category:'Test3'
-  },
-  {
-    id: '10003',
-    name: 'PC01',
-    description: 'Dell precision PC',
-    user: 'Ion',
-    location: 'Brasov',
-    inventoryNumber: '20190001',
-    creationDate: new Date('2019-01-01'),
-    modifiedAt: new Date('2020-02-02'),
-    deletedAt: false,
-    category:'Test1'
-  },
-  {
-    id: '10004',
-    name: 'PC01',
-    description: 'Dell precision PC',
-    user: 'Ion',
-    location: 'Brasov',
-    inventoryNumber: '20190001',
-    creationDate: new Date('2019-01-01'),
-    modifiedAt: new Date('2020-02-02'),
-    deletedAt: false,
-    category:'Test2'
-  }];
+  listSize: number = 0;
+  items: Item[] = this.itemService.itemList;
+  constructor(private itemService: ItemServices) {
+  }
 
-  constructor() {
+
+  getCategoryList(): void {
+    this.itemService.getItems().subscribe((list: Item[]) => {
+      this.items = list.slice(list.length - 4, list.length);
+    }, (err) => {
+      if (err.status === 401) return;
+    });
   }
 
   ngOnInit(): void {
+    this.getCategoryList();
   }
 
 }

@@ -5,15 +5,17 @@
             <p>Increase your sales and keep track of every unit with our powerful stock management, order fulfillment, and inventory control software.</p>
         </div>
         <div>
-            <img src='../../../assets/Pika.gif' id='gif' />
+
             <img src='../../../assets/Inventory-Management-02.png' class='home-page-image'>
         </div>
     </div>
-
-    <div class="separator">
-        <h1>Latest items used</h1>
+    <div class="botHalf">
+        <img src='../../../assets/Pika.gif' id='gif' />
+        <div class="separator">
+        </div>
+        <h1 class="secondTitle">Latest items used</h1>
     </div>
-    <div *ngFor="let item of lastItems" class="lastItems">
+    <div *ngFor="let item of items" class="lastItems">
 
         <!-- <p>
             <b>id:</b><i>{{ item.id }}</i>

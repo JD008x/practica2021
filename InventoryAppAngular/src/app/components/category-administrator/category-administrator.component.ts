@@ -22,8 +22,8 @@ export class CategoryAdministratorComponent implements OnInit {
   dataSources: MatTableDataSource<Category> = new MatTableDataSource<Category>(this.category);
   parent!: Category;
   categoryColumns: string[] = [
-    'parent_category',
     'name',
+    'parent_category',
     'actions'
   ];
 
@@ -33,10 +33,12 @@ export class CategoryAdministratorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategoryList();
+    this.parent = new Category();
   }
 
   changeClient(value: any) {
     this.parent = value;
+
   }
 
   getCategoryList(): void {
@@ -48,20 +50,35 @@ export class CategoryAdministratorComponent implements OnInit {
     });
   }
 
-  edit(id: number, index: number, category: Category) {
-    category.parent_category = this.parent;
-    this.categoryService.editCategory(category).subscribe();
-    this.updateTable();
+  edit(category: Category) {
+    if (category.name) {
+      if (this.parent.id === category.id) {
+        category.parent_category = new Category();
+        this.updateTable();
+      }
+      else {
+        category.parent_category = this.parent;
+      }
+      this.categoryService.editCategory(category).subscribe();
+      this.commonService.showSnackBarMessage("edit complete");
+    }
+    else {
+      this.commonService.showSnackBarMessage("edit fail");
+    }
   }
 
   add() {
     const dialogRef = this.dialog.open(CategoryDialog);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.getCategoryList();
+      this.updateTable();
     });
+
   }
 
   updateTable(): void {
+    //  this.getCategoryList();
     this.dataSources = new MatTableDataSource<Category>(this.category);
 
   }
@@ -71,11 +88,12 @@ export class CategoryAdministratorComponent implements OnInit {
       () => {
         this.commonService.showSnackBarMessage("category deleted");
         this.dataSources.data.slice(index, 1);
+        this.getCategoryList();
         this.updateTable();
       }, (err) => {
         this.commonService.showSnackBarMessage("delete fail");
       }
     );
-    this.getCategoryList();
+
   }
 }

@@ -7,15 +7,14 @@
 
 .topHalf {
     width: 40%;
-
     min-width: 500px;
 }
 
-.home-page-image{
-  position: absolute;
-  z-index: -100;
-  right: 0vw;
-  top: 20vh;
+.home-page-image {
+    position: absolute;
+    z-index: -100;
+    right: -10vw;
+    top: 20vh;
 }
 
 .separator {
@@ -23,14 +22,21 @@
     width: 100;
     color: var(--text-color);
     text-align: center;
-    background-color: var(--main-color);
+    background-color: var(--text-color-dark);
     background-size: 300%;
     background-position: right;
     transition: background-position 300ms;
     cursor: pointer;
-    font-size: 2em !important;
-    padding-top: 5px;
-    padding-bottom: 1px;
+    height: 20px;
+    //font-size: 2em !important;
+}
+
+h1 {
+    color: var(--text-color);
+}
+
+.botHalf {
+    margin-top: 6%;
 }
 
 .info {
@@ -42,8 +48,10 @@
 }
 
 #gif {
+    padding-bottom: -20px;
+    margin-bottom: -20px;
     height: 25vw;
-    padding-top: 30px;
+    padding-top: 50px;
     margin-right: 3%;
 }
 
@@ -53,14 +61,21 @@
     display: inline-block;
     padding: 20px 4%;
     border-radius: 15px 50px 30px;
-    color: var(--text-color-dark);
+    color: var(--text-color);
     cursor: pointer;
-    background: linear-gradient(90deg, var(--secondary-color), var(--secondary-color-variant-1),var(--secondary-color-variant-2));
+    background: linear-gradient(90deg, var(--main-color), var(--main-color-variant-1), var(--secondary-color));
     background-size: 300%;
     background-position: left;
     transition: background-position 600ms;
 }
 
+.secondTitle {
+    padding: 10px;
+    text-align: center;
+    font-size: xx-large;
+}
+
 .lastItems:hover {
+    color: var(--text-color-dark);
     background-position: right;
 }

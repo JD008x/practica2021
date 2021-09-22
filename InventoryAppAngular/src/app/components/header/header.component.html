@@ -20,7 +20,7 @@
             <mat-label>Search Item</mat-label>
             <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of items" [value]="option.name">
+                <mat-option *ngFor="let option of items" [value]="option.name" routerLink="/edit/{{option.id}}">
                     {{option.name}}
                 </mat-option>
             </mat-autocomplete>

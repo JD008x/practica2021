@@ -27,8 +27,11 @@ export class CategoryService {
   }
 
   getCategoryById(id: number): Observable<Category> {
-    const url = this.baseUrl + `/id/${id}`;
-    return this.httpClient.get(url) as Observable<Category>;
+    return this.httpClient.get<Category>(this.baseUrl + `/id/${id}`, this.httpOptions);
+  }
+  getCategoryByName(name: string): Observable<Category> {
+   
+    return this.httpClient.get<Category>(this.baseUrl + `/name/` + name, this.httpOptions);
   }
 
   editCategory(object: Category): Observable<Category> {
@@ -36,7 +39,7 @@ export class CategoryService {
   }
 
   deleteCategory(id: number) {
-    return this.httpClient.get<Category>(this.baseUrl + '/' + id, this.httpOptions)
+    return this.httpClient.delete<Category>(this.baseUrl + '/' + id, this.httpOptions)
   }
 
 }

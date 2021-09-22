@@ -10,8 +10,9 @@ import { LocationAdministratorComponent } from './components/location-administra
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'category', component: CategoryAdministratorComponent },
   { path: 'add-item', component: AddItemComponent },
+  { path: 'edit/:id', component: AddItemComponent },
+  { path: 'category', component: CategoryAdministratorComponent },
   { path: 'location', component: LocationAdministratorComponent },
   { path: '**', redirectTo: '' },
 

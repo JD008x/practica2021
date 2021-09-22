@@ -21,6 +21,7 @@ export class ViewItemComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params) => {
       this.itemId = params.id;
+      this.item = new Item();
     });
   }
 
@@ -28,15 +29,14 @@ export class ViewItemComponent implements OnInit {
     if (this.itemId == 0) {
       this.item = new Item();
     } else {
-      this.itemService.getItemById(Number.parseInt(this.item.id)).subscribe({
+      this.itemService.getItemById(this.itemId).subscribe({
 
         next: item => {
           this.item = new Item(item);
         }
       });
-
     }
-
+    this.itemIsFound = this.item ? true : false;
   }
 
   editItem() {

@@ -29,7 +29,7 @@ export class ItemServices {
 
   }
   getItemById(id: number): Observable<Item> {
-    return this.httpClient.get<Item>(this.baseUrl + '/id' + id, this.httpOptions)
+    return this.httpClient.get<Item>(this.baseUrl + '/id/' + id, this.httpOptions)
   }
 
   addItem(object: Item): Observable<Item> {

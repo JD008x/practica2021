@@ -9,7 +9,7 @@ export { setUserRoute };
 function setUserRoute(router: Router): Router {
     router.get("/:userName", getUser);
     router.post("/", postUser);
-    router.get("/", getUsers );
+    router.get("/", getUsers);
     router.delete("/:id", deleteUser)
     router.put("/", updateUser)
 
@@ -22,7 +22,7 @@ async function getUsers(req: IExpressRequest, res: Response, next: NextFunction)
     let users: Error | User[] | null;
     try {
         users = await userController.getUsers(req.em);
-        console.log(users);
+
     } catch (ex) {
 
         return next(ex);
@@ -46,7 +46,6 @@ async function getUser(req: IExpressRequest, res: Response, next: NextFunction) 
     let user: Error | User | null;
     try {
         user = await userController.getUserByUserName(req.em, req.params.userName);
-        console.log(user);
     } catch (ex) {
 
         return next(ex);

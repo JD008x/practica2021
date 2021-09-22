@@ -8,6 +8,7 @@ import { Item } from "../models/item";
 @Injectable()
 export class ItemServices {
 
+  public itemList: Item[] = [];
 
   readonly baseUrl = "http://localhost:80/api/item";
   readonly httpOptions = {
@@ -41,6 +42,6 @@ export class ItemServices {
   }
 
   deleteItem(id: number) {
-    return this.httpClient.get<Item>(this.baseUrl + '/' + id, this.httpOptions)
+    return this.httpClient.delete<Item>(this.baseUrl + '/' + id, this.httpOptions)
   }
 }

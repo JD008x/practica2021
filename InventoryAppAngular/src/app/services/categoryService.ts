@@ -36,7 +36,7 @@ export class CategoryService {
   }
 
   deleteCategory(id: number) {
-    return this.httpClient.get<Category>(this.baseUrl + '/' + id, this.httpOptions)
+    return this.httpClient.delete<Category>(this.baseUrl + '/' + id, this.httpOptions)
   }
 
 }

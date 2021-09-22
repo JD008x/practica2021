@@ -37,7 +37,7 @@ export class LocationServices {
   }
 
   deleteLocation(id: number) {
-    return this.httpClient.get<Location>(this.baseUrl + '/' + id, this.httpOptions)
+    return this.httpClient.delete<Location>(this.baseUrl + '/' + id, this.httpOptions)
 
   }
 }

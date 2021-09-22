@@ -59,13 +59,11 @@ export class AddItemComponent implements OnInit {
       this.users = users;
     });
 
-
   }
 
   selectedUserHandler(selected: any) {
     this.selectedUser = selected.value;
     console.log(selected.value);
-
   }
 
   selectedCategoryHandler(selected: any) {
@@ -78,7 +76,6 @@ export class AddItemComponent implements OnInit {
     console.log(selected.value);
   }
 
-
   ngOnInit(): void {
    
     if (this.itemId == "0") {
@@ -86,10 +83,9 @@ export class AddItemComponent implements OnInit {
     } else {
       this.itemService.getItemById(this.itemId).subscribe((result) => {
         this.item = result;
-       
+      
       })
-    }
-   
+    }    
     this.editMode = this.itemId != "0" ? true : false;
    
     this.addItemFormGroup = this.fb.group({
@@ -105,7 +101,6 @@ export class AddItemComponent implements OnInit {
 
     })
   }
-
 
   onFormSubmit(form: NgForm) {
     console.log(form);
@@ -145,9 +140,9 @@ export class AddItemComponent implements OnInit {
       this.router.navigate(['/inventory']);
   
     }
-    else { //suntem pe modul update deci apelam functia de update
-     
-
+    else {
+       //suntem pe modul update deci apelam functia de update
+  
     }
    
   }

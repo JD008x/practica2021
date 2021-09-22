@@ -38,7 +38,8 @@ export class HeaderComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-  return this.options.filter(option => option.toLowerCase().startsWith(filterValue));
+    return this.items.map(item =>item.name).filter(item => item.toLowerCase().startsWith(filterValue));
+  // return this.options.filter(option => option.name.toLowerCase().startsWith(filterValue));
   }
 
   toggleNavbar(){

@@ -5,6 +5,7 @@ import {map, startWith} from 'rxjs/operators';
 import { Item } from "../../models/item";
 import { ItemServices } from 'src/app/services/itemServices';
 import { CategoryService } from 'src/app/services/categoryService';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,8 @@ export class HeaderComponent implements OnInit {
   options: string[] = [];
   items: Item[] = [];
   filteredOptions: Observable<string[]> | undefined;
-  constructor(private itemServices : ItemServices, private categoryServices: CategoryService) {
+  constructor(private itemServices: ItemServices, private categoryServices: CategoryService,
+    private router:Router) {
     this.itemServices.getItems().subscribe((items) => { 
       this.items = items;
     });
@@ -36,7 +38,8 @@ export class HeaderComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-  return this.options.filter(option => option.toLowerCase().startsWith(filterValue));
+    return this.items.map(item =>item.name).filter(item => item.toLowerCase().startsWith(filterValue));
+  // return this.options.filter(option => option.name.toLowerCase().startsWith(filterValue));
   }
 
   toggleNavbar(){
@@ -45,6 +48,7 @@ export class HeaderComponent implements OnInit {
   resetNavbar(){
     this.showNavbar = false;
   }
+  
 }
 
 

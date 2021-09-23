@@ -22,6 +22,7 @@
         "@angular/router": "~12.2.0",
         "@ncstate/sat-popover": "^8.0.1",
         "angular-bootstrap-md": "^12.0.0",
+        "bson-objectid": "^2.0.1",
         "cors": "^2.8.5",
         "mdbootstrap": "^4.20.0",
         "rxjs": "~6.6.0",

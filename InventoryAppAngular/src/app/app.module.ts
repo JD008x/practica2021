@@ -35,7 +35,19 @@ import { MatSelect } from '@angular/material/select';
     ReactiveFormsModule,
     MatButtonModule,
     MatTableModule,
-    SatPopoverModule,
+    SatPopoverModule
+
+  ],
+  exports: [
+    FormsModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatIconModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatTableModule,
+    SatPopoverModule
 
   ],
   providers: [],

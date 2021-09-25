@@ -12,9 +12,10 @@ import { ScanItemComponent } from './components/scan-item/scan-item.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'category', component: CategoryAdministratorComponent },
   { path: 'add-item', component: AddItemComponent },
   { path: 'view-item/:id', component: ViewItemComponent },
+  { path: 'edit/:id', component: AddItemComponent },
+  { path: 'category', component: CategoryAdministratorComponent },
   { path: 'location', component: LocationAdministratorComponent },
   { path: 'scan', component: ScanItemComponent },
   { path: '**', redirectTo: '' },

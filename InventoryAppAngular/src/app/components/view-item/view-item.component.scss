@@ -1,0 +1,57 @@
+// NOTE: From `2.0.0-beta.10`, you can now pass the typography via the mat-core() mixin:
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config( $font-family: 'Raleway');
+@include mat-core($custom-typography);
+.info {
+    box-shadow: 10px 10px 5px grey;
+    border-radius: 50px 50px 70px 15%;
+    background-color: #CCBA5E;
+    margin-top: 5%;
+    width: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    // margin-left: 32%;
+    // margin-right: 32%;
+    h1 {
+        padding-top: 10px;
+        text-decoration: underline;
+        text-align: center;
+        font-size: xx-large;
+        padding-bottom: 10px;
+        // padding-right: 20px;
+    }
+    p {
+        padding-bottom: 3px;
+    }
+}
+
+.image1 {
+    padding-top: 8%;
+    width: 20%;
+    height: 20%;
+    margin-left: 4%;
+}
+
+img {
+    margin: 0% 10%;
+}
+
+.image2 {
+    padding-top: 2%;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+}
+
+.item {
+    //padding-left: 5%;
+    //text-align: center;
+    font-size: x-large;
+    //padding-bottom: 7%;
+}
+
+qr-code {
+    margin: 30px;
+}

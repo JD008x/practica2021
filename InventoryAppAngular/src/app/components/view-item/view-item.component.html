@@ -1,37 +1,39 @@
-<div *ngIf="itemIsFound ; else itemIsNotFound">
-    <p>Item Information:</p>
-    <p>
-        <b>id:</b><i>{{ item.id }}</i>
-    </p>
-    <p>
-        <b>name:</b><i>{{ item.name }}</i>
-    </p>
-    <p>
-        <b>description:</b><i>{{ item.description }}</i>
-    </p>
-    <p>
-        <b>user:</b><i>{{ item.user }}</i>
-    </p>
-    <p>
-        <b>location:</b><i>{{ item.location }}</i>
-    </p>
-    <p>
-        <b>inventoryNumber:</b><i>{{ item.inventoryNumber }}</i>
-    </p>
-    <p>
-        <b>createdAt:</b><i>{{ item.creationDate }}</i>
-    </p>
-    <p>
-        <b>modifiedAt:</b><i>{{ item.modifiedAt }}</i>
-    </p>
-    <p>
-        <button (click)="editItem()">Edit</button>
-    </p>
-    <p>
-        <!-- <qr-code [value]="itemId" [size]="qrsize"></qr-code> -->
-    </p>
+<div *ngIf="itemIsFound ; else itemIsNotFound" class="mat-typography page">
+    <img src='../../../assets/view-item.png' class='image1'>
+    <div class="info">
+        <h1><b>Item Information:</b></h1>
+        <div class="item">
+            <p>
+                <b>id:</b><i> {{ item.id }}</i>
+            </p>
+            <p>
+                <b>name:</b><i> {{ item.name }}</i>
+            </p>
+            <p>
+                <b>description:</b><i> {{ item.description }}</i>
+            </p>
+            <p>
+                <b>user:</b><i> {{ item.user }}</i>
+            </p>
+            <p>
+                <b>location:</b><i> {{ item.location }}</i>
+            </p>
+            <p>
+                <b>inventoryNumber:</b><i> {{ item.inventoryNumber }}</i>
+            </p>
+            <p>
+                <b>createdAt:</b><i> {{ item.creationDate |date}}</i>
+            </p>
+            <p>
+                <b>modifiedAt:</b><i> {{ item.modifiedAt |date}}</i>
+            </p>
+        </div>
+    </div>
+    <img src='../../../assets/136-1365024_what-is-inventory-inventory-png.png' class='image2'>
 </div>
-
+<!-- <p>
+    <qr-code [value]="qrValue" [size]="qrsize"></qr-code>
+</p> -->
 <ng-template #itemIsNotFound>
     <p> Item with Id: {{itemId}} not found</p>
 </ng-template>

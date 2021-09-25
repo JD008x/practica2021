@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { LocationAdministratorComponent } from './components/location-administrator/location-administrator.component';
 import { ViewItemComponent } from './components/view-item/view-item.component';
+import { ScanItemComponent } from './components/scan-item/scan-item.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'add-item', component: AddItemComponent },
   { path: 'view-item/:id', component: ViewItemComponent },
   { path: 'location', component: LocationAdministratorComponent },
+  { path: 'scan', component: ScanItemComponent },
   { path: '**', redirectTo: '' },
+
 
 ];
 

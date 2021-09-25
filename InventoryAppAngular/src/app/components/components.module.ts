@@ -34,12 +34,14 @@ import { UserServices } from '../services/userServises';
 import { ViewItemComponent } from './view-item/view-item.component';
 import { QRCodeModule } from 'angular2-qrcode';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { ScanItemComponent } from './scan-item/scan-item.component';
 
 
 @NgModule({
-  declarations: [ViewItemComponent, CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, CategoryDialog, LocationDialog, LocationAdministratorComponent, ViewItemComponent],
+  declarations: [ViewItemComponent, ScanItemComponent, CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, CategoryDialog, LocationDialog, LocationAdministratorComponent, ViewItemComponent],
   imports: [
-
+    ZXingScannerModule,
+    QRCodeModule,
     CommonModule,
     MatDialogModule,
     BrowserModule,

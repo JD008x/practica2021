@@ -31,10 +31,11 @@ import { LocationAdministratorComponent } from './location-administrator/locatio
 import { LocationDialog } from './location-administrator/location-dialog';
 import { LocationServices } from '../services/locationServices';
 import { UserServices } from '../services/userServises';
+import { InventoryComponent } from './inventory/inventory.component';
 
 
 @NgModule({
-  declarations: [CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, CategoryDialog, LocationDialog, LocationAdministratorComponent],
+  declarations: [CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, CategoryDialog, LocationDialog, LocationAdministratorComponent, InventoryComponent],
   imports: [
     CommonModule,
     MatDialogModule,

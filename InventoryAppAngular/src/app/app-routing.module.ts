@@ -6,6 +6,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { LocationAdministratorComponent } from './components/location-administrator/location-administrator.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'edit/:id', component: AddItemComponent },
   { path: 'category', component: CategoryAdministratorComponent },
   { path: 'location', component: LocationAdministratorComponent },
+  { path: 'inventory', component: InventoryComponent},
   { path: '**', redirectTo: '' },
 
 ];

@@ -10,7 +10,11 @@ async function getItems(em: EntityManager): Promise<Error | Item[] | null> {
         return Error("invalid request");
 
     try {
-        const item = await em.find(Item, {})
+        const item = await em.find(Item, {
+            // where: { name: Raw(alias => `LOWER(${alias}) Like '%${value}%'`) }
+        }, {
+            orderBy: { name: 'ASC' }
+        })
         return item;
     } catch (ex) {
         if (ex instanceof Error)
@@ -159,7 +163,6 @@ async function updateItem(em: EntityManager, item: Item): Promise<Error | Item |
 
         return null;
     }
-
 
 }
 

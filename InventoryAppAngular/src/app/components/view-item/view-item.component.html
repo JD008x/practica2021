@@ -1,5 +1,8 @@
 <div *ngIf="itemIsFound ; else itemIsNotFound" class="mat-typography page">
-    <img src='../../../assets/view-item.png' class='image1'>
+    <!-- <img src='../../../assets/view-item.png' class='image1'> -->
+    <div class='image1'>
+
+    </div>
     <div class="info">
         <h1><b>Item Information:</b></h1>
         <div class="item">
@@ -29,10 +32,13 @@
             </p>
         </div>
     </div>
-    <img src='../../../assets/136-1365024_what-is-inventory-inventory-png.png' class='image2'>
+    <div class='image2'>
+
+    </div>
+    <!-- <img src='../../../assets/136-1365024_what-is-inventory-inventory-png.png' class='image2'> -->
 </div>
 <!-- <p>
-    <qr-code [value]="qrValue" [size]="qrsize"></qr-code>
+    <qr-code [value]="itemId" [size]="qrsize"></qr-code>
 </p> -->
 <ng-template #itemIsNotFound>
     <p> Item with Id: {{itemId}} not found</p>

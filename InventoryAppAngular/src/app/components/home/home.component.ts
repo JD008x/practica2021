@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Item } from 'src/app/models/item';
 import { ItemServices } from 'src/app/services/itemServices';
 
@@ -11,7 +12,11 @@ export class HomeComponent implements OnInit {
 
   listSize: number = 0;
   items: Item[] = this.itemService.itemList;
-  constructor(private itemService: ItemServices) {
+  constructor(private itemService: ItemServices, private router: Router) {
+  }
+  goTo(id: string) {
+    console.log(id);
+    this.router.navigate(['/view-item/' + id]);
   }
 
 

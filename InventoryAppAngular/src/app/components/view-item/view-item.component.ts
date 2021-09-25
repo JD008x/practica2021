@@ -10,7 +10,7 @@ import { ItemServices } from 'src/app/services/itemServices';
 })
 export class ViewItemComponent implements OnInit {
 
-  itemId!: number;
+  itemId!: string;
   item!: Item;
   itemIsFound = false;
 

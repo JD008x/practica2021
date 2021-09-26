@@ -41,5 +41,10 @@
     <qr-code [value]="itemId" [size]="qrsize"></qr-code>
 </p> -->
 <ng-template #itemIsNotFound>
-    <p> Item with Id: {{itemId}} not found</p>
+    <h1 class="message">
+        <b> This item was stolen by a mysterious creature, please look for another.</b>
+    </h1>
+    <img src='../../../assets/box-cute.gif' class='image'>
+
+
 </ng-template>

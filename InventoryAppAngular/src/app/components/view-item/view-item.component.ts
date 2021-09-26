@@ -37,7 +37,7 @@ export class ViewItemComponent implements OnInit {
         }
       });
     }
-    this.itemIsFound = this.item ? true : false;
+    this.itemIsFound = this.item.id === '' ? false : true;
   }
 
   editItem() {

@@ -1,0 +1,24 @@
+.centred {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 45px;
+}
+
+.camera {
+    box-sizing: border-box;
+    width: 600px;
+    height: 600px;
+    padding: 30px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 200%;
+    padding-bottom: 25px;
+    font-weight: bold;
+}
+
+#img {
+    width: 100px
+}

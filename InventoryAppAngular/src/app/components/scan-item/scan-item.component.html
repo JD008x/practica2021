@@ -1,0 +1,7 @@
+<div class="centred">
+    <div class="camera">
+        <p class="subtitle">Scan the QR code below:</p>
+        <zxing-scanner [torch]="torchEnable" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)" [formats]="scannerFormat" [tryHarder]="tryHandler" (permissionResponse)="onHasPermission($event)" (camerasFound)="onCameraFound($event)">
+        </zxing-scanner>
+    </div>
+</div>

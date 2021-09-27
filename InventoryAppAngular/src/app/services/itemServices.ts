@@ -31,6 +31,7 @@ export class ItemServices {
     return this.httpClient.get<Item>(this.baseUrl + '/' + inventoryNumber, this.httpOptions)
 
   }
+
   getItemById(id: string): Observable<Item> {
     return this.httpClient.get<Item>(this.baseUrl + '/id/' + id, this.httpOptions)
   }
@@ -47,9 +48,9 @@ export class ItemServices {
   //     "creationDate": object.creationDate
   //   }, this.httpOptions);
   // }
-  addItem(id: string, name: string, description: string ,user: string , location: string, category: Category, inventoryNumber: string,
+  addItem(id: string, name: string, description: string, user: string, location: string, category: Category, inventoryNumber: string,
     creationDate: Date, modifiedAt: Date, deletedAt: boolean) {
-    let item  = {
+    let item = {
       id: id,
       name: name,
       description: description,
@@ -58,10 +59,10 @@ export class ItemServices {
       location: null,
       inventoryNumber: inventoryNumber,
       creationDate: creationDate,
-      
-     }
-    return  this.httpClient.post(this.baseUrl, item, this.httpOptions).subscribe();
+
     }
+    return this.httpClient.post(this.baseUrl, item, this.httpOptions).subscribe();
+  }
 
   editItem(object: Item): Observable<Item> {
     return this.httpClient.put<Item>(this.baseUrl, object, this.httpOptions)

@@ -21,6 +21,10 @@ export class ItemServices {
 
 
   constructor(private httpClient: HttpClient) { }
+  async getItemsAsync(){
+
+    return await this.httpClient.get<Item[]>(this.baseUrl, this.httpOptions).toPromise();
+  }
 
   getItems(): Observable<Item[]> {
 
@@ -31,9 +35,12 @@ export class ItemServices {
     return this.httpClient.get<Item>(this.baseUrl + '/' + inventoryNumber, this.httpOptions)
 
   }
-  getItemById(id: string): Observable<Item> {
-    return this.httpClient.get<Item>(this.baseUrl + '/id/' + id, this.httpOptions)
+  async getItemById(id: string) {
+    return await this.httpClient.get<Item>(this.baseUrl + '/id/' + id, this.httpOptions).toPromise();
   }
+  // getItemById(id: string): Observable<Item> {
+  //   return this.httpClient.get<Item>(this.baseUrl + '/id/' + id, this.httpOptions)
+  // }
 
   // addItem(object: Item): Observable<Item> {
   //   return this.httpClient.post<Item>(this.baseUrl, {

@@ -1,15 +1,14 @@
 <body class="add-item-container">
       <h1 class="title">Add new item</h1>
-      <form [formGroup]="addItemFormGroup" (ngSubmit)="onSubmit()">
-         <p>
-             <mat-form-field class="form-field" appearance="outline">
-                 <mat-label class="form-text">Item name: </mat-label>
-                 <input matInput placeholder="Name of the item" class="form-input" type="text" formControlName="name"/>
-                 <mat-error *ngIf="hasError('name', 'required')">Item name si required!</mat-error>
+      <form  [formGroup]="addItemFormGroup" (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Name: </mat-label>
+            <textarea matInput placeholder="Name of the item" formControlName="name"></textarea>
+            <mat-error *ngIf="hasError('name', 'required')">Items' name is required!</mat-error>
 
              </mat-form-field>
-
-         </p>
+        </p>
          <p>
              <mat-form-field class="form-field" appearance="outline">
                  <mat-label>Description: </mat-label>

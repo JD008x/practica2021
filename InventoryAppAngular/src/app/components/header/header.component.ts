@@ -6,6 +6,7 @@ import { Item } from "../../models/item";
 import { ItemServices } from 'src/app/services/itemServices';
 import { CategoryService } from 'src/app/services/categoryService';
 import {Router} from '@angular/router'
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-header',
@@ -21,25 +22,30 @@ export class HeaderComponent implements OnInit {
   filteredOptions: Observable<string[]> | undefined;
   constructor(private itemServices: ItemServices, private categoryServices: CategoryService,
     private router:Router) {
-    this.itemServices.getItems().subscribe((items) => { 
-      this.items = items;
-    });
-    this.options = this.items.map(item => item.name)
-    console.log(this.items);
+   
+  
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    const currentItems = await this.getAllItems();
+    this.items = currentItems;
+
+    this.options = this.items.map(item => item.name);
     this.filteredOptions = this.myControl.valueChanges
     .pipe(
       startWith(''),
       map(value => this._filter(value))
     );
-  }
 
+  }
+  
+  async getAllItems() {
+    this.items = await this.itemServices.getItemsAsync();
+    return this.items;
+}
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.items.map(item =>item.name).filter(item => item.toLowerCase().startsWith(filterValue));
-  // return this.options.filter(option => option.name.toLowerCase().startsWith(filterValue));
+   return this.options.filter(option => option.toLowerCase().startsWith(filterValue));
   }
 
   toggleNavbar(){
@@ -48,7 +54,19 @@ export class HeaderComponent implements OnInit {
   resetNavbar(){
     this.showNavbar = false;
   }
-  
+  getIdFromSelectedOption(selected: string): string {
+    var id='';
+    for (var index = 0; index < this.items.length; index++){
+      if (this.items[index].name == selected)
+        id = this.items[index].id;
+    }
+    return id;
+  }
+  selectedItemHandler(selected: string) {
+    var id = this.getIdFromSelectedOption(selected);
+    this.router.navigate(['/edit/' + id]);
+   
+  }
 }
 
 

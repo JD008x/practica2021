@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -22,9 +22,15 @@ export class ItemServices {
 
   constructor(private httpClient: HttpClient) { }
 
-  getItems(): Observable<Item[]> {
+  getItems(orderByProp: string = "", orderByDirection: string = ""): Observable<Item[]> {
 
-    return this.httpClient.get<Item[]>(this.baseUrl, this.httpOptions)
+    return this.httpClient.get<Item[]>(this.baseUrl, {
+      ...this.httpOptions,
+      params: {
+        orderByProp,
+        orderByDirection,
+      }
+    })
   }
 
   getItemByInventoryNumber(inventoryNumber: string): Observable<Item> {
@@ -58,7 +64,7 @@ export class ItemServices {
       location: null,
       inventoryNumber: inventoryNumber,
       creationDate: creationDate,
-      
+
      }
     return  this.httpClient.post(this.baseUrl, item, this.httpOptions).subscribe();
     }

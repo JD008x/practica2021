@@ -49,6 +49,7 @@ export class Item {
         this.creationDate = model.creationDate || new Date();
     }
 
+    [prop: string]: string | any;
 }
 
 

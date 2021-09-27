@@ -1,0 +1,19 @@
+table {
+  width: calc(100% - 24px);
+  margin: 12px;
+}
+
+.mat-table {
+  background: #4f4fc4;
+}
+
+.inventory-page h1 {
+  padding: 10px;
+  text-align: center;
+  font-size: xx-large;
+  color: var(--text-color);
+}
+
+.inventory-page mat-form-field {
+  margin-left: 12px;
+}

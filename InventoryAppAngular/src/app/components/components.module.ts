@@ -32,11 +32,18 @@ import { LocationDialog } from './location-administrator/location-dialog';
 import { LocationServices } from '../services/locationServices';
 import { UserServices } from '../services/userServises';
 import { InventoryComponent } from './inventory/inventory.component';
+import { ViewItemComponent } from './view-item/view-item.component';
+import { QRCodeModule } from 'angular2-qrcode';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { ScanItemComponent } from './scan-item/scan-item.component';
 
 
 @NgModule({
-  declarations: [CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, CategoryDialog, LocationDialog, LocationAdministratorComponent, InventoryComponent],
+  declarations: [ViewItemComponent, ScanItemComponent, CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, CategoryDialog, LocationDialog,InventoryComponent, LocationAdministratorComponent, ViewItemComponent],
+
   imports: [
+    ZXingScannerModule,
+    QRCodeModule,
     CommonModule,
     MatDialogModule,
     BrowserModule,
@@ -59,7 +66,8 @@ import { InventoryComponent } from './inventory/inventory.component';
 
     HttpClientModule,
     MatSelectModule,
-    MatSnackBarModule],
+    MatSnackBarModule,
+  ],
 
   providers: [CategoryService, ItemServices, CommonService, LocationServices, UserServices],
 

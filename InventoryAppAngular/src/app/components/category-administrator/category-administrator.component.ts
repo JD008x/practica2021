@@ -80,7 +80,6 @@ export class CategoryAdministratorComponent implements OnInit {
   updateTable(): void {
     //  this.getCategoryList();
     this.dataSources = new MatTableDataSource<Category>(this.category);
-
   }
 
   delete(id: number, index: number): void {

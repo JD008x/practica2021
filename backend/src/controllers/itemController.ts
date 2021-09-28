@@ -5,13 +5,33 @@ import { ObjectId } from "@mikro-orm/mongodb";
 
 export { getItemByInventoryNumber, getItemById, saveItem, getItems, deleteItem, updateItem, getItemsName };
 
-async function getItems(em: EntityManager): Promise<Error | Item[] | null> {
+async function getItems(em: EntityManager, orderByProp: string, orderByDirection: "asc" | "desc"): Promise<Error | Item[] | null> {
     if (!(em instanceof EntityManager))
         return Error("invalid request");
 
     try {
-        const item = await em.find(Item, {})
-        return item;
+        const items = await em.find(Item, {}, {
+            orderBy: orderByDirection ? { [orderByProp]: orderByDirection } : {}
+        })
+
+        if(orderByDirection) {
+            const sorted = items.sort((a,b)=> {
+                console.log("tip", typeof b[orderByProp], b[orderByProp]);
+
+                if(typeof b[orderByProp] === "string") {
+                    return (b[orderByProp] as string).localeCompare(a[orderByProp] as string);
+                }
+
+                if(typeof b[orderByProp] === "object") {
+                    return new Date(a[orderByProp]) > new Date(b[orderByProp]) ? -1 : 1;
+                }
+
+                return -1;
+            })
+            return orderByDirection === "desc" ? sorted : sorted.reverse();
+        }
+
+        return items;
     } catch (ex) {
         if (ex instanceof Error)
             return ex;
@@ -159,7 +179,6 @@ async function updateItem(em: EntityManager, item: Item): Promise<Error | Item |
 
         return null;
     }
-
 
 }
 

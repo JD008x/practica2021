@@ -135,16 +135,16 @@ export class AddItemComponent implements OnInit {
     this.item.id = "1234566";
     this.item.name = this.addItemFormGroup.value.name;
     this.item.description = this.addItemFormGroup.value.description;
-    this.item.category.name = this.selectedCategory;
-    this.item.user = this.selectedUser;
-    this.item.location.name = this.selectedLocation;
+    this.item.category.name = this.addItemFormGroup.value.category;
+    this.item.location.name = this.addItemFormGroup.value.location;
     this.item.inventoryNumber = this.addItemFormGroup.value.inventoryNumber;
     this.item.modifiedAt = new Date();
+    console.log(" daaaaaa" + this.item.location.name);
 
-    const selectedCategory = await this.getCategory(this.selectedCategory);
+    const selectedCategory = await this.getCategory(this.item.category.name);
     this.currentCategory = selectedCategory;
 
-    const selectedLocation = await this.getLocation(this.selectedLocation);
+    const selectedLocation = await this.getLocation(this.item.location.name);
     this.currentLocation = selectedLocation;
     
 
@@ -153,23 +153,31 @@ export class AddItemComponent implements OnInit {
       this.itemService.addItem(this.item.id,
         this.item.name,
         this.item.description,
-        this.item.user,
         this.currentLocation,
         this.currentCategory,
         this.item.inventoryNumber,
         this.item.creationDate,
-        this.item.modifiedAt,
-        this.item.deletedAt)
+        this.item.modifiedAt)
       
       console.log(this.item);
       this.router.navigate(['/inventory']);
   
     }
     else {
-
-  
+      let item  = {
+        id: this.item.id,
+        name: this.item.name,
+        description: this.item.description,
+        category: this.item.category,
+        modifiedAt: this.item.modifiedAt,
+        location: this.item.location,
+        inventoryNumber:this.item.inventoryNumber,
+        creationDate: this.item.creationDate
+       }
+       console.log("BAAAAAAAAAAAAA URSU " + item.name)
+        this.itemService.editItem(item).subscribe();
+        this.router.navigate(['/inventory']);
     }
-   
   }
   hasError(controlName: string, errorName: string) {
     return this.addItemFormGroup.controls[controlName].hasError(errorName);

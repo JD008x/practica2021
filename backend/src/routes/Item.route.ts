@@ -65,7 +65,6 @@ async function getItemById(req: IExpressRequest, res: Response, next: NextFuncti
 }
 
 async function updateItem(req: IExpressRequest, res: Response, next: NextFunction) {
-
     if (!req.em || !(req.em instanceof EntityManager))
         return next(Error("EntityManager not available"));
     let item: Error | Item | null;
@@ -81,6 +80,7 @@ async function updateItem(req: IExpressRequest, res: Response, next: NextFunctio
 
     return res.status(201).json(item);
 }
+
 
 async function deleteItem(req: IExpressRequest, res: Response, next: NextFunction) {
 
@@ -101,7 +101,7 @@ async function getItems(req: IExpressRequest, res: Response, next: NextFunction)
     if (!req.em || !(req.em instanceof EntityManager))
         return next(Error("EntityManager not available"));
     let items: Error | Item[] | null;
-    //let item: Error | Item | null;
+
     try {
         items = await itemController.getItems(req.em);
         console.log(items);
@@ -145,7 +145,7 @@ async function getItem(req: IExpressRequest, res: Response, next: NextFunction) 
 }
 
 async function postItem(req: IExpressRequest, res: Response, next: NextFunction) {
-    // console.log(req.body);
+
     if (!req.em || !(req.em instanceof EntityManager))
         return next(Error("EntityManager not available"));
 

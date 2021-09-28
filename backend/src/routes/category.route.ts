@@ -7,7 +7,7 @@ import * as categoryController from "../controllers/categoryController";
 export { setCategoryRoute };
 
 function setCategoryRoute(router: Router): Router {
-    router.get("/:name", getCategory);
+    // router.get("/:name", getCategory);
     router.post("/", postCategory);
     router.get("/", getCatgeories);
     router.delete("/:id", deleteCategory)
@@ -71,30 +71,30 @@ async function getCategoryByName(req: IExpressRequest, res: Response, next: Next
 }
 
 
-async function getCategory(req: IExpressRequest, res: Response, next: NextFunction) {
+// async function getCategory(req: IExpressRequest, res: Response, next: NextFunction) {
 
-    if (!req.em || !(req.em instanceof EntityManager))
-        return next(Error("EntityManager not available"));
+//     if (!req.em || !(req.em instanceof EntityManager))
+//         return next(Error("EntityManager not available"));
 
-    console.log(req.params);
-    let user: Error | Category | null;
-    try {
-        user = await categoryController.getCategoryByname(req.em, req.params.name);
-        console.log(user);
-    } catch (ex) {
+//     console.log(req.params);
+//     let user: Error | Category | null;
+//     try {
+//         user = await categoryController.getCategoryByname(req.em, req.params.name);
+//         console.log(user);
+//     } catch (ex) {
 
-        return next(ex);
+//         return next(ex);
 
-    }
+//     }
 
-    if (user instanceof Error)
-        return next(user);
+//     if (user instanceof Error)
+//         return next(user);
 
-    if (user === null)
-        return res.status(404).end();
+//     if (user === null)
+//         return res.status(404).end();
 
-    return res.json(user);
-}
+//     return res.json(user);
+// }
 async function postCategory(req: IExpressRequest, res: Response, next: NextFunction) {
     // console.log(req.body);
     if (!req.em || !(req.em instanceof EntityManager))

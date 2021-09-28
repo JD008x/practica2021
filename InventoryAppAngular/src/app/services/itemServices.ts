@@ -39,24 +39,9 @@ export class ItemServices {
   async getItemById(id: string) {
     return await this.httpClient.get<Item>(this.baseUrl + '/id/' + id, this.httpOptions).toPromise();
   }
-  // getItemById(id: string): Observable<Item> {
-  //   return this.httpClient.get<Item>(this.baseUrl + '/id/' + id, this.httpOptions)
-  // }
 
-  // addItem(object: Item): Observable<Item> {
-  //   return this.httpClient.post<Item>(this.baseUrl, {
-  //     "id": "6139c71b0b74444448305984e0",
-  //     "name": object.name,
-  //     "description": object.description,
-  //     "category": object.category,
-  //     "modifiedAt": object.modifiedAt,
-  //     "location": object.location,
-  //     "inventoryNumber": object.inventoryNumber,
-  //     "creationDate": object.creationDate
-  //   }, this.httpOptions);
-  // }
-  addItem(id: string, name: string, description: string ,user: string , location: Location, category: Category, inventoryNumber: string,
-    creationDate: Date, modifiedAt: Date, deletedAt: boolean) {
+  addItem(id: string, name: string, description: string , location: Location, category: Category, inventoryNumber: string,
+    creationDate: Date, modifiedAt: Date) {
     let item  = {
       id: id,
       name: name,
@@ -70,10 +55,9 @@ export class ItemServices {
      }
     return  this.httpClient.post(this.baseUrl, item, this.httpOptions).subscribe();
     }
-
-  editItem(object: Item): Observable<Item> {
-    return this.httpClient.put<Item>(this.baseUrl, object, this.httpOptions)
-  }
+    editItem(object: Item): Observable<Category> {
+      return this.httpClient.put<Item>(this.baseUrl, object, this.httpOptions)
+    }
 
   deleteItem(id: number) {
     return this.httpClient.delete<Item>(this.baseUrl + '/' + id, this.httpOptions)

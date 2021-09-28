@@ -19,7 +19,6 @@ export class Item {
     @Property()
     description!: string;
 
-    
     @Property()
     category?: Category;
  
@@ -40,7 +39,6 @@ export class Item {
         if (!model || !(model instanceof Object))
             model = <Item><any>{};
 
-
         this.name = model.name || "undefined";
         this.description = model.description || "undefined";
         this.category = model.category;
@@ -49,7 +47,6 @@ export class Item {
         this.inventoryNumber = model.inventoryNumber || "undefined";
         this.creationDate = model.creationDate || new Date();
     }
-
 }
 
 

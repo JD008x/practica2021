@@ -31,6 +31,7 @@ export class AddItemComponent implements OnInit {
   selectedUser: string = '';
   selectedLocation: string = '';
   currentCategory: Category = new Category();
+  currentLocation: Location = new Location();
 
   constructor(private fb: FormBuilder,
     private itemService: ItemServices,
@@ -44,6 +45,7 @@ export class AddItemComponent implements OnInit {
    
     this.addItemFormGroup = Object();
     this.currentCategory = new Category();
+    this.currentLocation = new Location();
     this.route.params.subscribe((params) => {
       this.itemId = params['id'] ? params['id'] : 0;
     })
@@ -51,9 +53,8 @@ export class AddItemComponent implements OnInit {
     this.addItemFormGroup = this.fb.group({
       name: [this.item.name, Validators.required],
       description: [this.item.description, Validators.maxLength(100)],
-      location: [this.item.location, Validators.required],
-      user: [this.item.user, Validators.required],
-      category: [null, Validators.required],
+      location: [this.item.location.name, Validators.required],
+      category: [this.item.category.name, Validators.required],
       inventoryNumber: [this.item.inventoryNumber, Validators.required],
       createdAt: [this.item.creationDate, Validators.required]
 
@@ -87,10 +88,7 @@ export class AddItemComponent implements OnInit {
     console.log(selected.value);
   }
 
-//   async getCategoryNameFromDB() {
-//     this.categorySelected = await this.categoryServices.getCategoryById(this.item.category);
-//     return this.categorySelected;
-//  }
+
   async ngOnInit(): Promise<void> {
   
 
@@ -98,6 +96,7 @@ export class AddItemComponent implements OnInit {
       this.item = new Item();
     } else {
       const currentItem = await this.getItemById();
+      console.log(currentItem);
   
     }    
     this.editMode = this.itemId != "0" ? true : false;
@@ -106,9 +105,8 @@ export class AddItemComponent implements OnInit {
     this.addItemFormGroup = this.fb.group({
       name: [this.item.name, Validators.required],
       description: [this.item.description, Validators.maxLength(100)],
-      location: [this.item.location, Validators.required],
-      user: [this.item.user, Validators.required],
-      category: [null, Validators.required],
+      location: [this.item.location.name, Validators.required],
+      category: [this.item.category.name, Validators.required],
       inventoryNumber: [this.item.inventoryNumber, Validators.required],
       createdAt: [substr, Validators.required]
 
@@ -127,6 +125,11 @@ export class AddItemComponent implements OnInit {
     this.currentCategory = await this.categoryServices.getCategoryByName(name);
     return this.currentCategory;
   }
+
+  async getLocation(name: string) {
+    this.currentLocation = await this.locationServices.getLocationByName(name);
+    return this.currentLocation;
+  }
   async onSubmit() {
 
     this.item.id = "1234566";
@@ -134,12 +137,15 @@ export class AddItemComponent implements OnInit {
     this.item.description = this.addItemFormGroup.value.description;
     this.item.category.name = this.selectedCategory;
     this.item.user = this.selectedUser;
-    this.item.location = this.selectedLocation;
+    this.item.location.name = this.selectedLocation;
     this.item.inventoryNumber = this.addItemFormGroup.value.inventoryNumber;
     this.item.modifiedAt = new Date();
 
     const selectedCategory = await this.getCategory(this.selectedCategory);
     this.currentCategory = selectedCategory;
+
+    const selectedLocation = await this.getLocation(this.selectedLocation);
+    this.currentLocation = selectedLocation;
     
 
     if (this.itemId == "0") {
@@ -148,7 +154,7 @@ export class AddItemComponent implements OnInit {
         this.item.name,
         this.item.description,
         this.item.user,
-        this.item.location,
+        this.currentLocation,
         this.currentCategory,
         this.item.inventoryNumber,
         this.item.creationDate,
@@ -160,7 +166,7 @@ export class AddItemComponent implements OnInit {
   
     }
     else {
-       //suntem pe modul update deci apelam functia de update
+
   
     }
    

@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Category } from "../models/category";
 import { Item } from "../models/item";
+import { Location } from "../models/location";
 import { CategoryService } from "./categoryService";
 
 
@@ -54,7 +55,7 @@ export class ItemServices {
   //     "creationDate": object.creationDate
   //   }, this.httpOptions);
   // }
-  addItem(id: string, name: string, description: string ,user: string , location: string, category: Category, inventoryNumber: string,
+  addItem(id: string, name: string, description: string ,user: string , location: Location, category: Category, inventoryNumber: string,
     creationDate: Date, modifiedAt: Date, deletedAt: boolean) {
     let item  = {
       id: id,
@@ -62,7 +63,7 @@ export class ItemServices {
       description: description,
       category: category,
       modifiedAt: modifiedAt,
-      location: null,
+      location: location,
       inventoryNumber: inventoryNumber,
       creationDate: creationDate,
       

@@ -1,11 +1,12 @@
 import { Category } from "./category";
+import { Location } from "./location";
 
 export class Item {
   id: string = '';
   name: string = '';
   description: string = '';
   user: string = '';
-  location: string = '';
+  location: Location = new Location();;
   category: Category = new Category();
   inventoryNumber: string = '';
   creationDate: Date = new Date();

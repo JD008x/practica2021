@@ -13,11 +13,11 @@
         </ng-container>
 
         <ng-container matColumnDef="parent_category">
-            <th mat-header-cell *matHeaderCellDef> parent category </th>
+            <th mat-header-cell *matHeaderCellDef> Parent category </th>
             <td mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
                     <mat-label *ngIf="element.parent_category">{{element.parent_category.name}}</mat-label>
-                    <mat-label *ngIf="!element.parent_category">NULL</mat-label>
+                    <mat-label *ngIf="!element.parent_category"></mat-label>
                     <mat-select (selectionChange)="changeClient($event.value)">
                         <mat-option matInput *ngFor="let parent of category" [value]="parent">
                             <div *ngIf="parent.id!=element.id; else elseBlock">
@@ -31,7 +31,7 @@
         </ng-container>
 
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef>actions</th>
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
             <td mat-cell *matCellDef="let element; let i=index">
                 <button mat-mini-fab color="warn" (click)="delete(element.id, i)"><mat-icon>delete</mat-icon></button>
                 <button mat-mini-fab color="primary" (click)="edit(element)"><mat-icon>edit</mat-icon></button>

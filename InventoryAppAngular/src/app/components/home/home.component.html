@@ -8,14 +8,9 @@
             </div>
             <div class="botHalf">
                 <img src='../../../assets/Pika.gif' id='gif' />
-                <div class="separator">
-                </div>
-
             </div>
         </div>
-        <div class="half">
 
-        </div>
         <div class='homeimage'>
             <div class="card">
                 <h2 class="secondTitle">Latest items used</h2>
@@ -25,14 +20,15 @@
                 <b>id:</b><i>{{ item.id }}</i>
             </p> -->
                     <p>
-                        name:<i>  {{ item.name }}</i>
+                        <b>Name:</b> <i>  {{ item.name }}</i>
                     </p>
+                    <!-- <p>
+                        category:<i>  {{ item.category }}</i>
+                    </p> -->
                     <p>
-                        description:<i>  {{ item.description }}</i>
+                        <b>Inventory Number:</b><i>  {{ item.inventoryNumber }}</i>
                     </p>
-                    <p>
-                        inventory Number:<i>  {{ item.inventoryNumber }}</i>
-                    </p>
+
                     <!-- <p>
                 <b>createdAt:</b><i>{{ item.creationDate | date }}</i>
             </p>
@@ -40,7 +36,6 @@
                 <b>modifiedAt:</b><i>{{ item.modifiedAt | date }}</i>
             </p> -->
                 </div>
-                <!-- <img src="../../../assets/Inventory-Management-02.png" class='home-page-image'> -->
             </div>
         </div>
     </div>

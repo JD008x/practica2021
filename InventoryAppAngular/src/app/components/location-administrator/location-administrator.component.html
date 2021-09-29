@@ -31,7 +31,7 @@
 
 
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef>actions</th>
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
             <td mat-cell *matCellDef="let element; let i=index">
                 <button mat-mini-fab color="warn" (click)="delete(element.id, i)"><mat-icon>delete</mat-icon></button>
                 <button mat-mini-fab color="primary" (click)="edit( element)"><mat-icon>edit</mat-icon></button>

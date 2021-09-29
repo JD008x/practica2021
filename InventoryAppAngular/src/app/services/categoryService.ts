@@ -29,8 +29,8 @@ export class CategoryService {
   getCategoryById(id: number): Observable<Category> {
     return this.httpClient.get<Category>(this.baseUrl + `/id/${id}`, this.httpOptions);
   }
+
   getCategoryByName(name: string): Observable<Category> {
-   
     return this.httpClient.get<Category>(this.baseUrl + `/name/` + name, this.httpOptions);
   }
 

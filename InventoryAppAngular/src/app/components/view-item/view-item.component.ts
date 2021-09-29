@@ -41,8 +41,4 @@ export class ViewItemComponent implements OnInit {
 
   }
 
-  editItem() {
-    this.router.navigate(['/edit/' + this.itemId]);
-  }
-
 }

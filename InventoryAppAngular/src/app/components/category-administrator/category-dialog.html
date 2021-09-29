@@ -1,17 +1,17 @@
 <div mat-dialog-content>
 
-    <h1>Add new Category</h1>
+    <h2>Add new Category</h2>
     <form [formGroup]="addCategoryFormGroup">
         <p>
             <mat-form-field appearance="outline">
-                <mat-label>name*:</mat-label>
-                <input matInput placeholder="name" type="text" class="form-input" formControlName="name" />
+                <mat-label>Name*:</mat-label>
+                <input matInput placeholder="Name" type="text" class="form-input" formControlName="name" />
                 <!-- <div *ngIf="!addItemFormGroup.controls['name'].valid">Item ame is required</div> -->
                 <!-- <mat-error *ngIf="hasError('name','required')">Item is required</mat-error> -->
             </mat-form-field>
         </p>
         <mat-form-field appearance="fill">
-            <mat-label>parent Category</mat-label>
+            <mat-label>Parent Category</mat-label>
             <mat-select (selectionChange)="changeClient($event.value)" formControlName="parent_category">
                 <mat-option matInput *ngFor="let parent of categoryList" [value]="parent">
                     {{parent.name}}
@@ -19,7 +19,7 @@
             </mat-select>
         </mat-form-field>
 
-        <p> <button mat-raised-button (click)="submitMe()" [disabled]="!addCategoryFormGroup.valid">submit</button>
+        <p> <button mat-raised-button (click)="submitMe()" [disabled]="!addCategoryFormGroup.valid">Submit</button>
             <button mat-raised-button (click)="closeMe()">Close</button>
         </p>
     </form>

@@ -1,32 +1,32 @@
 <div mat-dialog-content>
 
-    <h1>Add new location</h1>
+    <h2>Add new location</h2>
     <form [formGroup]="addLocationFormGroup">
         <p>
             <mat-form-field appearance="outline">
-                <mat-label>name*:</mat-label>
-                <input matInput placeholder="name" type="text" class="form-input" formControlName="name" />
+                <mat-label>Name*:</mat-label>
+                <input matInput placeholder="Name" type="text" class="form-input" formControlName="name" />
                 <!-- <div *ngIf="!addItemFormGroup.controls['name'].valid">Item ame is required</div> -->
                 <!-- <mat-error *ngIf="hasError('name','required')">Item is required</mat-error> -->
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline">
-                <mat-label>address*:</mat-label>
-                <input matInput placeholder="address" type="text" class="form-input" formControlName="address" />
+                <mat-label>Address*:</mat-label>
+                <input matInput placeholder="Address" type="text" class="form-input" formControlName="address" />
                 <!-- <div *ngIf="!addItemFormGroup.controls['name'].valid">Item ame is required</div> -->
                 <!-- <mat-error *ngIf="hasError('name','required')">Item is required</mat-error> -->
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline">
-                <mat-label>telNumber*:</mat-label>
-                <input matInput placeholder="telNumber" type="text" class="form-input" formControlName="telNumber" />
+                <mat-label>TelNumber*:</mat-label>
+                <input matInput placeholder="TelNumber" type="text" class="form-input" formControlName="telNumber" />
                 <!-- <div *ngIf="!addItemFormGroup.controls['name'].valid">Item ame is required</div> -->
                 <!-- <mat-error *ngIf="hasError('name','required')">Item is required</mat-error> -->
             </mat-form-field>
         </p>
-        <p> <button mat-raised-button (click)="submitMe()" [disabled]="!addLocationFormGroup.valid">submit</button>
+        <p> <button mat-raised-button (click)="submitMe()" [disabled]="!addLocationFormGroup.valid">Submit</button>
             <button mat-raised-button (click)="closeMe()">Close</button>
         </p>
     </form>

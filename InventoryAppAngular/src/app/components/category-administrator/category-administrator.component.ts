@@ -1,6 +1,7 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -21,6 +22,7 @@ export class CategoryAdministratorComponent implements OnInit {
   category: Category[] = this.categoryService.categoryList;
   dataSources: MatTableDataSource<Category> = new MatTableDataSource<Category>(this.category);
   parent!: Category;
+
   categoryColumns: string[] = [
     'name',
     'parent_category',
@@ -34,11 +36,11 @@ export class CategoryAdministratorComponent implements OnInit {
   ngOnInit(): void {
     this.getCategoryList();
     this.parent = new Category();
+
   }
 
   changeClient(value: any) {
     this.parent = value;
-
   }
 
   getCategoryList(): void {
@@ -78,7 +80,6 @@ export class CategoryAdministratorComponent implements OnInit {
   }
 
   updateTable(): void {
-    //  this.getCategoryList();
     this.dataSources = new MatTableDataSource<Category>(this.category);
   }
 

@@ -43,8 +43,12 @@ export class ItemServices {
 
   }
 
-  async getItemById(id: string) {
+  async getItemByIdAsync(id: string) {
     return await this.httpClient.get<Item>(this.baseUrl + '/id/' + id, this.httpOptions).toPromise();
+  }
+
+  getItemById(id: string): Observable<Item> {
+    return this.httpClient.get<Item>(this.baseUrl + '/id/' + id, this.httpOptions)
   }
 
   addItem(id: string, name: string, description: string , location: Location, category: Category, inventoryNumber: string,
@@ -58,9 +62,10 @@ export class ItemServices {
       location: location,
       inventoryNumber: inventoryNumber,
       creationDate: creationDate,
-
-
     }
+      return  this.httpClient.post(this.baseUrl, item, this.httpOptions).subscribe();
+
+  }
 
     editItem(object: Item): Observable<Item> {
       return this.httpClient.put<Item>(this.baseUrl, object, this.httpOptions)
@@ -71,3 +76,4 @@ export class ItemServices {
     return this.httpClient.delete<Item>(this.baseUrl + '/' + id, this.httpOptions)
   }
 }
+

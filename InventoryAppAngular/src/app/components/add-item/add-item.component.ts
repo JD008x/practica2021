@@ -9,7 +9,6 @@ import { LocationServices } from 'src/app/services/locationServices';
 import { Location } from 'src/app/models/location';
 import { User } from 'src/app/models/user';
 import { UserServices } from 'src/app/services/userServises';
-import { ContentObserver } from '@angular/cdk/observers';
 
 
 @Component({
@@ -76,17 +75,14 @@ export class AddItemComponent implements OnInit {
 
   selectedUserHandler(selected: any) {
     this.selectedUser = selected.value;
-    console.log(selected.value);
   }
 
   selectedCategoryHandler(selected: any) {
     this.selectedCategory = selected.value;
-    console.log(selected.value);
   }
 
   selectedLocationHandler(selected: any) {
     this.selectedLocation = selected.value;
-    console.log(selected.value);
   }
 
 
@@ -97,8 +93,6 @@ export class AddItemComponent implements OnInit {
       this.item = new Item();
     } else {
       const currentItem = await this.getItemById();
-      console.log(currentItem);
-  
     }    
     this.editMode = this.itemId != "0" ? true : false;
     var substr = this.item.creationDate.toString().substring(0, 10);
@@ -114,7 +108,7 @@ export class AddItemComponent implements OnInit {
     })
   }
   async getItemById() {
-    this.item = await this.itemService.getItemById(this.itemId);
+    this.item = await this.itemService.getItemByIdAsync(this.itemId);
     return this.item;
   }
   
@@ -133,7 +127,7 @@ export class AddItemComponent implements OnInit {
   }
   async onSubmit() {
 
-    this.item.id = "1234566";
+    this.item.id = "";
     this.item.name = this.addItemFormGroup.value.name;
     this.item.description = this.addItemFormGroup.value.description;
     this.item.category.name = this.addItemFormGroup.value.category;
@@ -159,7 +153,6 @@ export class AddItemComponent implements OnInit {
         this.item.creationDate,
         this.item.modifiedAt)
       
-      console.log(this.item);
       this.router.navigate(['/inventory']);
   
     }
@@ -173,7 +166,7 @@ export class AddItemComponent implements OnInit {
         location: this.item.location,
         inventoryNumber:this.item.inventoryNumber,
         creationDate: this.item.creationDate
-      }
+       }
         this.itemService.editItem(item).subscribe();
         this.router.navigate(['/inventory']);
     }

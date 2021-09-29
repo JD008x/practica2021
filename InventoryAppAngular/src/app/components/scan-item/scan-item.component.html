@@ -1,7 +1,12 @@
 <div class="centred">
     <div class="camera">
         <p class="subtitle">Scan the QR code below:</p>
-        <zxing-scanner [torch]="torchEnable" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)" [formats]="scannerFormat" [tryHarder]="tryHandler" (permissionResponse)="onHasPermission($event)" (camerasFound)="onCameraFound($event)">
-        </zxing-scanner>
+        <div *ngIf="!isopen ; else opencamera" class="open">
+            <button mat-raised-button (click)="openCamera()"> open camera</button>
+        </div>
+        <ng-template #opencamera>
+            <zxing-scanner [torch]="torchEnable" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)" [formats]="scannerFormat" [tryHarder]="tryHandler" (permissionResponse)="onHasPermission($event)" (camerasFound)="onCameraFound($event)">
+            </zxing-scanner>
+        </ng-template>
     </div>
 </div>

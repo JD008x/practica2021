@@ -22,3 +22,10 @@
 #img {
     width: 100px
 }
+
+.open {
+    text-align: center;
+    button {
+        background-color: var(--main-color-variant-1);
+    }
+}

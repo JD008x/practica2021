@@ -1,7 +1,7 @@
 <div mat-dialog-content>
 
     <h1>Add new Category</h1>
-    <form [formGroup]="addCategoryFormGroup" (ngSubmit)="onSubmit()">
+    <form [formGroup]="addCategoryFormGroup">
         <p>
             <mat-form-field appearance="outline">
                 <mat-label>name*:</mat-label>
@@ -19,10 +19,8 @@
             </mat-select>
         </mat-form-field>
 
-        <p> <button mat-raised-button type="submit" [disabled]="!addCategoryFormGroup.valid">submit</button>
+        <p> <button mat-raised-button (click)="submitMe()" [disabled]="!addCategoryFormGroup.valid">submit</button>
             <button mat-raised-button (click)="closeMe()">Close</button>
         </p>
     </form>
-
-
 </div>

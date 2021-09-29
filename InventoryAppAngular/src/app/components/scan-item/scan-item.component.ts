@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   templateUrl: './scan-item.component.html',
   styleUrls: ['./scan-item.component.scss']
 })
+
+
 export class ScanItemComponent implements OnInit {
   scannerFormat = [BarcodeFormat.QR_CODE, BarcodeFormat.CODABAR, BarcodeFormat.MAXICODE];
   availableDevice!: MediaDeviceInfo[];
@@ -16,12 +18,17 @@ export class ScanItemComponent implements OnInit {
   torchEnable = false;
   tryHandler = false;
   allowEmptyString = true;
-
+  isopen = false;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.isopen = false;
   }
 
+
+  openCamera() {
+    this.isopen = true;
+  }
   //camera found result
   onCameraFound(devices: MediaDeviceInfo[]): void {
     this.availableDevice = devices;

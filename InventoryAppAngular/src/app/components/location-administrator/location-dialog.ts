@@ -8,6 +8,7 @@ import { Location } from "src/app/models/location";
 @Component({
   selector: 'categoryDialog',
   templateUrl: 'location-dialog.html',
+  styleUrls: ['../category-administrator/category-dialog.css'],
 })
 
 export class LocationDialog implements OnInit {
@@ -35,7 +36,7 @@ export class LocationDialog implements OnInit {
     this.dialogRef.close();
   }
 
-  onSubmit() {
+  submitMe() {
     // this.location = new Location(this.addCategoryFormGroup.value);
     this.locationService.addLocation(this.addLocationFormGroup.value).subscribe();
     this.dialogRef.close();

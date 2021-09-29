@@ -1,38 +1,47 @@
 <div class="body">
     <div class="topHalf">
-        <div class="info">
-            <h1>Inventory management software for growing businesses.</h1>
-            <p>Increase your sales and keep track of every unit with our powerful stock management, order fulfillment, and inventory control software.</p>
+        <div class="leftHalf">
+            <div class="info">
+                <h1>Inventory management software for growing businesses.</h1>
+                <p>Increase your sales and keep track of every unit with our powerful stock management, order fulfillment, and inventory control software.</p>
+            </div>
+            <div class="botHalf">
+                <img src='../../../assets/Pika.gif' id='gif' />
+                <div class="separator">
+                </div>
+
+            </div>
+        </div>
+        <div class="half">
+
         </div>
         <div class='homeimage'>
-            <!-- <img src="../../../assets/Inventory-Management-02.png" class='home-page-image'> -->
-        </div>
-    </div>
-    <div class="botHalf">
-        <img src='../../../assets/Pika.gif' id='gif' />
-        <div class="separator">
-        </div>
-        <h1 class="secondTitle">Latest items used</h1>
-    </div>
-    <div *ngFor="let item of items" (click)="goTo(item.id)" class="lastItems">
+            <div class="card">
+                <h1 class="secondTitle">Latest items used</h1>
+                <div *ngFor="let item of items" (click)="goTo(item.id)" class="lastItems">
 
-        <!-- <p>
-            <b>id:</b><i>{{ item.id }}</i>
-        </p> -->
-        <p>
-            name:<i>  {{ item.name }}</i>
-        </p>
-        <p>
-            description:<i>  {{ item.description }}</i>
-        </p>
-        <p>
-            inventory Number:<i>  {{ item.inventoryNumber }}</i>
-        </p>
-        <!-- <p>
-            <b>createdAt:</b><i>{{ item.creationDate | date }}</i>
-        </p>
-        <p>
-            <b>modifiedAt:</b><i>{{ item.modifiedAt | date }}</i>
-        </p> -->
+                    <!-- <p>
+                <b>id:</b><i>{{ item.id }}</i>
+            </p> -->
+                    <p>
+                        name:<i>  {{ item.name }}</i>
+                    </p>
+                    <p>
+                        description:<i>  {{ item.description }}</i>
+                    </p>
+                    <p>
+                        inventory Number:<i>  {{ item.inventoryNumber }}</i>
+                    </p>
+                    <!-- <p>
+                <b>createdAt:</b><i>{{ item.creationDate | date }}</i>
+            </p>
+            <p>
+                <b>modifiedAt:</b><i>{{ item.modifiedAt | date }}</i>
+            </p> -->
+                </div>
+                <!-- <img src="../../../assets/Inventory-Management-02.png" class='home-page-image'> -->
+            </div>
+        </div>
     </div>
+
 </div>

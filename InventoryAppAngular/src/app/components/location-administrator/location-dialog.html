@@ -1,7 +1,7 @@
 <div mat-dialog-content>
 
     <h1>Add new location</h1>
-    <form [formGroup]="addLocationFormGroup" (ngSubmit)="onSubmit()">
+    <form [formGroup]="addLocationFormGroup">
         <p>
             <mat-form-field appearance="outline">
                 <mat-label>name*:</mat-label>
@@ -26,7 +26,7 @@
                 <!-- <mat-error *ngIf="hasError('name','required')">Item is required</mat-error> -->
             </mat-form-field>
         </p>
-        <p> <button mat-raised-button type="submit" [disabled]="!addLocationFormGroup.valid">submit</button>
+        <p> <button mat-raised-button (click)="submitMe()" [disabled]="!addLocationFormGroup.valid">submit</button>
             <button mat-raised-button (click)="closeMe()">Close</button>
         </p>
     </form>

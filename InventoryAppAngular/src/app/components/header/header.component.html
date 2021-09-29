@@ -9,6 +9,12 @@
         <a (click)='resetNavbar()' routerLink='/add-item'>New item</a>
         <a (click)='resetNavbar()' href='/scan'>Scan item</a>
         <a (click)='resetNavbar()' routerLink='/contact'>Contact</a>
+        <a (click)='resetNavbar()' [matMenuTriggerFor]="menu">Administrator</a>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink='/category'>Categories</button>
+            <button mat-menu-item routerLink='/location'>Locations</button>
+            <button mat-menu-item routerLink=''>Users</button>
+        </mat-menu>
     </div>
 
     <div class="search-bar">

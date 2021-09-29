@@ -9,6 +9,7 @@ import { LocationServices } from 'src/app/services/locationServices';
 import { Location } from 'src/app/models/location';
 import { User } from 'src/app/models/user';
 import { UserServices } from 'src/app/services/userServises';
+import { ContentObserver } from '@angular/cdk/observers';
 
 
 @Component({
@@ -139,7 +140,6 @@ export class AddItemComponent implements OnInit {
     this.item.location.name = this.addItemFormGroup.value.location;
     this.item.inventoryNumber = this.addItemFormGroup.value.inventoryNumber;
     this.item.modifiedAt = new Date();
-    console.log(" daaaaaa" + this.item.location.name);
 
     const selectedCategory = await this.getCategory(this.item.category.name);
     this.currentCategory = selectedCategory;
@@ -173,8 +173,7 @@ export class AddItemComponent implements OnInit {
         location: this.item.location,
         inventoryNumber:this.item.inventoryNumber,
         creationDate: this.item.creationDate
-       }
-       console.log("BAAAAAAAAAAAAA URSU " + item.name)
+      }
         this.itemService.editItem(item).subscribe();
         this.router.navigate(['/inventory']);
     }

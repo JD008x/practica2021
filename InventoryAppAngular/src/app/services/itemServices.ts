@@ -55,7 +55,7 @@ export class ItemServices {
      }
     return  this.httpClient.post(this.baseUrl, item, this.httpOptions).subscribe();
     }
-    editItem(object: Item): Observable<Category> {
+    editItem(object: Item): Observable<Item> {
       return this.httpClient.put<Item>(this.baseUrl, object, this.httpOptions)
     }
 

@@ -1,0 +1,136 @@
+    // NOTE: From `2.0.0-beta.10`, you can now pass the typography via the mat-core() mixin:
+    @import '~@angular/material/theming';
+    //$custom-typography: mat-typography-config( $//font-family: 'Raleway');
+    //@include mat-core($custom-typography);
+    .info {
+        transform: perspective(800px) rotateY(-6deg) translateY(-50px) rotateX(5deg) scale(1);
+        background: linear-gradient(90deg, #b68c44, #ffce79, #ffce79);
+        border-left: 3px;
+        border-style: solid;
+        box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.25);
+        border-radius: 50px 50px 70px 15%;
+        background-color: #ffce79;
+        @media (min-width: 1000px) {
+            width: auto;
+            //  margin: auto;
+            margin-left: 4%;
+            padding-left: 5%;
+            padding-right: 5%;
+            margin-top: 7%;
+        }
+        /* Portrait tablets and small desktops */
+        @media (min-width: 880px) and (max-width: 1000px) {
+            margin-top: 10%;
+            width: auto;
+            padding-left: 7%;
+            padding-right: 7%;
+            margin-left: 10%;
+        }
+        @media (max-width: 880px) and (min-width: 600px) {
+            width: auto;
+            padding-left: 7%;
+            padding-right: 7%;
+            margin: auto;
+            margin-top: 20%;
+        }
+        @media (max-width: 600px) {
+            width: 200px;
+            margin: auto;
+            // margin-left: 2px;
+            // margin-right: 2px;
+            padding-left: 7%;
+            padding-right: 7%;
+            margin-top: 20%;
+        }
+        h1 {
+            padding-top: 10px;
+            text-decoration: underline;
+            text-align: center;
+            @media(min-width: 600px) {
+                font-size: xx-large;
+            }
+            @media (max-width: 600px) {
+                font-size: 20px;
+            }
+            padding-bottom: 10px;
+            // padding-right: 20px;
+        }
+        p {
+            padding-bottom: 3px;
+        }
+    }
+
+    @media (min-width: 1077px) {
+        .image1 {
+            background-image: url('../../../assets/view-item.png') !important;
+            padding-top: 8%;
+            width: 20%;
+            background-size: 200px;
+            background-repeat: no-repeat;
+            //  height: 20%;
+            margin-top: 6%;
+            margin-left: 10%;
+        }
+        img {
+            margin: 0% 10%;
+        }
+        .image2 {
+            background-image: url('../../../assets/136-1365024_what-is-inventory-inventory-png.png') !important;
+            padding-top: 8%;
+            width: 20%;
+            background-size: 200px;
+            background-repeat: no-repeat;
+            //  height: 20%;
+            margin-top: 6%;
+            margin-left: 10%;
+        }
+    }
+
+    @media (max-width: 1077px) and (min-width: 880px) {
+        .image2 {
+            background-image: url('../../../assets/136-1365024_what-is-inventory-inventory-png.png') !important;
+            padding-top: 8%;
+            width: 25%;
+            background-size: 200px;
+            background-repeat: no-repeat;
+            //  height: 20%;
+            margin-top: 6%;
+            margin-left: 10%;
+        }
+    }
+
+    @media (max-width: 880px) {}
+
+    .page {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .item {
+        @media(min-width: 600px) {
+            font-size: x-large;
+        }
+        @media (max-width: 599px) {
+            font-size: 15px;
+        }
+        //font-size: x-large;
+    }
+
+    .image {
+        // background-image: url('../../../assets/404.gif') !important;
+        // background-size: 200px;
+        margin-left: 40%;
+        //     width: 250px;
+        // }
+    }
+
+    .message {
+        //width: 100%;
+        //  font-size: 20px;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    qr-code {
+        margin: 30px;
+    }

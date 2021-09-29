@@ -1,20 +1,23 @@
 <div class="header-container">
-  <div class="app-logo">
-      <img id="logo" src="../../../assets/img/logo.png">
-  </div>
+    <div class="app-logo">
+        <img id="logo" src="../../../assets/img/logo.png">
+    </div>
 
-  <div [ngClass]='{"nav-menu-hidden" : !showNavbar, "nav-menu": true}'>
-      <a (click)='resetNavbar()' routerLink=''>Home</a>
-      <a (click)='resetNavbar()' href="#inventory">Inventory</a>
-      <a (click)='resetNavbar()' routerLink='/add-item'>New item</a>
-      <a (click)='resetNavbar()' href="#scan-item">Scan item</a>
-      <a (click)='resetNavbar()' routerLink='/contact'>Contact</a>
-  </div>
 
-  <div class="search-bar">
-    <button mat-icon-button (click)="toggleNavbar()" class="nav-button">
+    <div [ngClass]='{"nav-menu-hidden" : !showNavbar, "nav-menu": true}'>
+        <a (click)='resetNavbar()' routerLink=''>Home</a>
+        <a (click)='resetNavbar()' href="/inventory">Inventory</a>
+        <a (click)='resetNavbar()' routerLink='/add-item'>New item</a>
+        <a (click)='resetNavbar()' href='/scan'>Scan item</a>
+        <a (click)='resetNavbar()' routerLink='/contact'>Contact</a>
+    </div>
+
+
+    <div class="search-bar">
+        <button mat-icon-button (click)="toggleNavbar()" class="nav-button">
       <mat-icon>menu</mat-icon>
     </button>
+
     <form class="search-form">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Search Item</mat-label>
@@ -27,4 +30,5 @@
         </mat-form-field>
     </form>
   </div>
+
 </div>

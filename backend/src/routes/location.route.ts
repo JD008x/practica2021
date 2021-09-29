@@ -9,7 +9,7 @@ export { setLocationRoute };
 
 function setLocationRoute(router: Router): Router {
     router.get("/:name", getLocation);
-    router.get("/id/:id",getLocationById);
+    router.get("/id/:id", getLocationById);
     router.get("/", getLocations);
     router.post("/", postLocation);
     router.put("/", updateLocation);
@@ -23,12 +23,9 @@ async function getLocation(req: IExpressRequest, res: Response, next: NextFuncti
     if (!req.em || !(req.em instanceof EntityManager))
         return next(Error("EntityManager not available"));
 
-    // console.log(req.params);
-    console.log("Name")
     let location: Error | Location | null;
     try {
         location = await locationController.getLocationByName(req.em, req.params.name);
-        console.log(location);
     } catch (ex) {
 
         return next(ex);
@@ -44,7 +41,6 @@ async function getLocation(req: IExpressRequest, res: Response, next: NextFuncti
     return res.json(location);
 }
 async function postLocation(req: IExpressRequest, res: Response, next: NextFunction) {
-    // console.log(req.body);
     if (!req.em || !(req.em instanceof EntityManager))
         return next(Error("EntityManager not available"));
 
@@ -61,8 +57,9 @@ async function postLocation(req: IExpressRequest, res: Response, next: NextFunct
 
         return next(location);
 
-      return res.status(201).json(location);
-  }
+    return res.status(201).json(location);
+}
+
 
 
   async function getLocationByName(req: IExpressRequest, res: Response, next: NextFunction) {
@@ -93,16 +90,13 @@ async function postLocation(req: IExpressRequest, res: Response, next: NextFunct
 
   async function getLocationById(req: IExpressRequest, res: Response, next: NextFunction) {
 
+
     if (!req.em || !(req.em instanceof EntityManager)) {
         return next(Error('EntityManager not available'));
     }
-
-    console.log("HERE")
-    console.log(req.params);
     let location: Error | Location | null;
     try {
         location = await locationController.getLocationById(req.em, req.params.id);
-        console.log(location);
     } catch (ex) {
         return next(ex);
     }
@@ -158,7 +152,6 @@ async function getLocations(req: IExpressRequest, res: Response, next: NextFunct
     //let item: Error | Item | null;
     try {
         locations = await locationController.getLocations(req.em);
-        console.log(locations);
     } catch (ex) {
 
         return next(ex);

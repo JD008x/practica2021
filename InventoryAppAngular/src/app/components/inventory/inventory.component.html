@@ -1,0 +1,53 @@
+<div class="inventory-page">
+  <h1>Inventory table</h1>
+
+  <mat-form-field appearance="outline">
+    <input [(ngModel)]="searchValue"  (ngModelChange)="filterValues()" matInput type="text" placeholder="Filter items..." autocomplete="off">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="items" matSort (matSortChange)="sortData($event)" class="mat-elevation-z8">
+    <ng-container matColumnDef="inventoryNumber">
+      <th mat-header-cell *matHeaderCellDef>  Inventory Number </th>
+      <td mat-cell *matCellDef="let item"> {{item. inventoryNumber}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let item"> {{item.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+      <td mat-cell *matCellDef="let item"> {{item.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> User </th>
+      <td mat-cell *matCellDef="let item"> {{item.user}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+      <td mat-cell *matCellDef="let item"> {{item.location}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+      <td mat-cell *matCellDef="let item"> {{item.category}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="creationDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header > Creation Date </th>
+      <td mat-cell *matCellDef="let item"> {{item.creationDate.split("T")[0]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="modifiedAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Modified At </th>
+      <td mat-cell *matCellDef="let item"> {{item.modifiedAt.split("T")[0]}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table>
+</div>

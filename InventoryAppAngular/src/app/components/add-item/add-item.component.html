@@ -1,4 +1,5 @@
 <body class="add-item-container">
+
       <h1 class="title">Add new item</h1>
       <form  [formGroup]="addItemFormGroup" (ngSubmit)="onSubmit()">
         <p>
@@ -6,6 +7,7 @@
                 <mat-label>Name: </mat-label>
             <textarea matInput placeholder="Name of the item" formControlName="name"></textarea>
             <mat-error *ngIf="hasError('name', 'required')">Items' name is required!</mat-error>
+
 
              </mat-form-field>
         </p>
@@ -36,18 +38,7 @@
                 </mat-option>
                 </mat-select>
              </mat-form-field>
-        </p> 
-
-        <!-- <p>
-            <mat-form-field class="form-field" appearance="fill">
-                <mat-label>Choose an user</mat-label>
-                <mat-select formControlName="user"  (selectionChange)="selectedUserHandler($event)">
-                <mat-option *ngFor="let user of users" [value]="user.userName">
-                    {{user.userName}}
-                </mat-option>
-                </mat-select>
-             </mat-form-field>
-        </p>  -->
+        </p>
 
          <p>
             <mat-form-field class="form-field" appearance="fill">
@@ -58,7 +49,7 @@
                 </mat-option>
                 </mat-select>
              </mat-form-field>
-        </p> 
+        </p>
 
          <p>
              <mat-form-field class="form-field" appearance="outline">

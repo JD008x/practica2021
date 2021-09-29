@@ -47,6 +47,8 @@ export class Item {
         this.inventoryNumber = model.inventoryNumber || "undefined";
         this.creationDate = model.creationDate || new Date();
     }
+
+    [prop: string]: string | any;
 }
 
 

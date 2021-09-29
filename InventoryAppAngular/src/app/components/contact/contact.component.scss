@@ -1,5 +1,5 @@
 @import "../../../css/colors.scss";
-
+@import "../../../css/fonts.scss";
 
 .contact-form-component{
   width: 60vw;
@@ -28,8 +28,7 @@
     color: var(--text-color);
     min-width: 100px;
     max-width: 25vw;
-    font-size: 25px;
-    font-family: "Inconsolata", monospace;
+    font-size: var(--large-font-size);
 }
 
 hr.line {
@@ -39,18 +38,13 @@ hr.line {
 }
 
 .form-details {
-    font-family: "Inconsolata", monospace;
     color: var(--text-color);
 }
 
 .contact-details {
-    font-size: 25px;
+    font-size: var(--large-font-size);
     width: 30vw;
     min-width: 500px;
-}
-
-#title-details {
-    font-size: 40px;
 }
 
 #google-maps {

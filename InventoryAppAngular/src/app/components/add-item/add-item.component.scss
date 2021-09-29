@@ -2,12 +2,6 @@
 .add-item-container{
   height: fit-content;
 }
-body p,
-h1,
-.form-field,
-.form-div {
-  font-family: "Inconsolata", monospace;
-}
 hr.line {
   border: 1px solid white;
   width: 93vw;
@@ -22,6 +16,7 @@ form {
 }
 .submitButton {
   margin-left: 50%;
+  margin-bottom: 50px;
 }
 .onlineMarket {
   width: 700px;

@@ -1,4 +1,5 @@
 @import "../../../css/colors.scss";
+@import "../../../css/fonts.scss";
 .body {
     margin-left: 30px;
     padding-top: 3%;
@@ -48,6 +49,12 @@
     text-align: center;
     box-shadow: 2px 4px 15px 2px rgba(0, 0, 0, 0.2);
     transition: 0.3s;
+    // background-color: var(--text-color-dark);
+    // background-size: 300%;
+    // background-position: right;
+    // transition: background-position 300ms;
+    // cursor: pointer;
+    // height: 20px;
 }
 
 h1 {
@@ -66,6 +73,7 @@ h1 {
         margin-bottom: 5%;
     }
     padding-left: 1%;
+    // margin-right: 10%;
     text-align: center;
     color:var(--text-color);
     padding-bottom: 13%;
@@ -93,7 +101,8 @@ h1 {
     @media (max-width: 767px) {
         flex-direction: column;
     }
-    font-size: 1.5em;
+    //font-size: 1.5em;
+    font-size: var(--larger-font-size);
     margin-left: inherit;
     display: inline-block;
     padding: 20px 4%;
@@ -121,6 +130,8 @@ h1 {
     padding: 10px;
     text-align: center;
     //  margin-right: 25%;
-    font-size: xx-large;
+    // font-size: xx-large;
     margin-bottom: 10%;
+    font-size: var(--larger-font-size);
+    // margin-bottom: 3%;
 }

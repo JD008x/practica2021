@@ -1,3 +1,4 @@
+@import "../../../css/fonts.scss";
 table {
     width: 60%;
     margin: auto;
@@ -10,7 +11,9 @@ table {
 
 th {
     background-color: var(--table-th-color);
-    font-size: large;
+    // font-size: large;
+    // background-color: #373740;
+    font-size: var(--larger-font-size);
 }
 
 td {

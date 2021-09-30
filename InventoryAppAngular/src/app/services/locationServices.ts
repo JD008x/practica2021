@@ -27,6 +27,9 @@ export class LocationServices {
   getLocationById(id: number): Observable<Location> {
     return this.httpClient.get<Location>(this.baseUrl + '/id/' + id, this.httpOptions)
   }
+  async getLocationByName(name: string) {
+    return await this.httpClient.get<Location>(this.baseUrl + `/name/` + name, this.httpOptions).toPromise();
+  }
 
   addLocation(object: Location): Observable<Location> {
     return this.httpClient.post<Location>(this.baseUrl, object, this.httpOptions)

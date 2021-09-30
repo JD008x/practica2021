@@ -1,15 +1,16 @@
 <body class="add-item-container">
-      <div class="title">Add new item</div>
-      <form [formGroup]="addItemFormGroup" (ngSubmit)="onSubmit()">
-         <p>
-             <mat-form-field class="form-field" appearance="outline">
-                 <mat-label class="form-text">Item name: </mat-label>
-                 <input matInput placeholder="Name of the item" class="form-input" type="text" formControlName="name"/>
-                 <mat-error *ngIf="hasError('name', 'required')">Item name si required!</mat-error>
+
+      <h1 class="title">Add new item</h1>
+      <form  [formGroup]="addItemFormGroup" (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Name: </mat-label>
+            <textarea matInput placeholder="Name of the item" formControlName="name"></textarea>
+            <mat-error *ngIf="hasError('name', 'required')">Items' name is required!</mat-error>
+
 
              </mat-form-field>
-
-         </p>
+        </p>
          <p>
              <mat-form-field class="form-field" appearance="outline">
                  <mat-label>Description: </mat-label>
@@ -34,17 +35,6 @@
                 <mat-select formControlName="location" (selectionChange)="selectedLocationHandler($event)">
                 <mat-option *ngFor="let location of locations" [value]="location.name">
                     {{location.name}}
-                </mat-option>
-                </mat-select>
-             </mat-form-field>
-        </p>
-
-        <p>
-            <mat-form-field class="form-field" appearance="fill">
-                <mat-label>Choose an user</mat-label>
-                <mat-select formControlName="user"  (selectionChange)="selectedUserHandler($event)">
-                <mat-option *ngFor="let user of users" [value]="user.userName">
-                    {{user.userName}}
                 </mat-option>
                 </mat-select>
              </mat-form-field>

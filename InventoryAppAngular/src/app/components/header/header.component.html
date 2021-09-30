@@ -3,10 +3,22 @@
         <img id="logo" src="../../../assets/img/logo.png">
     </div>
 
-
     <div [ngClass]='{"nav-menu-hidden" : !showNavbar, "nav-menu": true}'>
         <a (click)='resetNavbar()' routerLink=''>Home</a>
-        <a (click)='resetNavbar()' href="/inventory">Inventory</a>
+        <a (click)='resetNavbar()' [matMenuTriggerFor]="menu">Inventory</a>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink='/inventory'>All</button>
+            <button (click)="changeClient(option)" *ngFor="let option of category" mat-menu-item>
+              {{option.name}}
+          </button>
+        </mat-menu>
+        <!-- <mat-select (selectionChange)="changeClient($event.value)">
+            <mat-option matInput *ngFor="let parent of category" [value]="parent">
+                <div>
+                    {{parent.name}}
+                </div>
+            </mat-option>
+        </mat-select> -->
         <a (click)='resetNavbar()' routerLink='/add-item'>New item</a>
         <a (click)='resetNavbar()' href='/scan'>Scan item</a>
         <a (click)='resetNavbar()' routerLink='/contact'>Contact</a>
@@ -17,7 +29,6 @@
             <button mat-menu-item routerLink=''>Users</button>
         </mat-menu>
     </div>
-
 
     <div class="search-bar">
         <button mat-icon-button (click)="toggleNavbar()" class="nav-button">

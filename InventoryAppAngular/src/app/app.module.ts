@@ -13,7 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { SatPopoverModule } from '@ncstate/sat-popover';
 import { CommonModule } from '@angular/common';
-import { MatSelect } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -24,6 +25,8 @@ import { MatSelect } from '@angular/material/select';
 
   ],
   imports: [
+    MatSelectModule,
+    MatMenuModule,
     CommonModule,
     ComponentsModule,
     AppRoutingModule,

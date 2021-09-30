@@ -19,11 +19,8 @@ const routes: Routes = [
   { path: 'edit/:id', component: AddItemComponent },
   { path: 'category', component: CategoryAdministratorComponent },
   { path: 'location', component: LocationAdministratorComponent },
-
-  { path: 'inventory', component: InventoryComponent},
-
+  { path: 'inventory', component: InventoryComponent },
   { path: 'scan', component: ScanItemComponent },
-
   { path: '**', redirectTo: '' },
 
 

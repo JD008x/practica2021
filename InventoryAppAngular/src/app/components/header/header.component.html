@@ -3,32 +3,43 @@
         <img id="logo" src="../../../assets/img/logo.png">
     </div>
 
-
     <div [ngClass]='{"nav-menu-hidden" : !showNavbar, "nav-menu": true}'>
         <a (click)='resetNavbar()' routerLink=''>Home</a>
-        <a (click)='resetNavbar()' href="/inventory">Inventory</a>
+        <a (click)='resetNavbar()' [matMenuTriggerFor]="m">Inventory</a>
+        <mat-menu #m="matMenu">
+            <button mat-menu-item routerLink='/inventory'>All</button>
+            <button (click)="changeClient(option)" *ngFor="let option of category" mat-menu-item>
+              {{option.name}}
+          </button>
+        </mat-menu>
         <a (click)='resetNavbar()' routerLink='/add-item'>New item</a>
         <a (click)='resetNavbar()' href='/scan'>Scan item</a>
         <a (click)='resetNavbar()' routerLink='/contact'>Contact</a>
+        <a (click)='resetNavbar()' [matMenuTriggerFor]="menu">Administrator</a>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink='/category'>Categories</button>
+            <button mat-menu-item routerLink='/location'>Locations</button>
+            <button mat-menu-item routerLink=''>Users</button>
+        </mat-menu>
     </div>
-
 
     <div class="search-bar">
         <button mat-icon-button (click)="toggleNavbar()" class="nav-button">
       <mat-icon>menu</mat-icon>
     </button>
 
-    <form class="search-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Search Item</mat-label>
-            <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let o of filteredOptions|async" [value]="o" (click)="selectedItemHandler(o)">
-                    {{o}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-    </form>
-  </div>
+
+        <form class="search-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Search Item</mat-label>
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let o of filteredOptions|async" [value]="o" (click)="selectedItemHandler(o)">
+                        {{o}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </div>
 
 </div>

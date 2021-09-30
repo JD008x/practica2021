@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { Item } from "../../models/item";
 import { ItemServices } from 'src/app/services/itemServices';
 import { CategoryService } from 'src/app/services/categoryService';
-import {Router} from '@angular/router'
+import { Category } from 'src/app/models/category';
+import { Router } from '@angular/router'
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-header',
@@ -19,11 +21,13 @@ export class HeaderComponent implements OnInit {
   myControl = new FormControl();
   options: string[] = [];
   items: Item[] = [];
+  category: Category[] = [];
   filteredOptions: Observable<string[]> | undefined;
   constructor(private itemServices: ItemServices, private categoryServices: CategoryService,
-    private router:Router) {
-   
-  
+
+    private router: Router) {
+
+
   }
 
   async ngOnInit(): Promise<void> {
@@ -32,31 +36,48 @@ export class HeaderComponent implements OnInit {
 
     this.options = this.items.map(item => item.name);
     this.filteredOptions = this.myControl.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
 
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+
+    this.getCategoryList();
   }
-  
+
   async getAllItems() {
     this.items = await this.itemServices.getItemsAsync();
     return this.items;
-}
+  }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-   return this.options.filter(option => option.toLowerCase().startsWith(filterValue));
+
+    return this.options.filter(option => option.toLowerCase().startsWith(filterValue));
+
   }
 
-  toggleNavbar(){
+  changeClient(value: any) {
+
+  }
+
+  getCategoryList(): void {
+    this.categoryServices.getCategory().subscribe((list: Category[]) => {
+      this.category = list;
+    }, (err) => {
+      if (err.status === 401) return;
+    });
+  }
+
+  toggleNavbar() {
     this.showNavbar = !this.showNavbar;
   }
-  resetNavbar(){
+  resetNavbar() {
     this.showNavbar = false;
   }
+
   getIdFromSelectedOption(selected: string): string {
-    var id='';
-    for (var index = 0; index < this.items.length; index++){
+    var id = '';
+    for (var index = 0; index < this.items.length; index++) {
       if (this.items[index].name == selected)
         id = this.items[index].id;
     }
@@ -65,8 +86,9 @@ export class HeaderComponent implements OnInit {
   selectedItemHandler(selected: string) {
     var id = this.getIdFromSelectedOption(selected);
     this.router.navigate(['/edit/' + id]);
-   
+
   }
+
 }
 
 

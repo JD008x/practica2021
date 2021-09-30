@@ -14,6 +14,8 @@ function setItemRoute(router: Router): Router {
     router.put("/", updateItem)
     router.get("/id/:id", getItemById);
     router.get("/name", getFilterByName);
+    // router.get("/category/:categoryId", getItemByCategory);
+
     return router;
 }
 async function getFilterByName(req: IExpressRequest, res: Response, next: NextFunction) {
@@ -63,6 +65,29 @@ async function getItemById(req: IExpressRequest, res: Response, next: NextFuncti
 
 }
 
+// async function getItemByCategory(req: IExpressRequest, res: Response, next: NextFunction) {
+//     if (!req.em || !(req.em instanceof EntityManager)) {
+//         return next(Error('EntityManager not available'));
+//     }
+
+//     let item: Error | Item[] | null;
+//     try {
+//         item = await itemController.getItemByCategory(req.em, req.body.parent_category);
+//     } catch (ex) {
+//         return next(ex);
+//     }
+
+//     if (item instanceof Error) {
+//         return next(item);
+//     }
+//     if (item === null) {
+//         return res.status(404).json(`Location with id '${req.params.id}' not found!`);
+//     }
+
+//     return res.json(item);
+
+// }
+
 async function updateItem(req: IExpressRequest, res: Response, next: NextFunction) {
     if (!req.em || !(req.em instanceof EntityManager))
         return next(Error("EntityManager not available"));
@@ -104,7 +129,7 @@ async function getItems(req: IExpressRequest, res: Response, next: NextFunction)
     try {
 
         console.log("query", req.query)
-        items = await itemController.getItems(req.em, req.query.orderByProp as string, req.query.orderByDirection as "asc" );
+        items = await itemController.getItems(req.em, req.query.orderByProp as string, req.query.orderByDirection as "asc");
         // console.log(items);
 
     } catch (ex) {

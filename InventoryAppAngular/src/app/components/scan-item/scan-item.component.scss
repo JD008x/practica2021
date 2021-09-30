@@ -1,5 +1,4 @@
 @import "../../../css/fonts.scss";
-
 .centred {
     margin: 0 auto;
     display: flex;
@@ -15,6 +14,7 @@
 }
 
 .subtitle {
+    color: var(--text-color);
     text-align: center;
     padding-bottom: 25px;
     font-weight: bold;
@@ -22,4 +22,11 @@
 
 #img {
     width: 100px
+}
+
+.open {
+    text-align: center;
+    button {
+        background-color: var(--main-color-variant-1);
+    }
 }

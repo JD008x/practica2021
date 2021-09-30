@@ -1,0 +1,15 @@
+button {
+    margin: 2%;
+    font-size: var(--normal-font-size);
+    background-color: rgb(99, 96, 96);
+}
+
+h2 {
+    font-size: var(--large-font-size);
+    margin-bottom: 20px;
+}
+
+form {
+    border-top: 3px solid #bbb;
+    font-size: var(--normal-font-size);
+}

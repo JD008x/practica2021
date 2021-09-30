@@ -4,15 +4,11 @@
     //@include mat-core($custom-typography);
     .info {
         transform: perspective(800px) rotateY(-6deg) translateY(-50px) rotateX(5deg) scale(1);
-        background: linear-gradient(90deg, #b68c44, #ffce79, #ffce79);
-        border-left: 3px;
-        border-style: solid;
+        background: linear-gradient(90deg, #af8844, #ffce79, #ffce79);
         box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.25);
         border-radius: 50px 50px 70px 15%;
-        background-color: #ffce79;
         @media (min-width: 1000px) {
             width: auto;
-            //  margin: auto;
             margin-left: 4%;
             padding-left: 5%;
             padding-right: 5%;
@@ -44,7 +40,6 @@
         }
         h1 {
             padding-top: 10px;
-            text-decoration: underline;
             text-align: center;
             @media(min-width: 600px) {
                 font-size: xx-large;
@@ -59,7 +54,7 @@
             padding-bottom: 3px;
         }
     }
-
+    
     @media (min-width: 1077px) {
         .image1 {
             background-image: url('../../../assets/view-item.png') !important;
@@ -85,7 +80,7 @@
             margin-left: 10%;
         }
     }
-
+    
     @media (max-width: 1077px) and (min-width: 880px) {
         .image2 {
             background-image: url('../../../assets/136-1365024_what-is-inventory-inventory-png.png') !important;
@@ -98,39 +93,36 @@
             margin-left: 10%;
         }
     }
-
+    
     @media (max-width: 880px) {}
-
+    
     .page {
         display: flex;
         flex-direction: row;
     }
-
+    
     .item {
         @media(min-width: 600px) {
-            font-size: x-large;
+            font-size: large;
         }
         @media (max-width: 599px) {
             font-size: 15px;
         }
-        //font-size: x-large;
     }
-
+    
     .image {
-        // background-image: url('../../../assets/404.gif') !important;
-        // background-size: 200px;
         margin-left: 40%;
-        //     width: 250px;
-        // }
     }
-
+    
     .message {
+        color: var(--text-color);
         //width: 100%;
-        //  font-size: 20px;
-        margin-top: 30px;
+        font-size: var(--normal-font-size);
         text-align: center;
+        margin: 30px 50px;
+        margin-top: 100px;
     }
-
+    
     qr-code {
         margin: 30px;
     }

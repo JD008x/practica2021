@@ -1,6 +1,8 @@
 import { Item } from "../entities/Item.entity";
 import { EntityManager } from "@mikro-orm/core";
 import { ObjectId } from "@mikro-orm/mongodb";
+//import * as categoryController from "../controllers/categoryController";
+
 
 
 export { getItemByInventoryNumber, getItemById, saveItem, getItems, deleteItem, updateItem, getItemsName };
@@ -14,15 +16,15 @@ async function getItems(em: EntityManager, orderByProp: string, orderByDirection
             orderBy: orderByDirection ? { [orderByProp]: orderByDirection } : {}
         })
 
-        if(orderByDirection) {
-            const sorted = items.sort((a,b)=> {
+        if (orderByDirection) {
+            const sorted = items.sort((a, b) => {
                 console.log("tip", typeof b[orderByProp], b[orderByProp]);
 
-                if(typeof b[orderByProp] === "string") {
+                if (typeof b[orderByProp] === "string") {
                     return (b[orderByProp] as string).localeCompare(a[orderByProp] as string);
                 }
 
-                if(typeof b[orderByProp] === "object") {
+                if (typeof b[orderByProp] === "object") {
                     return new Date(a[orderByProp]) > new Date(b[orderByProp]) ? -1 : 1;
                 }
 
@@ -45,7 +47,7 @@ async function getItemsName(em: EntityManager): Promise<Error | string[] | null>
         return Error("invalid request");
 
     try {
-        const item = await em.find(Item.name,'...', {fields: ['name']})
+        const item = await em.find(Item.name, '...', { fields: ['name'] })
         return item;
     } catch (ex) {
         if (ex instanceof Error)
@@ -71,6 +73,23 @@ async function getItemByInventoryNumber(em: EntityManager, inventoryNumber: stri
     }
 }
 
+// async function getItemByCategory(em: EntityManager, categoryId: Category): Promise<Error | Item[] | null> {
+//     if (!(em instanceof EntityManager))
+//         return Error("invalid request");
+
+
+//     //const category = categoryController.getCategoryById(em, categoryId);
+
+//     try {
+//         const items = await em.find(Item, { parent_category: categoryId });
+//         return items;
+//     } catch (ex) {
+//         if (ex instanceof Error)
+//             return ex;
+
+//         return null;
+//     }
+// }
 
 async function saveItem(em: EntityManager, item: Partial<Item>): Promise<Error | Item> {
     if (!(em instanceof EntityManager))

@@ -1,5 +1,4 @@
 @import "../../../css/fonts.scss";
-
 table {
     width: 70%;
     text-align-last: center;
@@ -10,12 +9,14 @@ table {
 }
 
 th {
-    background-color: #373740;
+    background-color: var(--table-th-color);
+    // font-size: large;
+    // background-color: #373740;
     font-size: var(--large-font-size);
 }
 
 td {
-    background-color: #474780;
+    background-color: var(--table-td-color);
 }
 
 #Add {

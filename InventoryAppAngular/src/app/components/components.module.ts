@@ -36,12 +36,14 @@ import { ViewItemComponent } from './view-item/view-item.component';
 import { QRCodeModule } from 'angular2-qrcode';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ScanItemComponent } from './scan-item/scan-item.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
   declarations: [ViewItemComponent, ScanItemComponent, CategoryAdministratorComponent, ContactComponent, HomeComponent, AddItemComponent, CategoryDialog, LocationDialog,InventoryComponent, LocationAdministratorComponent, ViewItemComponent],
 
   imports: [
+    MatMenuModule,
     ZXingScannerModule,
     QRCodeModule,
     CommonModule,

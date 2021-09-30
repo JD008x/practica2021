@@ -8,6 +8,7 @@ import { CategoryService } from "src/app/services/categoryService";
 @Component({
   selector: 'categoryDialog',
   templateUrl: 'category-dialog.html',
+  styleUrls: ['category-dialog.css'],
 })
 
 export class CategoryDialog implements OnInit {
@@ -51,7 +52,8 @@ export class CategoryDialog implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  onSubmit() {
+
+  submitMe() {
     this.category = new Category(this.addCategoryFormGroup.value);
     this.categoryService.addCategory(this.category).subscribe();
     this.dialogRef.close();

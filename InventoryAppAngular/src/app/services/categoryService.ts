@@ -26,12 +26,12 @@ export class CategoryService {
     return this.httpClient.post<Category>(this.baseUrl, object, this.httpOptions)
   }
 
-  getCategoryById(id: number): Observable<Category> {
-    return this.httpClient.get<Category>(this.baseUrl + `/id/${id}`, this.httpOptions);
+  async getCategoryById(id: string) {
+    return this.httpClient.get<Category>(this.baseUrl + `/id/${id}`, this.httpOptions).toPromise();
   }
 
-  getCategoryByName(name: string): Observable<Category> {
-    return this.httpClient.get<Category>(this.baseUrl + `/name/` + name, this.httpOptions);
+  async getCategoryByName(name: string) {
+    return await this.httpClient.get<Category>(this.baseUrl + `/name/` + name, this.httpOptions).toPromise();
   }
 
   editCategory(object: Category): Observable<Category> {

@@ -16,10 +16,10 @@
                 <b>Description:</b><i> {{ item.description }}</i>
             </p>
             <p>
-                <b>User:</b><i> {{ item.user }}</i>
+                <b>Location:</b><i> {{ item.location.name }}</i>
             </p>
             <p>
-                <b>Location:</b><i> {{ item.location }}</i>
+                <b>Category:</b><i> {{ item.category.name }}</i>
             </p>
             <p>
                 <b>InventoryNumber:</b><i> {{ item.inventoryNumber }}</i>
@@ -33,9 +33,7 @@
         </div>
     </div>
     <div class='image2'>
-
     </div>
-    <!-- <img src='../../../assets/136-1365024_what-is-inventory-inventory-png.png' class='image2'> -->
 </div>
 <!-- <p>
     <qr-code [value]="itemId" [size]="qrsize"></qr-code>

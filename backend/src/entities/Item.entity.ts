@@ -1,5 +1,5 @@
 
-import { Cascade, Entity, ManyToOne, PrimaryKey, Property, SerializedPrimaryKey } from '@mikro-orm/core';
+import {  Entity, PrimaryKey, Property, SerializedPrimaryKey } from '@mikro-orm/core';
 import { ObjectId } from '@mikro-orm/mongodb';
 import { Category } from './category.entity';
 import { Location } from './location.entity';
@@ -19,13 +19,13 @@ export class Item {
     @Property()
     description!: string;
 
-    @ManyToOne(() => Category, { cascade: [Cascade.PERSIST, Cascade.REMOVE] })
+    @Property()
     category?: Category;
-
+ 
     @Property()
     modifiedAt!: Date;
 
-    @ManyToOne(() => Location, { cascade: [Cascade.PERSIST, Cascade.REMOVE] })
+    @Property()
     location?: Location;
 
     @Property()
@@ -38,7 +38,6 @@ export class Item {
     constructor(model?: Partial<Item>) {
         if (!model || !(model instanceof Object))
             model = <Item><any>{};
-
 
         this.name = model.name || "undefined";
         this.description = model.description || "undefined";

@@ -22,9 +22,9 @@
                     <p>
                         <b>Name:</b> <i>  {{ item.name }}</i>
                     </p>
-                    <!-- <p>
-                        category:<i>  {{ item.category }}</i>
-                    </p> -->
+                    <p>
+                        <b>Category:</b> <i>  {{ item.category.name }}</i>
+                    </p>
                     <p>
                         <b>Inventory Number:</b><i>  {{ item.inventoryNumber }}</i>
                     </p>
@@ -35,6 +35,7 @@
             <p>
                 <b>modifiedAt:</b><i>{{ item.modifiedAt | date }}</i>
             </p> -->
+
                 </div>
             </div>
         </div>

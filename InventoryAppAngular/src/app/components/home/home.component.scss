@@ -103,7 +103,8 @@ h1 {
     border-radius: 15px 50px 30px;
     color: var(--text-color-dark);
     cursor: pointer;
-    background: linear-gradient(90deg, var(--secondary-color-variant-2), var(--secondary-color-variant-1), var(--secondary-color));
+    background: linear-gradient(90deg, var(--secondary-color-variant-2), var(--secondary-color), var(--secondary-color));
+    //background: linear-gradient(90deg, var(--secondary-color-variant-2), var(--secondary-color-variant-1), var(--secondary-color));
     background-size: 300%;
     background-position: left;
     transform: perspective(800px) rotateY(25deg) scale(0.9) rotateX(10deg);

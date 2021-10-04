@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'category', component: CategoryAdministratorComponent },
   { path: 'location', component: LocationAdministratorComponent },
   { path: 'inventory', component: InventoryComponent },
+  { path: 'inventory/:id', component: InventoryComponent },
   { path: 'scan', component: ScanItemComponent },
   { path: '**', redirectTo: '' },
 

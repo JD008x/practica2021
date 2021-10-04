@@ -7,7 +7,7 @@
         <h1><b>Item Information:</b></h1>
         <div class="item">
             <p>
-                <b>Id:</b><i> {{ item.id }}</i>
+                <b>InventoryNumber:</b><i> {{ item.inventoryNumber }}</i>
             </p>
             <p>
                 <b>Name:</b><i> {{ item.name }}</i>
@@ -21,9 +21,7 @@
             <p>
                 <b>Category:</b><i> {{ item.category.name }}</i>
             </p>
-            <p>
-                <b>InventoryNumber:</b><i> {{ item.inventoryNumber }}</i>
-            </p>
+
             <p>
                 <b>CreatedAt:</b><i> {{ item.creationDate |date}}</i>
             </p>

@@ -57,6 +57,8 @@ export class HeaderComponent implements OnInit {
   }
 
   changeClient(value: any) {
+    console.log(value.id);
+    this.router.navigate(['inventory/' + value.id]);
 
   }
 

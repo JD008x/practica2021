@@ -1,128 +1,178 @@
-    // NOTE: From `2.0.0-beta.10`, you can now pass the typography via the mat-core() mixin:
-    @import '~@angular/material/theming';
-    //$custom-typography: mat-typography-config( $//font-family: 'Raleway');
-    //@include mat-core($custom-typography);
-    .info {
-        transform: perspective(800px) rotateY(-6deg) translateY(-50px) rotateX(5deg) scale(1);
-        background: linear-gradient(90deg, #af8844, #ffce79, #ffce79);
-        box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.25);
-        border-radius: 50px 50px 70px 15%;
-        @media (min-width: 1000px) {
-            width: auto;
-            margin-left: 4%;
-            padding-left: 5%;
-            padding-right: 5%;
-            margin-top: 7%;
-        }
-        /* Portrait tablets and small desktops */
-        @media (min-width: 880px) and (max-width: 1000px) {
-            margin-top: 10%;
-            width: auto;
-            padding-left: 7%;
-            padding-right: 7%;
-            margin-left: 10%;
-        }
-        @media (max-width: 880px) and (min-width: 600px) {
-            width: auto;
-            padding-left: 7%;
-            padding-right: 7%;
-            margin: auto;
-            margin-top: 20%;
-        }
-        @media (max-width: 600px) {
-            width: 200px;
-            margin: auto;
-            // margin-left: 2px;
-            // margin-right: 2px;
-            padding-left: 7%;
-            padding-right: 7%;
-            margin-top: 20%;
-        }
-        h1 {
-            padding-top: 10px;
-            text-align: center;
-            @media(min-width: 600px) {
-                font-size: xx-large;
-            }
-            @media (max-width: 600px) {
-                font-size: 20px;
-            }
-            padding-bottom: 10px;
-            // padding-right: 20px;
-        }
-        p {
-            padding-bottom: 3px;
-        }
+// NOTE: From `2.0.0-beta.10`, you can now pass the typography via the mat-core() mixin:
+@import "~@angular/material/theming";
+//$custom-typography: mat-typography-config( $//font-family: 'Raleway');
+//@include mat-core($custom-typography);
+.info {
+  transform: perspective(800px) rotateY(-6deg) translateY(-50px) rotateX(5deg)
+    scale(1);
+  background: linear-gradient(90deg, #af8844, #ffce79, #ffce79);
+  box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.25);
+  border-radius: 50px 50px 70px 15%;
+  @media (min-width: 1000px) {
+    width: auto;
+    margin-left: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 7%;
+  }
+  /* Portrait tablets and small desktops */
+  @media (min-width: 880px) and (max-width: 1000px) {
+    margin-top: 10%;
+    width: auto;
+    padding-left: 7%;
+    padding-right: 7%;
+    margin-left: 10%;
+  }
+  @media (max-width: 880px) and (min-width: 600px) {
+    width: auto;
+    padding-left: 7%;
+    padding-right: 7%;
+    margin: auto;
+    margin-top: 20%;
+  }
+  @media (max-width: 600px) {
+    width: 200px;
+    margin: auto;
+    // margin-left: 2px;
+    // margin-right: 2px;
+    padding-left: 7%;
+    padding-right: 7%;
+    margin-top: 20%;
+  }
+  h1 {
+    padding-top: 10px;
+    text-align: center;
+    @media (min-width: 600px) {
+      font-size: xx-large;
     }
-    
-    @media (min-width: 1077px) {
-        .image1 {
-            background-image: url('../../../assets/view-item.png') !important;
-            padding-top: 8%;
-            width: 20%;
-            background-size: 200px;
-            background-repeat: no-repeat;
-            //  height: 20%;
-            margin-top: 6%;
-            margin-left: 10%;
-        }
-        img {
-            margin: 0% 10%;
-        }
-        .image2 {
-            background-image: url('../../../assets/136-1365024_what-is-inventory-inventory-png.png') !important;
-            padding-top: 8%;
-            width: 20%;
-            background-size: 200px;
-            background-repeat: no-repeat;
-            //  height: 20%;
-            margin-top: 6%;
-            margin-left: 10%;
-        }
+    @media (max-width: 600px) {
+      font-size: 20px;
     }
-    
-    @media (max-width: 1077px) and (min-width: 880px) {
-        .image2 {
-            background-image: url('../../../assets/136-1365024_what-is-inventory-inventory-png.png') !important;
-            padding-top: 8%;
-            width: 25%;
-            background-size: 200px;
-            background-repeat: no-repeat;
-            //  height: 20%;
-            margin-top: 6%;
-            margin-left: 10%;
-        }
+    padding-bottom: 10px;
+    // padding-right: 20px;
+  }
+  p {
+    padding-bottom: 3px;
+  }
+}
+
+@media (min-width: 1077px) {
+  .image1 {
+    background-image: url("../../../assets/view-item.png") !important;
+    padding-top: 8%;
+    width: 20%;
+    background-size: 200px;
+    background-repeat: no-repeat;
+    //  height: 20%;
+    margin-top: 6%;
+    margin-left: 10%;
+  }
+  img {
+    margin: 0% 10%;
+  }
+  .image2 {
+    background-image: url("../../../assets/136-1365024_what-is-inventory-inventory-png.png") !important;
+    padding-top: 8%;
+    width: 20%;
+    background-size: 200px;
+    background-repeat: no-repeat;
+    //  height: 20%;
+    margin-top: 6%;
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 1077px) and (min-width: 880px) {
+  .image2 {
+    background-image: url("../../../assets/136-1365024_what-is-inventory-inventory-png.png") !important;
+    padding-top: 8%;
+    width: 25%;
+    background-size: 200px;
+    background-repeat: no-repeat;
+    //  height: 20%;
+    margin-top: 6%;
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 880px) {
+}
+
+.page {
+  display: flex;
+  flex-direction: row;
+}
+.wholepage {
+  display: flex;
+  flex-direction: column;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  @media (min-width: 600px) {
+    width: auto;
+    margin: auto;
+    margin-right: 58%;
+    button {
+      margin: 0 70%;
     }
-    
-    @media (max-width: 880px) {}
-    
-    .page {
-        display: flex;
-        flex-direction: row;
+  }
+  @media (max-width: 600px) {
+    width: 200px;
+    margin: auto;
+    button {
+      margin: 0 10%;
+      margin-bottom: 10px;
     }
-    
-    .item {
-        @media(min-width: 600px) {
-            font-size: large;
-        }
-        @media (max-width: 599px) {
-            font-size: 15px;
-        }
-    }
-    
-    .image {
-        margin-left: 40%;
-    }
-    
-    .message {
-        color: var(--text-color);
-        //width: 100%;
-        font-size: var(--normal-font-size);
-        text-align: center;
-        margin: 30px 50px;
-        margin-top: 100px;
-    }
-    
-    qr-code {
-        margin: 30px;
-    }
+  }
+}
+.item {
+  @media (min-width: 600px) {
+    font-size: large;
+  }
+  @media (max-width: 599px) {
+    font-size: 15px;
+  }
+}
+
+.image {
+  margin-left: 40%;
+}
+
+.message {
+  color: var(--text-color);
+  //width: 100%;
+  font-size: var(--normal-font-size);
+  text-align: center;
+  margin: 30px 50px;
+  margin-top: 100px;
+}
+
+qr-code {
+  margin: 30px;
+}
+
+button {
+  transform: perspective(800px) rotateY(10deg) scale(0.9) rotateX(10deg);
+  filter: blur(0.5px);
+  opacity: 1;
+  transition: 0.6s ease all;
+  &:hover {
+    transform: perspective(800px) rotateY(-15deg) rotateX(10deg) scale(1);
+    filter: blur(0);
+    opacity: 1;
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.25);
+  }
+}
+button {
+  transform: perspective(800px) rotateY(10deg) scale(0.9) rotateX(10deg);
+  filter: blur(0.5px);
+  opacity: 1;
+  transition: 0.6s ease all;
+  &:hover {
+    transform: perspective(800px) rotateY(-15deg) rotateX(10deg) scale(1);
+    filter: blur(0);
+    opacity: 1;
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.25);
+  }
+}

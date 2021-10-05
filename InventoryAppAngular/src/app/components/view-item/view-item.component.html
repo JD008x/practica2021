@@ -1,5 +1,6 @@
-<div *ngIf="itemIsFound ; else itemIsNotFound" class="mat-typography page">
+<div *ngIf="itemIsFound ; else itemIsNotFound" class="mat-typography wholepage">
     <!-- <img src='../../../assets/view-item.png' class='image1'> -->
+    <div class="page">
     <div class='image1'>
 
     </div>
@@ -30,12 +31,23 @@
             <p>
                 <b>ModifiedAt:</b><i> {{ item.modifiedAt |date}}</i>
             </p>
-        </div>
+        </div> 
+
     </div>
+
+
     <div class='image2'>
     </div>
+    </div>
+<div class="buttons">
+    <button mat-fab color="accent" (click)='onClickEditItem()' id="EditItem">Edit</button>
+    <button mat-fab color="accent" (click)='onClickViewQr()' id="ViewQr">Qr Code</button>
 </div>
+</div>
+
+
 <!-- <p>
+
     <qr-code [value]="itemId" [size]="qrsize"></qr-code>
 </p> -->
 <ng-template #itemIsNotFound>

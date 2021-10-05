@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { LocationServices } from 'src/app/services/locationServices';
 import { Location } from 'src/app/models/location';
+import { EmailService } from 'src/app/services/httpService';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +21,11 @@ export class ContactComponent implements OnInit {
   loading = false;
   buttonText = "Submit";
 
-  constructor(private fb: FormBuilder,private locationService: LocationServices) { 
+  constructor(private fb: FormBuilder,
+    private locationService: LocationServices,
+    private emailService: EmailService,
+    private router: Router
+  ) {
     this.contactFormGroup = Object();
   }
 
@@ -27,9 +33,8 @@ export class ContactComponent implements OnInit {
     this.getCategoryList();
 
     this.contactFormGroup = this.fb.group({
-    email: [null, [Validators.email, Validators.required]],
-    message: [ null, Validators.required]
-
+      emailTo: [null, [Validators.email, Validators.required]],
+      message: [ null, Validators.required]
    })
   }
 
@@ -56,34 +61,18 @@ export class ContactComponent implements OnInit {
     return this.contactFormGroup.controls[controlName].hasError(errorName);
   }
 
-  onSubmit()
-  {}
-  // onSubmit()
-  // {
-  //   this.loading = true;
-  //   this.buttonText = "Submiting...";
+  
+  onSubmit(formDirective: FormGroupDirective) {
+    this.loading = true;
 
-  //   let user = {
-  //     email: this.contactFormGroup.value.email,
-  //     message: this.contactFormGroup.value.message
-  //   }
-  //   this.http.sendEmail( user ).subscribe(
-  //     data => {
-  //       let res:any = data; 
-  //       console.log(
-  //         `👏 > 👏 > 👏 > 👏 ${user.email} is successfully register and mail has been sent and the message id is ${res.messageId}`
-  //       );
-  //     },
-  //     err => {
-  //       console.log(err);
-  //       this.loading = false;
-  //       this.buttonText = "Submit";
-  //     },() => {
-  //       this.loading = false;
-  //       this.buttonText = "Submit";
-  //     }
-  //   );
-  // }
+    let user = {
+      emailTo: this.contactFormGroup.value.emailTo,
+      message: this.contactFormGroup.value.message
+    }
 
-
+    this.emailService.sendEmail(user);
+    formDirective.resetForm();
+    this.contactFormGroup.reset();
+  
+  }
 }

@@ -18,15 +18,22 @@ export class ViewItemComponent implements OnInit {
   qrsize: number = 200;
   constructor(private itemService: ItemServices, private activatedRoute: ActivatedRoute,
     private router: Router) {
-
     this.activatedRoute.params.subscribe((params) => {
       this.itemId = params.id;
       this.item = new Item();
     });
     this.qrValue = this.itemId.toString();
+   
   }
 
   ngOnInit(): void {
+
+    this.activatedRoute.params.subscribe((params) => {
+      this.itemId = params.id;
+     
+      this.item = new Item();
+    });
+  
     if (!this.itemId) {
       this.item = new Item();
     } else {

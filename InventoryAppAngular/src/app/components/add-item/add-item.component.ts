@@ -9,6 +9,7 @@ import { LocationServices } from 'src/app/services/locationServices';
 import { Location } from 'src/app/models/location';
 import { User } from 'src/app/models/user';
 import { UserServices } from 'src/app/services/userServises';
+import { EmailService } from 'src/app/services/httpService';
 
 
 @Component({
@@ -40,6 +41,7 @@ export class AddItemComponent implements OnInit {
     private categoryServices: CategoryService,
     private locationServices: LocationServices,
     private userServices: UserServices,
+   
   )
   {
    

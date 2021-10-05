@@ -10,6 +10,7 @@ import { IExpressError } from "./interfaces/IExpressError";
 import { ReflectMetadataProvider, MikroORM } from "@mikro-orm/core";
 import { MongoDriver } from '@mikro-orm/mongodb';
 import { setItemRoute } from "./routes/Item.route";
+import { setEmailRoute } from "./routes/emailRoute";
 
 
 export { makeApp };
@@ -66,6 +67,8 @@ async function makeApp(): Promise<express.Application> {
     app.use(env.CATEGORY_ROUTE, setCategoryRoute(express.Router()));
     app.use(env.LOCATION_ROUTE, setLocationRoute(express.Router()));
     app.use(env.ITEM_ROUTE, setItemRoute(express.Router()));
+    app.use(env.EMAIL_ROUTE, setEmailRoute(express.Router()));
+
 
     // 404
     app.use((_req: express.Request, _res: express.Response, next: express.NextFunction) => {

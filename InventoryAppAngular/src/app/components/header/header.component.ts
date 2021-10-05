@@ -85,9 +85,11 @@ export class HeaderComponent implements OnInit {
   }
   selectedItemHandler(selected: string) {
     var id = this.getIdFromSelectedOption(selected);
-    this.router.navigate(['/edit/' + id]);
-
+    this.router.navigate(['/view-item/' + id]);
+   
+    
   }
+  
 
 }
 

@@ -1,16 +1,15 @@
 <div class="title">Contact us</div>
 <div class="component">
 <div class="contact-container">
-    <form  [formGroup]="contactFormGroup" (ngSubmit)="onSubmit()">
+    <form  [formGroup]="contactFormGroup" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
         <p>
             <mat-form-field class="form-field" appearance="outline">
-                <mat-label>Email: </mat-label>
-            <textarea matInput placeholder="Email" formControlName="email" ngModel [email]="true" ></textarea>
-            <mat-error *ngIf="hasError('email', 'email')">Ex. pat@example.com</mat-error>
-            <mat-error *ngIf="hasError('email', 'required')">Email  is required!</mat-error>
+                <mat-label>To: </mat-label>
+            <textarea matInput placeholder="To" formControlName="emailTo" ></textarea>
+            <mat-error *ngIf="hasError('emailTo', 'email')">Ex. pat@example.com</mat-error>
+            <mat-error *ngIf="hasError('emailTo', 'required')">Email  is required!</mat-error>
             </mat-form-field>
         </p>
-
         <p>
             <mat-form-field class="form-field" appearance="outline">
                 <mat-label>Message: </mat-label>
@@ -19,7 +18,7 @@
             </mat-form-field>
         </p>
 
-        <button mat-raised-button class="submitButton" type="submit" [disabled]="!contactFormGroup.valid">{{buttonText}}</button>
+        <button mat-raised-button class="submitButton" type="submit"  [disabled]="!contactFormGroup.valid">{{buttonText}}</button>
     </form>
 </div>
 

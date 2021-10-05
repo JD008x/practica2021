@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControlDirective, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,6 +15,8 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import { EmailService } from './services/httpService';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     MatButtonModule,
     MatTableModule,
-    SatPopoverModule
+    SatPopoverModule,
+    HttpClientModule,
+    
 
   ],
   exports: [
@@ -53,7 +57,7 @@ import { MatSelectModule } from '@angular/material/select';
     SatPopoverModule
 
   ],
-  providers: [],
+  providers: [EmailService, FormGroupDirective],
   bootstrap: [AppComponent]
 
 })

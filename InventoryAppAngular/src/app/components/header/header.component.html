@@ -7,7 +7,7 @@
         <a (click)='resetNavbar()' routerLink=''>Home</a>
         <a (click)='resetNavbar()' [matMenuTriggerFor]="m">Inventory</a>
         <mat-menu #m="matMenu">
-            <button mat-menu-item routerLink='/inventory'>All</button>
+            <button mat-menu-item routerLink='/inventory/all'>All</button>
             <button (click)="changeClient(option)" *ngFor="let option of category" mat-menu-item>
               {{option.name}}
           </button>

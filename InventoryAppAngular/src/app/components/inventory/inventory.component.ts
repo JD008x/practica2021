@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ItemServices } from 'src/app/services/itemServices';
 import { Item } from "../../models/item";
 
@@ -12,13 +13,16 @@ import { Item } from "../../models/item";
 export class InventoryComponent implements OnInit {
   items: MatTableDataSource<Item> = new MatTableDataSource();
   searchValue: string = "";
-  columnsToDisplay = ['name', 'description', 'user', 'location', 'creationDate', 'modifiedAt'];
+  columnsToDisplay = ['name', 'location', 'creationDate', 'modifiedAt', 'actions'];
+  categoryId: string = "";
+  orderByProp: string = "";
+  orderByDirection: string = "";
 
-
-  constructor(private itemServices: ItemServices) {
-    this.itemServices.getItems().subscribe((items) => {
-      this.items = new MatTableDataSource(items);
-    });
+  constructor(private itemServices: ItemServices, private route: ActivatedRoute, private router: Router) {
+    this.route.params.subscribe((params) => {
+      this.categoryId = params.categoryId;
+      this.fetch();
+  });
   }
 
   ngOnInit(): void {
@@ -26,7 +30,13 @@ export class InventoryComponent implements OnInit {
 
   sortData(sort: Sort) {
     console.log("sort", sort);
-    this.itemServices.getItems(sort.active, sort.direction).subscribe((items) => {
+    this.orderByProp = sort.active;
+    this.orderByDirection = sort.direction;
+    this.fetch();
+  }
+
+  fetch() {
+    this.itemServices.getItems(this.orderByProp, this.orderByDirection, this.categoryId).subscribe((items) => {
       this.items = new MatTableDataSource(items);
     });
   }
@@ -34,5 +44,18 @@ export class InventoryComponent implements OnInit {
   filterValues() {
     console.log(this.searchValue);
     this.items.filter = this.searchValue;
+  }
+
+  viewItem(itemId: string) {
+    console.log("itemId", itemId)
+    this.router.navigate([`/view-item/${itemId}`]);
+  }
+
+  deleteItem(itemId: string) {
+    console.log("itemId", itemId)
+    this.itemServices.deleteItem(itemId).subscribe(() => {
+      console.log("itemId deleted", itemId)
+      this.fetch();
+    });
   }
 }

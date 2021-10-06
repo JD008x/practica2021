@@ -129,7 +129,7 @@ async function getItems(req: IExpressRequest, res: Response, next: NextFunction)
     try {
 
         console.log("query", req.query)
-        items = await itemController.getItems(req.em, req.query.orderByProp as string, req.query.orderByDirection as "asc");
+        items = await itemController.getItems(req.em, req.query.orderByProp as string, req.query.orderByDirection as "asc", req.query.categoryId as string);
         // console.log(items);
 
     } catch (ex) {

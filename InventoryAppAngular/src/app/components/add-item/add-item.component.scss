@@ -2,6 +2,11 @@
 .add-item-container{
   height: fit-content;
 }
+.add-item-container form{
+  padding-top: 0;
+  margin-top: 0;
+  margin-left:15vw;
+}
 hr.line {
   border: 1px solid white;
   width: 93vw;
@@ -13,10 +18,14 @@ form {
 }
 .form-field {
   width: 400px;
+  height: 8.5vh;
+  max-width: 400px;
 }
 .submitButton {
-  margin-left: 50%;
-  margin-bottom: 50px;
+  margin-left: 25%;
+  width:200px;
+  height:45px;
+
 }
 .onlineMarket {
   width: 700px;

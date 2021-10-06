@@ -3,8 +3,20 @@
 
 .contact-container{
     height: fit-content;
+    width: 40vw;
+    min-width: 300px;
+}
+ .form-field{
+    width: 80% !important;
+    max-width: 400px;
+}
+.contact-location{
+    width: 1000px;
+    padding-right:30px;
 }
 table {
+    width:100%;
+    height:70%;
     text-align-last: center;
     margin: auto;
     button {
@@ -14,8 +26,6 @@ table {
 
 th {
     background-color: var(--table-th-color);
-    // font-size: large;
-    // background-color: #373740;
     font-size: var(--large-font-size);
 }
 
@@ -23,57 +33,22 @@ td {
     background-color: var(--table-td-color);
 }
 
-// .contact-container{
-//   width: 60vw;
-//   min-width: 50vw;
-//   padding-bottom: 150px;
-// }
 .component {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin: 5%;
   width: 95%;
 }
-// .mat-input-wrapper{
-//     width:400px !important;
-// }
 
-// .div-group {
-//     display:flex;
-//     width:max-content;
-// }
-
-.mat-form {
-    width: 30vw;
-    min-width: 300px;
-    left: 5vw;
-}
-
-// .label {
-//     color: var(--text-color);
-//     min-width: 100px;
-//     max-width: 25vw;
-//     font-size: var(--large-font-size);
-// }
-
-// hr.line {
-//     border: 1px solid white;
-//     width: 93vw;
-//     margin-bottom:2%;
-// }
-
-// .form-details {
-//     color: var(--text-color);
-// }
-
-// .contact-details {
-//     font-size: var(--large-font-size);
-//     width: 30vw;
-//     min-width: 500px;
-// }
 
 #google-maps {
-    width: 100%;
-    height:100%;
+    padding-top:60px;
+    width:100%;
+    height:50%;
+}
+.submitButton {
+    margin-left: 100px;
+    width:200px;
+    height:50px;
 }

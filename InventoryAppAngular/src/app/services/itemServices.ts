@@ -20,9 +20,17 @@ export class ItemServices {
 
 
   constructor(private httpClient: HttpClient) { }
+
   async getItemsAsync() {
 
-    return await this.httpClient.get<Item[]>(this.baseUrl, this.httpOptions).toPromise();
+    return await this.httpClient.get<Item[]>(this.baseUrl, {
+      ...this.httpOptions,
+      params: {
+        orderByProp: "",
+        orderByDirection: "",
+        categoryId: "all"
+      }
+    }).toPromise();
   }
 
   getItems(orderByProp?: string, orderByDirection?: string, categoryId?: string): Observable<Item[]> {

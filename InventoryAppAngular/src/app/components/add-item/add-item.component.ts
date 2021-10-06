@@ -159,17 +159,17 @@ export class AddItemComponent implements OnInit {
   
     }
     else {
-      let item  = {
-        id: this.item.id,
+      const itemToUpdate = {
+        id: this.itemId,
         name: this.item.name,
         description: this.item.description,
-        category: this.item.category,
+        category: this.item.category, 
         modifiedAt: this.item.modifiedAt,
         location: this.item.location,
-        inventoryNumber:this.item.inventoryNumber,
+        inventoryNumber: this.item.inventoryNumber, 
         creationDate: this.item.creationDate
-       }
-        this.itemService.editItem(item).subscribe();
+      } as Item ;
+        this.itemService.editItem(itemToUpdate).subscribe();
         this.router.navigate(['/inventory']);
     }
   }

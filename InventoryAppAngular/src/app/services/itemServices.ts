@@ -66,6 +66,7 @@ export class ItemServices {
   }
 
   editItem(object: Item): Observable<Item> {
+    console.log(object);
     return this.httpClient.put<Item>(this.baseUrl, object, this.httpOptions)
   }
 

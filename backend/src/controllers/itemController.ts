@@ -7,14 +7,18 @@ import { ObjectId } from "@mikro-orm/mongodb";
 
 export { getItemByInventoryNumber, getItemById, saveItem, getItems, deleteItem, updateItem, getItemsName };
 
-async function getItems(em: EntityManager, orderByProp: string, orderByDirection: "asc" | "desc"): Promise<Error | Item[] | null> {
+async function getItems(em: EntityManager, orderByProp: string, orderByDirection: "asc" | "desc", categoryId: string): Promise<Error | Item[] | null> {
     if (!(em instanceof EntityManager))
         return Error("invalid request");
 
     try {
-        const items = await em.find(Item, {}, {
-            orderBy: orderByDirection ? { [orderByProp]: orderByDirection } : {}
+        console.log("categoryId", categoryId)
+
+        const items = await em.find(Item,
+            categoryId && categoryId === "all" ? {} :  { 'category.id' : categoryId },
+            { orderBy: orderByDirection ? { [orderByProp]: orderByDirection } : {}
         })
+        console.log("items", items.length)
 
         if (orderByDirection) {
             const sorted = items.sort((a, b) => {

@@ -13,6 +13,7 @@ import { Item } from "../../models/item";
 export class InventoryComponent implements OnInit {
   items: MatTableDataSource<Item> = new MatTableDataSource();
   searchValue: string = "";
+
   columnsToDisplay = ['name', 'location', 'creationDate', 'modifiedAt', 'actions'];
   categoryId: string = "";
   orderByProp: string = "";
@@ -22,7 +23,7 @@ export class InventoryComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.categoryId = params.categoryId;
       this.fetch();
-  });
+    });
   }
 
   ngOnInit(): void {

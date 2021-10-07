@@ -25,6 +25,7 @@ export class ViewItemComponent implements OnInit {
       this.item = new Item();
     });
     this.qrValue = this.itemId.toString();
+
   }
 
   onClickEditItem(): void {
@@ -58,6 +59,12 @@ export class ViewItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.activatedRoute.params.subscribe((params) => {
+      this.itemId = params.id;
+
+      this.item = new Item();
+    });
 
     if (!this.itemId) {
       this.item = new Item();

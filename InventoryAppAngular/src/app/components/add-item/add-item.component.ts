@@ -9,6 +9,7 @@ import { LocationServices } from 'src/app/services/locationServices';
 import { Location } from 'src/app/models/location';
 import { User } from 'src/app/models/user';
 import { UserServices } from 'src/app/services/userServises';
+import { EmailService } from 'src/app/services/httpService';
 
 
 @Component({
@@ -40,6 +41,7 @@ export class AddItemComponent implements OnInit {
     private categoryServices: CategoryService,
     private locationServices: LocationServices,
     private userServices: UserServices,
+   
   )
   {
    
@@ -157,17 +159,17 @@ export class AddItemComponent implements OnInit {
   
     }
     else {
-      let item  = {
-        id: this.item.id,
+      const itemToUpdate = {
+        id: this.itemId,
         name: this.item.name,
         description: this.item.description,
-        category: this.item.category,
+        category: this.item.category, 
         modifiedAt: this.item.modifiedAt,
         location: this.item.location,
-        inventoryNumber:this.item.inventoryNumber,
+        inventoryNumber: this.item.inventoryNumber, 
         creationDate: this.item.creationDate
-       }
-        this.itemService.editItem(item).subscribe();
+      } as Item ;
+        this.itemService.editItem(itemToUpdate).subscribe();
         this.router.navigate(['/inventory']);
     }
   }

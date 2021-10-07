@@ -1,46 +1,46 @@
 <div *ngIf="itemIsFound ; else itemIsNotFound" class="mat-typography wholepage">
     <!-- <img src='../../../assets/view-item.png' class='image1'> -->
     <div class="page">
-    <div class='image1'>
+        <div class='image1'>
 
+        </div>
+        <div class="info">
+            <h1><b>Item Information:</b></h1>
+            <div class="item">
+                <p>
+                    <b>InventoryNumber:</b><i> {{ item.inventoryNumber }}</i>
+                </p>
+                <p>
+                    <b>Name:</b><i> {{ item.name }}</i>
+                </p>
+                <p>
+                    <b>Description:</b><i> {{ item.description }}</i>
+                </p>
+                <p>
+                    <b>Location:</b><i> {{ item.location.name }}</i>
+                </p>
+                <p>
+                    <b>Category:</b><i> {{ item.category.name }}</i>
+                </p>
+
+                <p>
+                    <b>CreatedAt:</b><i> {{ item.creationDate |date}}</i>
+                </p>
+                <p>
+                    <b>ModifiedAt:</b><i> {{ item.modifiedAt |date}}</i>
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class='image2'>
+        </div>
     </div>
-    <div class="info">
-        <h1><b>Item Information:</b></h1>
-        <div class="item">
-            <p>
-                <b>InventoryNumber:</b><i> {{ item.inventoryNumber }}</i>
-            </p>
-            <p>
-                <b>Name:</b><i> {{ item.name }}</i>
-            </p>
-            <p>
-                <b>Description:</b><i> {{ item.description }}</i>
-            </p>
-            <p>
-                <b>Location:</b><i> {{ item.location.name }}</i>
-            </p>
-            <p>
-                <b>Category:</b><i> {{ item.category.name }}</i>
-            </p>
-
-            <p>
-                <b>CreatedAt:</b><i> {{ item.creationDate |date}}</i>
-            </p>
-            <p>
-                <b>ModifiedAt:</b><i> {{ item.modifiedAt |date}}</i>
-            </p>
-        </div> 
-
+    <div class="buttons">
+        <button mat-raised-button color="accent" (click)='onClickEditItem()' id="EditItem">Edit</button>
+        <button mat-raised-button color="accent" (click)='onClickViewQr()' id="ViewQr">Qr</button>
     </div>
-
-
-    <div class='image2'>
-    </div>
-    </div>
-<div class="buttons">
-    <button mat-fab color="accent" (click)='onClickEditItem()' id="EditItem">Edit</button>
-    <button mat-fab color="accent" (click)='onClickViewQr()' id="ViewQr">Qr Code</button>
-</div>
 </div>
 
 

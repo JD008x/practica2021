@@ -23,11 +23,10 @@ export class HeaderComponent implements OnInit {
   items: Item[] = [];
   category: Category[] = [];
   filteredOptions: Observable<string[]> | undefined;
-  constructor(private itemServices: ItemServices, private categoryServices: CategoryService,
-
+  constructor(
+    private itemServices: ItemServices,
+    private categoryServices: CategoryService,
     private router: Router) {
-
-
   }
 
   async ngOnInit(): Promise<void> {
@@ -57,9 +56,7 @@ export class HeaderComponent implements OnInit {
   }
 
   changeClient(value: any) {
-    console.log(value.id);
-    this.router.navigate(['inventory/' + value.id]);
-
+    this.router.navigate([`/inventory/${value.id}`]);
   }
 
   getCategoryList(): void {

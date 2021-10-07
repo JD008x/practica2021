@@ -9,7 +9,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { SatPopoverModule } from '@ncstate/sat-popover';
 import { CommonModule } from '@angular/common';
@@ -38,7 +38,8 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     MatButtonModule,
     MatTableModule,
-    SatPopoverModule
+    SatPopoverModule,
+    MatDialogModule,
 
   ],
   exports: [
@@ -50,7 +51,8 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     MatButtonModule,
     MatTableModule,
-    SatPopoverModule
+    SatPopoverModule,
+    MatDialogModule
 
   ],
   providers: [],

@@ -27,13 +27,14 @@ export class ItemServices {
     return await this.httpClient.get<Item[]>(this.baseUrl, this.httpOptions).toPromise();
   }
 
-  getItems(orderByProp: string = "", orderByDirection: string = ""): Observable<Item[]> {
+  getItems(orderByProp?: string, orderByDirection?: string, categoryId?: string): Observable<Item[]> {
 
     return this.httpClient.get<Item[]>(this.baseUrl, {
       ...this.httpOptions,
       params: {
-        orderByProp,
-        orderByDirection,
+        orderByProp: orderByProp || "",
+        orderByDirection: orderByDirection || "",
+        categoryId: categoryId || "all"
       }
     })
   }
@@ -72,7 +73,7 @@ export class ItemServices {
   }
 
 
-  deleteItem(id: number) {
+  deleteItem(id: string) {
     return this.httpClient.delete<Item>(this.baseUrl + '/' + id, this.httpOptions)
   }
 }

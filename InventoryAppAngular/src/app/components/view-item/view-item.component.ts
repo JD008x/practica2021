@@ -25,9 +25,22 @@ export class ViewItemComponent implements OnInit {
       this.item = new Item();
     });
     this.qrValue = this.itemId.toString();
+    if (!this.itemId) {
+      this.item = new Item();
+    } else {
+      this.itemService.getItemById(this.itemId).subscribe({
+
+        next: item => {
+          this.item = new Item(item);
+          this.itemIsFound = this.item.id === '' ? false : true;
+        }
+      });
+    }
 
   }
-
+  // ngDoCheck() {
+  //   window.location.reload();
+  // }
   onClickEditItem(): void {
 
     this.router.navigate(['/edit/' + this.itemId]);
@@ -44,39 +57,12 @@ export class ViewItemComponent implements OnInit {
 
   ngonchanges(): void {
 
-    if (!this.itemId) {
-      this.item = new Item();
-    } else {
-      this.itemService.getItemById(this.itemId).subscribe({
-
-        next: item => {
-          this.item = new Item(item);
-          this.itemIsFound = this.item.id === '' ? false : true;
-        }
-      });
-    }
+    // window.location.reload();
 
   }
 
   ngOnInit(): void {
 
-    this.activatedRoute.params.subscribe((params) => {
-      this.itemId = params.id;
-
-      this.item = new Item();
-    });
-
-    if (!this.itemId) {
-      this.item = new Item();
-    } else {
-      this.itemService.getItemById(this.itemId).subscribe({
-
-        next: item => {
-          this.item = new Item(item);
-          this.itemIsFound = this.item.id === '' ? false : true;
-        }
-      });
-    }
 
   }
 

@@ -5,8 +5,8 @@
         <p>
             <mat-form-field class="form-field" appearance="outline">
                 <mat-label>Name: </mat-label>
-            <textarea matInput placeholder="Name of the item" formControlName="name"></textarea>
-            <mat-error *ngIf="hasError('name', 'required')">Items' name is required!</mat-error>
+            <input matInput placeholder="Name of the item" formControlName="name">
+            <mat-error *ngIf="hasError('name', 'required')">Items name is required!</mat-error>
 
 
              </mat-form-field>

@@ -19,6 +19,7 @@ export class ViewItemComponent implements OnInit {
   qrValue!: string;
   qrsize: number = 200;
   constructor(private itemService: ItemServices, private activatedRoute: ActivatedRoute,
+
     private router: Router,private dialog: MatDialog) {
 
     this.activatedRoute.params.subscribe((params) => {
@@ -26,6 +27,7 @@ export class ViewItemComponent implements OnInit {
       this.item = new Item();
     });
     this.qrValue = this.itemId.toString();
+   
   }
   
   onClickEditItem(): void {
@@ -43,6 +45,13 @@ export class ViewItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.activatedRoute.params.subscribe((params) => {
+      this.itemId = params.id;
+     
+      this.item = new Item();
+    });
+  
     if (!this.itemId) {
       this.item = new Item();
     } else {

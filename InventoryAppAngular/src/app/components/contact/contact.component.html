@@ -1,40 +1,64 @@
-<div class="title">Contact us</div>
+<h1 class="title">Contact us</h1>
+<div class="component">
+<div class="contact-container">
+    <form  [formGroup]="contactFormGroup" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
+        <p>
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>To: </mat-label>
+            <textarea matInput placeholder="To" formControlName="emailTo" ></textarea>
+            <mat-error *ngIf="hasError('emailTo', 'email')">Ex. pat@example.com</mat-error>
+            <mat-error *ngIf="hasError('emailTo', 'required')">Email  is required!</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Message: </mat-label>
+            <textarea matInput placeholder="Message" formControlName="message" ></textarea>
+            <mat-error *ngIf="hasError('message', 'required')">Message  is required!</mat-error>
+            </mat-form-field>
+        </p>
 
-<form [formGroup]="contactFormGroup" class="contact-form" (ngSubmit)="onSubmit()">
-  <div class="contact-form-component">
-    <div class="div-group">
-        <p class="label">Name: </p>
-        <mat-form-field class="mat-form"   appearance="fill">
-            <mat-label></mat-label>
-            <input matInput>
-        </mat-form-field>
-    </div>
-    <div class="div-group">
-        <p class="label">Email:</p>
-        <mat-form-field class="mat-form" appearance="fill">
-            <mat-label></mat-label>
-            <input type="email" matInput  placeholder="Ex. pat@example.com" ngModel [email]="true">
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">Please enter a valid email address</mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')"> Email is <strong>required</strong></mat-error>
-        </mat-form-field>
-    </div>
-    <div class="div-group">
-        <p class="label">Message:</p>
-        <mat-form-field  class="mat-form" appearance="fill">
-            <mat-label></mat-label>
-            <textarea matInput></textarea>
-        </mat-form-field>
-    </div>
-    <button id="button-submit" mat-raised-button color="primary">Send message</button>
-  </div>
+        <button mat-raised-button class="submitButton" type="submit"  [disabled]="!contactFormGroup.valid">{{buttonText}}</button>
+    </form>
+</div>
 
-  <div class="form-details">
-      <h2 id="title-details">Contact details</h2><br>
-      <p class="contact-details">Phone: 07837372</p><br>
-      <p class="contact-details">Email: contact@company.com</p>
-      <iframe id="google-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.744288335205!2d25.579941515771566!3d45.65595672864824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35b9f58bc0589%3A0x4b3f48cc8bf2610d!2zU3RyYWRhIEx1bmfEgywgQnJhyJlvdg!5e0!3m2!1sro!2sro!4v1631990447070!5m2!1sro!2sro"
+
+
+
+    <div class="contact-location">
+            <table mat-table #table [dataSource]="dataSources">
+        
+                <ng-container matColumnDef="name" >
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-form-field floatLabel="never">
+                            <input matInput placeholder="Name" [value]="element.name" [(ngModel)]="element.name" required>
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef> Address </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-form-field floatLabel="never">
+                            <input matInput placeholder="address" [value]="element.address" [(ngModel)]="element.address" required>
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="telNumber">
+                    <th mat-header-cell *matHeaderCellDef> TelNumber </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-form-field floatLabel="never">
+                            <input matInput placeholder="telNumber" [value]="element.telNumber" [(ngModel)]="element.telNumber" required>
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="locationColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: locationColumns"></tr>
+            </table>
+        <iframe id="google-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.744288335205!2d25.579941515771566!3d45.65595672864824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35b9f58bc0589%3A0x4b3f48cc8bf2610d!2zU3RyYWRhIEx1bmfEgywgQnJhyJlvdg!5e0!3m2!1sro!2sro!4v1631990447070!5m2!1sro!2sro"
         style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </div>
-</form>
-
-
+    </div>
+</div>

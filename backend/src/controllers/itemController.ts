@@ -77,23 +77,6 @@ async function getItemByInventoryNumber(em: EntityManager, inventoryNumber: stri
     }
 }
 
-// async function getItemByCategory(em: EntityManager, categoryId: Category): Promise<Error | Item[] | null> {
-//     if (!(em instanceof EntityManager))
-//         return Error("invalid request");
-
-
-//     //const category = categoryController.getCategoryById(em, categoryId);
-
-//     try {
-//         const items = await em.find(Item, { parent_category: categoryId });
-//         return items;
-//     } catch (ex) {
-//         if (ex instanceof Error)
-//             return ex;
-
-//         return null;
-//     }
-// }
 
 async function saveItem(em: EntityManager, item: Partial<Item>): Promise<Error | Item> {
     if (!(em instanceof EntityManager))

@@ -1,11 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { environment } from "src/environments/environment";
 import { Category } from "../models/category";
 import { Item } from "../models/item";
 import { Location } from "../models/location";
-import { CategoryService } from "./categoryService";
 
 
 @Injectable()
@@ -22,9 +20,17 @@ export class ItemServices {
 
 
   constructor(private httpClient: HttpClient) { }
+
   async getItemsAsync() {
 
-    return await this.httpClient.get<Item[]>(this.baseUrl, this.httpOptions).toPromise();
+    return await this.httpClient.get<Item[]>(this.baseUrl, {
+      ...this.httpOptions,
+      params: {
+        orderByProp: "",
+        orderByDirection: "",
+        categoryId: "all"
+      }
+    }).toPromise();
   }
 
   getItems(orderByProp?: string, orderByDirection?: string, categoryId?: string): Observable<Item[]> {
@@ -69,6 +75,7 @@ export class ItemServices {
   }
 
   editItem(object: Item): Observable<Item> {
+    console.log(object);
     return this.httpClient.put<Item>(this.baseUrl, object, this.httpOptions)
   }
 
